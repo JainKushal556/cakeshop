@@ -1,6 +1,6 @@
 /**
- * Crumb & Cocoa — Haute Pâtisserie Atelier
- * Clean Home Page Logic (assets/js/home.js)
+ * SweetNest — Homemade Cakes with Love
+ * Home Page Logic (assets/js/home.js)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,16 +26,16 @@ function quickAdd(cakeId) {
     CC_CORE.addToCart({
       cakeId: item.id,
       name: item.name,
-      size: '6 inch (1.0 kg)',
-      flavor: item.flavor,
-      creamColor: item.creamColor,
-      writingOnCake: 'Fresh Atelier Bake',
+      size: item.size || '6 inch',
+      flavor: item.flavor || 'Signature Bake',
+      creamColor: item.creamColor || 'Original Frosting',
+      writingOnCake: 'Fresh Bake',
       price: item.price,
       quantity: 1,
       image: item.image,
-      eggless: item.eggless
+      eggless: item.eggless !== undefined ? item.eggless : true
     });
-    showToast(item.name, 'Added to your bag.');
+    showToast(item.name, 'Added to your cart!');
   }
 }
 
@@ -53,6 +53,21 @@ function showToast(title, msg) {
   }, 3200);
 }
 
+// Toggle Wishlist Heart Icon
+function toggleWishlist(btn) {
+  const icon = btn.querySelector('.material-symbols-outlined');
+  if (!icon) return;
+  const isFilled = icon.classList.contains('material-symbols-fill');
+  if (isFilled) {
+    icon.classList.remove('material-symbols-fill', 'text-red-500');
+    icon.classList.add('text-on-surface-variant/70');
+  } else {
+    icon.classList.add('material-symbols-fill', 'text-red-500');
+    icon.classList.remove('text-on-surface-variant/70');
+    showToast('Saved to Wishlist', 'Item added to your favorites ♡');
+  }
+}
+
 // Filter Cakes by Category Circle Avatars
 function filterCategoryCircle(category, el) {
   const circles = document.querySelectorAll('.category-circle-btn');
@@ -60,11 +75,11 @@ function filterCategoryCircle(category, el) {
     const ring = btn.querySelector('.category-circle-ring');
     const label = btn.querySelector('.category-circle-label');
     if (ring) {
-      ring.classList.remove('border-secondary', 'ring-2', 'ring-secondary/40', 'scale-105');
-      ring.classList.add('border-outline-variant');
+      ring.classList.remove('bg-[#e06b74]', 'text-white', 'shadow-md', 'scale-105');
+      ring.classList.add('bg-[#fceee9]', 'text-[#521c19]');
     }
     if (label) {
-      label.classList.remove('text-primary', 'font-bold');
+      label.classList.remove('text-[#521c19]', 'font-bold');
       label.classList.add('text-on-surface-variant', 'font-medium');
     }
   });
@@ -73,25 +88,14 @@ function filterCategoryCircle(category, el) {
     const ring = el.querySelector('.category-circle-ring');
     const label = el.querySelector('.category-circle-label');
     if (ring) {
-      ring.classList.remove('border-outline-variant');
-      ring.classList.add('border-secondary', 'ring-2', 'ring-secondary/40', 'scale-105');
+      ring.classList.remove('bg-[#fceee9]', 'text-[#521c19]');
+      ring.classList.add('bg-[#e06b74]', 'text-white', 'shadow-md', 'scale-105');
     }
     if (label) {
       label.classList.remove('text-on-surface-variant', 'font-medium');
-      label.classList.add('text-primary', 'font-bold');
+      label.classList.add('text-[#521c19]', 'font-bold');
     }
   }
-
-  // Sync category filter chips below
-  const buttons = document.querySelectorAll('.filter-btn');
-  buttons.forEach(b => {
-    b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-    b.classList.add('bg-surface-container', 'text-on-surface-variant');
-    if (b.innerText.toLowerCase().includes(category.toLowerCase())) {
-      b.classList.remove('bg-surface-container', 'text-on-surface-variant');
-      b.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
-    }
-  });
 
   // Clear search input
   const searchInput = document.getElementById('cakeSearchInput');
@@ -110,10 +114,10 @@ function filterCategoryCircle(category, el) {
 
   checkEmptyState();
 
-  // Smooth scroll down to cake collection
-  const cakesSec = document.getElementById('all-cakes');
+  // Scroll down smoothly to cake catalog
+  const cakesSec = document.getElementById('popular-cakes');
   if (cakesSec) {
-    const navOffset = 110;
+    const navOffset = 90;
     const elementPosition = cakesSec.getBoundingClientRect().top + window.pageYOffset;
     window.scrollTo({
       top: elementPosition - navOffset,
@@ -122,76 +126,10 @@ function filterCategoryCircle(category, el) {
   }
 }
 
-// Filter Cakes by Category Chips
-function filterCakes(category, btnElement) {
-  const cards = document.querySelectorAll('.cake-card');
-  const buttons = document.querySelectorAll('.filter-btn');
-
-  if (btnElement) {
-    buttons.forEach(b => {
-      b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-      b.classList.add('bg-surface-container', 'text-on-surface-variant');
-    });
-    btnElement.classList.remove('bg-surface-container', 'text-on-surface-variant');
-    btnElement.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
-  }
-
-  // Also sync category circle ring if matching
-  const circles = document.querySelectorAll('.category-circle-btn');
-  circles.forEach(btn => {
-    const ring = btn.querySelector('.category-circle-ring');
-    const label = btn.querySelector('.category-circle-label');
-    const catName = btn.getAttribute('data-circle-cat');
-    if (catName === category) {
-      if (ring) {
-        ring.classList.remove('border-outline-variant');
-        ring.classList.add('border-secondary', 'ring-2', 'ring-secondary/40', 'scale-105');
-      }
-      if (label) {
-        label.classList.remove('text-on-surface-variant', 'font-medium');
-        label.classList.add('text-primary', 'font-bold');
-      }
-    } else {
-      if (ring) {
-        ring.classList.remove('border-secondary', 'ring-2', 'ring-secondary/40', 'scale-105');
-        ring.classList.add('border-outline-variant');
-      }
-      if (label) {
-        label.classList.remove('text-primary', 'font-bold');
-        label.classList.add('text-on-surface-variant', 'font-medium');
-      }
-    }
-  });
-
-  // Clear search input if category clicked
-  const searchInput = document.getElementById('cakeSearchInput');
-  if (searchInput) searchInput.value = '';
-
-  cards.forEach(card => {
-    const cat = card.getAttribute('data-category') || '';
-    if (category === 'All' || cat.toLowerCase().includes(category.toLowerCase())) {
-      card.classList.remove('hidden');
-    } else {
-      card.classList.add('hidden');
-    }
-  });
-
-  checkEmptyState();
-}
-
 // Filter Cakes by Search Query
 function filterBySearch(query) {
   const cards = document.querySelectorAll('.cake-card');
   const cleanQuery = query.toLowerCase().trim();
-
-  // Reset category buttons to All
-  if (cleanQuery.length > 0) {
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(b => {
-      b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-      b.classList.add('bg-surface-container', 'text-on-surface-variant');
-    });
-  }
 
   cards.forEach(card => {
     const name = (card.querySelector('.cake-name')?.innerText || '').toLowerCase();

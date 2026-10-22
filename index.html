@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Crumb &amp; Cocoa — Haute Pâtisserie Atelier</title>
+  <title>SweetNest — Homemade Cakes with Love</title>
   
-  <!-- Material Symbols & Google Fonts -->
+  <!-- Google Fonts & Material Symbols -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -17,73 +17,21 @@
       darkMode: "class",
       theme: {
         extend: {
-          "colors": {
-            "surface": "#fff8f4",
-            "on-tertiary-fixed": "#231a15",
-            "on-error": "#ffffff",
-            "on-surface": "#201b16",
-            "background": "#fff8f4",
-            "primary-fixed-dim": "#dfc0b6",
-            "inverse-on-surface": "#fbefe6",
-            "on-error-container": "#93000a",
-            "primary-container": "#38251f",
-            "surface-container-low": "#fef1e9",
-            "surface-container": "#f8ece3",
-            "primary": "#21110c",
-            "surface-container-lowest": "#ffffff",
-            "inverse-surface": "#362f2a",
-            "error": "#ba1a1a",
-            "tertiary-fixed-dim": "#d4c3bb",
-            "error-container": "#ffdad6",
-            "tertiary-fixed": "#f1dfd7",
-            "primary-fixed": "#fcdbd2",
-            "on-primary-fixed": "#281712",
-            "surface-variant": "#ece0d8",
-            "surface-dim": "#e3d8d0",
-            "on-tertiary-fixed-variant": "#50443f",
-            "on-background": "#201b16",
-            "on-secondary-container": "#794b24",
-            "surface-tint": "#715952",
-            "outline-variant": "#d3c3bf",
-            "on-secondary-fixed-variant": "#673d17",
-            "on-secondary-fixed": "#2f1500",
-            "tertiary-container": "#312722",
-            "surface-container-high": "#f2e6de",
-            "on-primary-fixed-variant": "#58423b",
-            "secondary-fixed-dim": "#f8b989",
-            "secondary-fixed": "#ffdcc3",
-            "surface-bright": "#fff8f4",
-            "inverse-primary": "#dfc0b6",
-            "on-secondary": "#ffffff",
-            "tertiary": "#1c130f",
-            "outline": "#817471",
-            "secondary-container": "#febf8e",
-            "surface-container-highest": "#ece0d8",
-            "on-surface-variant": "#4f4441",
-            "on-tertiary-container": "#9d8d86",
-            "on-primary-container": "#a78b82",
-            "on-tertiary": "#ffffff",
-            "secondary": "#83542c",
-            "on-primary": "#ffffff"
+          colors: {
+            brand: {
+              dark: "#3d1411",
+              primary: "#5e201d",
+              light: "#fcf6f4",
+              peach: "#fbebe6",
+              pink: "#e06b74",
+              pill: "#fceee9",
+              border: "#f0d5ce"
+            }
           },
-          "borderRadius": {
-            "DEFAULT": "0.125rem",
-            "lg": "0.25rem",
-            "xl": "0.5rem",
-            "full": "0.75rem"
-          },
-          "fontFamily": {
-            "body-md": ["DM Sans", "sans-serif"],
-            "label-md": ["DM Sans", "sans-serif"],
-            "headline-lg": ["EB Garamond", "serif"],
-            "headline-md": ["EB Garamond", "serif"],
-            "title-md": ["DM Sans", "sans-serif"],
-            "headline-sm": ["EB Garamond", "serif"],
-            "label-sm": ["DM Sans", "sans-serif"],
-            "display-lg-mobile": ["EB Garamond", "serif"],
-            "body-lg": ["DM Sans", "sans-serif"],
-            "display-lg": ["EB Garamond", "serif"],
-            "body-sm": ["DM Sans", "sans-serif"]
+          fontFamily: {
+            serif: ["Playfair Display", "Georgia", "serif"],
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            cursive: ["Caveat", "cursive"]
           }
         }
       }
@@ -92,523 +40,558 @@
 
   <!-- Project Design System CSS -->
   <link rel="stylesheet" href="assets/css/main.css"/>
+  <style>
+    .font-cursive { font-family: 'Caveat', cursive; }
+  </style>
 </head>
-<body class="bg-background text-on-surface antialiased font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<body class="bg-[#fcf6f5] text-[#3d1411] font-sans antialiased selection:bg-[#e06b74] selection:text-white">
 
-  <!-- 1. TOP ANNOUNCEMENT BAR -->
-  <aside class="bg-primary text-surface-container-low px-4 py-2.5 text-center text-xs tracking-wider font-label-sm border-b border-outline-variant/30 flex items-center justify-center gap-2">
-    <span class="material-symbols-outlined text-sm text-secondary-fixed">schedule</span>
-    <span>Fresh daily morning bakes • Chilled courier delivery across Bengaluru • Handcrafted artisan cakes</span>
-  </aside>
-
-  <!-- 2. HEADER NAVIGATION -->
-  <header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-16 sm:h-20">
-      <!-- Brand Logo / Wordmark -->
-      <a class="flex flex-col group" href="index.html">
-        <span class="font-headline-md text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-primary group-hover:text-secondary transition-colors duration-200">Crumb &amp; Cocoa</span>
-        <span class="font-label-sm text-[9px] sm:text-[10px] tracking-widest uppercase text-on-surface-variant -mt-0.5 sm:-mt-1">Pâtisserie Atelier • Bengaluru</span>
+  <!-- 1. NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-[#fcf6f5]/95 backdrop-blur-md border-b border-[#f0d5ce]/60">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-20">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[24px]">cake</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-2xl font-bold tracking-tight text-brand-dark">SweetNest</span>
+          <span class="text-[10px] tracking-wider text-brand-primary/70 -mt-1 font-medium">Homemade Cakes with Love</span>
+        </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm">
-        <a class="text-primary border-b border-secondary pb-1 font-semibold transition-colors duration-200" href="index.html">Home</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#all-cakes">Our Cakes</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#standards">Quality Standards</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#reviews">Reviews</a>
-        <a class="text-secondary hover:text-primary transition-colors duration-200 font-medium flex items-center gap-1 border-l border-outline-variant pl-4" href="dashboard.html">
-          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
-          <span>Owner Portal</span>
-        </a>
+      <!-- Center Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-dark/80">
+        <a href="index.html" class="text-brand-dark font-semibold border-b-2 border-brand-pink pb-1">Home</a>
+        <a href="#popular-cakes" class="hover:text-brand-pink transition-colors">Cakes</a>
+        <a href="#popular-cakes" class="hover:text-brand-pink transition-colors">Occasions</a>
+        <a href="cart.html" class="hover:text-brand-pink transition-colors">Custom Cake</a>
+        <a href="#standards" class="hover:text-brand-pink transition-colors">Reviews</a>
+        <a href="dashboard.html" class="hover:text-brand-pink transition-colors">About</a>
       </nav>
 
       <!-- Right Action Cluster -->
-      <div class="flex items-center gap-3 lg:gap-4">
-        <!-- Cart Bag Link -->
-        <a aria-label="Shopping Bag" class="relative flex items-center gap-2 py-2 px-3.5 rounded-lg text-primary hover:bg-surface-container transition-colors duration-200 border border-outline-variant bg-surface-container-lowest" href="cart.html">
-          <span class="material-symbols-outlined text-[20px] material-symbols-fill">shopping_bag</span>
-          <span class="font-label-md text-xs font-semibold cart-bag-text">Bag (0)</span>
+      <div class="flex items-center gap-3 sm:gap-4">
+        
+        <!-- Search Pill -->
+        <div class="relative hidden sm:block w-48 md:w-64">
+          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-dark/40 text-[18px]">search</span>
+          <input type="text" id="cakeSearchInput" placeholder="Search cakes, flavors, occasions..." class="w-full pl-9 pr-4 py-2 bg-white/80 border border-brand-border/80 rounded-full text-xs text-brand-dark placeholder:text-brand-dark/40 focus:border-brand-pink focus:ring-1 focus:ring-brand-pink/20 transition-all outline-none"/>
+        </div>
+
+        <!-- Wishlist Icon -->
+        <button onclick="showToast('Wishlist', 'You have 0 saved items.')" aria-label="Wishlist" class="p-2 text-brand-dark/80 hover:text-brand-pink transition-colors flex items-center">
+          <span class="material-symbols-outlined text-[22px]">favorite</span>
+        </button>
+
+        <!-- Cart Bag with Badge -->
+        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2 text-brand-dark/80 hover:text-brand-pink transition-colors flex items-center">
+          <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+          <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-brand-pink text-white text-[10px] font-bold flex items-center justify-center cart-bag-text">2</span>
         </a>
 
-        <!-- Primary CTA Button -->
-        <a class="hidden sm:inline-flex items-center justify-center bg-primary text-on-primary hover:bg-primary-container px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 active:scale-[0.98]" href="#all-cakes">
-          Shop Cakes
+        <!-- Login / Owner Portal Button -->
+        <a href="dashboard.html" class="px-5 py-2 bg-brand-dark hover:bg-brand-primary text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
+          Login
         </a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- 1. ROUND CATEGORY CIRCLES (FIRST AT THE TOP) -->
-    <section class="bg-surface border-b border-outline-variant py-4 sm:py-6 sticky top-16 sm:top-20 z-20 backdrop-blur-md bg-surface/95 shadow-sm">
-      <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16">
-        <div class="flex items-center justify-between mb-3">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
-            <h2 class="font-headline-sm text-xs sm:text-sm uppercase tracking-widest text-primary font-bold">Browse Categories</h2>
-          </div>
-          <span class="text-xs text-on-surface-variant hidden sm:inline">Tap any circle to filter freshly baked cakes</span>
-        </div>
+  <main class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-6 sm:py-8 space-y-10 sm:space-y-12">
 
-        <!-- Horizontal Scrollable Category Circles -->
-        <div class="flex items-start gap-4 sm:gap-8 overflow-x-auto custom-scrollbar pb-2 pt-1 scroll-smooth" id="categoryCircleRow">
-          
-          <!-- Circle 1: All Cakes -->
-          <button type="button" data-circle-cat="All" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('All', this)">
-            <div class="category-circle-ring w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 border-2 border-secondary ring-2 ring-secondary/40 scale-105 bg-surface-container-lowest shadow-md group-hover:scale-110 transition-all duration-300 overflow-hidden">
-              <img class="w-full h-full object-cover rounded-full" alt="All Cakes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfQP7STYDi9tOM7hTybS4GMnv5lvT8zQAGR6JHgDqyjGe5gMiuwWRl3-eb87bn9B1dOuVHPohjXZqu77PK5aPQPJD_QZQ9E-VMYa2r6p_HocOGkpHlhTjmdagV_DSmCdxgQYPvplVwrhwXidzNeszsEhtEDPmR4BkwmiTlbCDfc_MQnyvv1kz3AoS7rLMaALEc9ac7lelSTcpdSd76Ze-8MvlYvgo1K9HJDt1hFbCK1M06NYV_NfAt"/>
-            </div>
-            <span class="category-circle-label mt-2 text-xs sm:text-sm font-bold text-primary transition-colors whitespace-nowrap">All Bakes</span>
-          </button>
+    <!-- 2. HERO SLIDER BANNER (SWEETNEST SIGNATURE) -->
+    <section class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#faeae5] via-[#fcefe9] to-[#f6dad5] border border-brand-border/70 p-6 sm:p-10 lg:p-14 shadow-sm">
+      
+      <!-- Left & Right Carousel Arrow Controls -->
+      <button onclick="showToast('Gallery', 'Displaying current signature collection')" class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 text-brand-dark shadow-md flex items-center justify-center hover:bg-white hover:scale-105 transition-all z-20" aria-label="Previous Slide">
+        <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+      </button>
+      <button onclick="showToast('Gallery', 'Displaying current signature collection')" class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 text-brand-dark shadow-md flex items-center justify-center hover:bg-white hover:scale-105 transition-all z-20" aria-label="Next Slide">
+        <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+      </button>
 
-          <!-- Circle 2: Chocolate -->
-          <button type="button" data-circle-cat="Chocolate" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Chocolate', this)">
-            <div class="category-circle-ring w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 border-2 border-outline-variant group-hover:border-secondary bg-surface-container-lowest shadow-sm group-hover:scale-110 transition-all duration-300 overflow-hidden">
-              <img class="w-full h-full object-cover rounded-full" alt="Chocolate Cakes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWHtgLvx7Q2r_fdMQ9AFqIuPo_SSuXGQ9makUUoHQoY3fW2FshkBU3_Ui7p0J4Q4Lp1x-Vb36upG_-5M42koFbCK1_weQ098ZLMjXC4j4UAoSvVC0rQVx_-75l1KLf_xGKS37lB1-QzUUfIrFlWZ-PGTCb-HnpJdjRnWivXUnsq9y4LK5cyu4Z3HrJCYQDso91LB0AFO3MOyDI-cilwwu8db_1cn11tTY5VLjhCVgcyaPP7hlnUT9s"/>
-            </div>
-            <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors whitespace-nowrap">Chocolate</span>
-          </button>
-
-          <!-- Circle 3: Classic / Pistachio -->
-          <button type="button" data-circle-cat="Classic" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Classic', this)">
-            <div class="category-circle-ring w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 border-2 border-outline-variant group-hover:border-secondary bg-surface-container-lowest shadow-sm group-hover:scale-110 transition-all duration-300 overflow-hidden">
-              <img class="w-full h-full object-cover rounded-full" alt="Classic Cakes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqoGlU7n9zurE82ONBHMuhviIVJvAlWXK762qzTE5bpTuN2D_Vb6hjJC29zc0ujwUpz3-QTFCpxs1xgCOTKsKkNi6rzUQHtm67yOAsZXqvODKoo-MykLRChf04PLzqn-fnq7r7Ojo5vhxHqBkrG6b2PyRfTmrppdJLq01aJT0IBE5_IzuZKBCqzgNhd9J8mSSwSW21lhle4nxTVwyubHgbmbt2lVBoX2cavVuDWeHGFPjp1d-k8TIi"/>
-            </div>
-            <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors whitespace-nowrap">Classic &amp; Fruit</span>
-          </button>
-
-          <!-- Circle 4: Celebration -->
-          <button type="button" data-circle-cat="Celebration" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Celebration', this)">
-            <div class="category-circle-ring w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 border-2 border-outline-variant group-hover:border-secondary bg-surface-container-lowest shadow-sm group-hover:scale-110 transition-all duration-300 overflow-hidden">
-              <img class="w-full h-full object-cover rounded-full" alt="Celebration Cakes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBYtXfau0VSXOBOL-RoopFRcx5V9fffxtFEftsd0YJnL919GIy0aQD5cjKPIYCfgWU7R-0fCDUtuscHK7zS3qBvxgyw-2SkwdW5Wikf1glUdLSgzSq7w9KegTKYw7pYQZoAE5NneOlZZcRwm7UWbm69r48Tknbrd2agfiUDY34DEOND9zrvC8UcFzIf644m6BlM4fm5EkvqfwKDEgiI5SqvNOt0lceux7Pl7J895bPzStN7GIus9c8"/>
-            </div>
-            <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors whitespace-nowrap">Celebration</span>
-          </button>
-
-          <!-- Circle 5: 100% Eggless -->
-          <button type="button" data-circle-cat="Eggless" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Eggless', this)">
-            <div class="category-circle-ring w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 border-2 border-outline-variant group-hover:border-secondary bg-surface-container-lowest shadow-sm group-hover:scale-110 transition-all duration-300 overflow-hidden">
-              <img class="w-full h-full object-cover rounded-full" alt="Eggless Cakes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYjzmRz10GGMYjmty7F2gStu-EwPaT2fuvAfJ9l1bNBFsyo3Kc03HXDJA7K-DFPRsGb2kMEvFX3VbT600EJUXNibFRavNT0OaubEenycJ1ztD-GS8udMV8H-i9kudlqa1GGcVBMv15rsxK9guGqxzIEfWOwhNHdQ5tdPSSEkba0xTawlJIEdZVnSHuuFJPLv_HuHB8U8jJF4LaZAdzZkYKX4AmzQsThq8ndjgXSLTeOaha36RKd8-r"/>
-            </div>
-            <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors whitespace-nowrap">100% Eggless</span>
-          </button>
-
-          <!-- Circle 6: Caramel & Espresso -->
-          <button type="button" data-circle-cat="Caramel" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Caramel', this)">
-            <div class="category-circle-ring w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 border-2 border-outline-variant group-hover:border-secondary bg-surface-container-lowest shadow-sm group-hover:scale-110 transition-all duration-300 overflow-hidden">
-              <img class="w-full h-full object-cover rounded-full" alt="Caramel & Espresso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwy_P0vxRp9I-4BsBZBEcuTTWeXe1ilRk2i_YrERpmQfotNbMQETy_fgmxhQygASjsTFKkg4ze0HVEl3HELOx8x0tpT7BBgl7W1Kjgj4mnO3PEczxUcQWlJBu-Xwr1IDBOgD86va0MetO01AvuBphGkpu-1zudRWeRW0zvroGykEgzHvMzTqnNUBFrRjxdCQ9c5K7b0HifMBzvBnDwxLaARCHBvPWOcXfArU-WdpWxJu-oTVOCjhZK"/>
-            </div>
-            <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors whitespace-nowrap">Caramel &amp; Coffee</span>
-          </button>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. CURATED CAKES COLLECTION (DIRECT PRODUCT GRID) -->
-    <section class="py-10 sm:py-14 bg-surface-container-low border-b border-outline-variant" id="all-cakes">
-      <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        <!-- Header & Search Controls -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-outline-variant">
-          <div>
-            <div class="inline-flex items-center gap-1.5 text-secondary text-xs font-semibold uppercase tracking-wider mb-2">
-              <span class="material-symbols-outlined text-[16px]">menu_book</span>
-              <span>Ready for Handcrafted Reservation</span>
-            </div>
-            <h2 class="font-headline-lg text-3xl sm:text-4xl text-primary font-medium">
-              Curated Cake Collection
-            </h2>
-            <p class="text-on-surface-variant font-body-md text-sm mt-2 max-w-xl">
-              Select a cake to customize size, flavor, and personalized writing, or add directly to your bag.
-            </p>
-          </div>
+        <!-- Left Content -->
+        <div class="lg:col-span-6 space-y-4 sm:space-y-6 z-10">
+          <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-brand-primary/80 block">
+            HOMEMADE • FRESHLY BAKED • MADE WITH LOVE
+          </span>
 
-          <!-- Live Search Bar -->
-          <div class="w-full md:w-80 relative">
-            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
-            <input type="text" id="cakeSearchInput" placeholder="Search cakes by name or flavor..." class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:border-secondary focus:ring-1 focus:ring-secondary/20 transition-all outline-none"/>
-          </div>
-        </div>
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl text-brand-dark font-bold leading-[1.15]">
+            Cakes for<br/>
+            Every Celebration ♡
+          </h1>
 
-        <!-- Filter Chips -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 custom-scrollbar">
-          <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-primary text-on-primary shadow-sm whitespace-nowrap" onclick="filterCakes('All', this)">
-            All Cakes (6)
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high whitespace-nowrap" onclick="filterCakes('Chocolate', this)">
-            Valrhona Chocolate
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high whitespace-nowrap" onclick="filterCakes('Classic', this)">
-            Classic &amp; Fruit
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high whitespace-nowrap" onclick="filterCakes('Celebration', this)">
-            Celebration Cakes
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high whitespace-nowrap" onclick="filterCakes('Eggless', this)">
-            100% Eggless
-          </button>
-        </div>
-
-        <!-- 6 Cake Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="cakeGrid">
-
-          <!-- Cake 1: The Velvet Noir -->
-          <article class="cake-card bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group" data-category="Chocolate Cakes Eggless" data-flavor="Signature Dark Valrhona">
-            <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="The Velvet Noir" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWHtgLvx7Q2r_fdMQ9AFqIuPo_SSuXGQ9makUUoHQoY3fW2FshkBU3_Ui7p0J4Q4Lp1x-Vb36upG_-5M42koFbCK1_weQ098ZLMjXC4j4UAoSvVC0rQVx_-75l1KLf_xGKS37lB1-QzUUfIrFlWZ-PGTCb-HnpJdjRnWivXUnsq9y4LK5cyu4Z3HrJCYQDso91LB0AFO3MOyDI-cilwwu8db_1cn11tTY5VLjhCVgcyaPP7hlnUT9s"/>
-              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                <span class="bg-emerald-700 text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">100% Eggless</span>
-                <span class="bg-primary text-on-primary text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">Bestseller</span>
-              </div>
-            </div>
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block mb-1">Chocolate Cakes</span>
-                <h3 class="font-headline-md text-2xl text-primary font-medium cake-name">The Velvet Noir</h3>
-                <p class="text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed cake-desc">
-                  72% Valrhona dark chocolate mousse, salted hazelnut praline crunch, dark cocoa mirror glaze.
-                </p>
-                <div class="mt-3 flex items-center justify-between">
-                  <span class="text-xs text-on-surface-variant font-medium">Standard 6 inch (1.0 kg)</span>
-                  <span class="text-base font-bold text-primary font-headline-md">₹3,400</span>
-                </div>
-              </div>
-              <div class="pt-3 border-t border-outline-variant/60 flex items-center gap-3">
-                <a href="product.html?id=velvet-noir" class="flex-1 text-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary hover:text-on-primary text-xs font-semibold transition-all">
-                  View Cake
-                </a>
-                <button onclick="quickAdd('velvet-noir')" class="py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-semibold transition-all inline-flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[16px]">add_shopping_bag</span>
-                  <span>Add</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Cake 2: Pistache & Citrus -->
-          <article class="cake-card bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group" data-category="Classic Cakes Eggless" data-flavor="Sicilian Pistachio & Candied Zest">
-            <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Pistache & Citrus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqoGlU7n9zurE82ONBHMuhviIVJvAlWXK762qzTE5bpTuN2D_Vb6hjJC29zc0ujwUpz3-QTFCpxs1xgCOTKsKkNi6rzUQHtm67yOAsZXqvODKoo-MykLRChf04PLzqn-fnq7r7Ojo5vhxHqBkrG6b2PyRfTmrppdJLq01aJT0IBE5_IzuZKBCqzgNhd9J8mSSwSW21lhle4nxTVwyubHgbmbt2lVBoX2cavVuDWeHGFPjp1d-k8TIi"/>
-              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                <span class="bg-emerald-700 text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">100% Eggless</span>
-              </div>
-            </div>
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block mb-1">Classic Cakes</span>
-                <h3 class="font-headline-md text-2xl text-primary font-medium cake-name">Pistache &amp; Citrus</h3>
-                <p class="text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed cake-desc">
-                  Bronte pistachio praline mousseline, tart lemon curd jelly, and almond dacquoise base.
-                </p>
-                <div class="mt-3 flex items-center justify-between">
-                  <span class="text-xs text-on-surface-variant font-medium">Standard 6 inch (1.0 kg)</span>
-                  <span class="text-base font-bold text-primary font-headline-md">₹3,600</span>
-                </div>
-              </div>
-              <div class="pt-3 border-t border-outline-variant/60 flex items-center gap-3">
-                <a href="product.html?id=pistache-citrus" class="flex-1 text-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary hover:text-on-primary text-xs font-semibold transition-all">
-                  View Cake
-                </a>
-                <button onclick="quickAdd('pistache-citrus')" class="py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-semibold transition-all inline-flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[16px]">add_shopping_bag</span>
-                  <span>Add</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Cake 3: L'Ivoire & Framboise -->
-          <article class="cake-card bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group" data-category="Celebration Cakes Eggless" data-flavor="White Chocolate & Wild Raspberry">
-            <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="L'Ivoire & Framboise" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBYtXfau0VSXOBOL-RoopFRcx5V9fffxtFEftsd0YJnL919GIy0aQD5cjKPIYCfgWU7R-0fCDUtuscHK7zS3qBvxgyw-2SkwdW5Wikf1glUdLSgzSq7w9KegTKYw7pYQZoAE5NneOlZZcRwm7UWbm69r48Tknbrd2agfiUDY34DEOND9zrvC8UcFzIf644m6BlM4fm5EkvqfwKDEgiI5SqvNOt0lceux7Pl7J895bPzStN7GIus9c8"/>
-              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                <span class="bg-emerald-700 text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">100% Eggless</span>
-              </div>
-            </div>
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block mb-1">Celebration Cakes</span>
-                <h3 class="font-headline-md text-2xl text-primary font-medium cake-name">L'Ivoire &amp; Framboise</h3>
-                <p class="text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed cake-desc">
-                  Velvety white chocolate mousse layered with wild raspberry confit and buttery genoise.
-                </p>
-                <div class="mt-3 flex items-center justify-between">
-                  <span class="text-xs text-on-surface-variant font-medium">Standard 6 inch (1.0 kg)</span>
-                  <span class="text-base font-bold text-primary font-headline-md">₹3,200</span>
-                </div>
-              </div>
-              <div class="pt-3 border-t border-outline-variant/60 flex items-center gap-3">
-                <a href="product.html?id=ivoire-framboise" class="flex-1 text-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary hover:text-on-primary text-xs font-semibold transition-all">
-                  View Cake
-                </a>
-                <button onclick="quickAdd('ivoire-framboise')" class="py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-semibold transition-all inline-flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[16px]">add_shopping_bag</span>
-                  <span>Add</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Cake 4: Caramel Salé & Espresso -->
-          <article class="cake-card bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group" data-category="Classic Cakes" data-flavor="Salted Caramel & Cold Brew">
-            <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Caramel Salé & Espresso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwy_P0vxRp9I-4BsBZBEcuTTWeXe1ilRk2i_YrERpmQfotNbMQETy_fgmxhQygASjsTFKkg4ze0HVEl3HELOx8x0tpT7BBgl7W1Kjgj4mnO3PEczxUcQWlJBu-Xwr1IDBOgD86va0MetO01AvuBphGkpu-1zudRWeRW0zvroGykEgzHvMzTqnNUBFrRjxdCQ9c5K7b0HifMBzvBnDwxLaARCHBvPWOcXfArU-WdpWxJu-oTVOCjhZK"/>
-              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                <span class="bg-amber-800 text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">Contains Egg</span>
-              </div>
-            </div>
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block mb-1">Classic Cakes</span>
-                <h3 class="font-headline-md text-2xl text-primary font-medium cake-name">Caramel Salé &amp; Espresso</h3>
-                <p class="text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed cake-desc">
-                  Guerande sea-salted caramel swirl, cold-brew coffee soaked sponge, and whipped mascarpone.
-                </p>
-                <div class="mt-3 flex items-center justify-between">
-                  <span class="text-xs text-on-surface-variant font-medium">Standard 6 inch (1.0 kg)</span>
-                  <span class="text-base font-bold text-primary font-headline-md">₹2,900</span>
-                </div>
-              </div>
-              <div class="pt-3 border-t border-outline-variant/60 flex items-center gap-3">
-                <a href="product.html?id=caramel-espresso" class="flex-1 text-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary hover:text-on-primary text-xs font-semibold transition-all">
-                  View Cake
-                </a>
-                <button onclick="quickAdd('caramel-espresso')" class="py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-semibold transition-all inline-flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[16px]">add_shopping_bag</span>
-                  <span>Add</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Cake 5: Hazelnut Praliné Crunch -->
-          <article class="cake-card bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group" data-category="Chocolate Cakes" data-flavor="Piedmont Hazelnut & Milk Chocolate">
-            <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Hazelnut Praliné Crunch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcE09B7lFxzjRO6Flud49S79k6JO0XsTTdunBqORVf5Tbjsp7VD1QtiL6bk4fokU56WIRu0ecEZFqVyWpI0bJh6J6KBkWCrc-CcddctTMfkCIhdFmYnZzO9uX7rdlidKFNCYzC34JDaNBU04g0ImNVAXUy-UoLSYgPPShQG_hJTzzvbtUoGfj8dB8VbMLEsH2_ujsAvIn2nNC2POYIzignchdlfLpNdimP-QFk3-tzOiDhxe57MCtP"/>
-              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                <span class="bg-amber-800 text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">Contains Egg</span>
-              </div>
-            </div>
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block mb-1">Chocolate Cakes</span>
-                <h3 class="font-headline-md text-2xl text-primary font-medium cake-name">Hazelnut Praliné Crunch</h3>
-                <p class="text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed cake-desc">
-                  Roasted Piedmont hazelnut paste, crisp feuilletine wafers, and single-origin milk chocolate.
-                </p>
-                <div class="mt-3 flex items-center justify-between">
-                  <span class="text-xs text-on-surface-variant font-medium">Standard 6 inch (1.0 kg)</span>
-                  <span class="text-base font-bold text-primary font-headline-md">₹3,500</span>
-                </div>
-              </div>
-              <div class="pt-3 border-t border-outline-variant/60 flex items-center gap-3">
-                <a href="product.html?id=hazelnut-praline" class="flex-1 text-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary hover:text-on-primary text-xs font-semibold transition-all">
-                  View Cake
-                </a>
-                <button onclick="quickAdd('hazelnut-praline')" class="py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-semibold transition-all inline-flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[16px]">add_shopping_bag</span>
-                  <span>Add</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Cake 6: Tahitian Vanilla Bean Chiffon -->
-          <article class="cake-card bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group" data-category="Classic Cakes Eggless" data-flavor="Cured Tahitian Vanilla Bean">
-            <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Tahitian Vanilla Bean Chiffon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYjzmRz10GGMYjmty7F2gStu-EwPaT2fuvAfJ9l1bNBFsyo3Kc03HXDJA7K-DFPRsGb2kMEvFX3VbT600EJUXNibFRavNT0OaubEenycJ1ztD-GS8udMV8H-i9kudlqa1GGcVBMv15rsxK9guGqxzIEfWOwhNHdQ5tdPSSEkba0xTawlJIEdZVnSHuuFJPLv_HuHB8U8jJF4LaZAdzZkYKX4AmzQsThq8ndjgXSLTeOaha36RKd8-r"/>
-              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                <span class="bg-emerald-700 text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">100% Eggless</span>
-              </div>
-            </div>
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block mb-1">Classic Cakes</span>
-                <h3 class="font-headline-md text-2xl text-primary font-medium cake-name">Tahitian Vanilla Chiffon</h3>
-                <p class="text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed cake-desc">
-                  Pure cured Tahitian vanilla beans infused into feather-light chiffon with fresh whipped cream.
-                </p>
-                <div class="mt-3 flex items-center justify-between">
-                  <span class="text-xs text-on-surface-variant font-medium">Standard 6 inch (1.0 kg)</span>
-                  <span class="text-base font-bold text-primary font-headline-md">₹2,800</span>
-                </div>
-              </div>
-              <div class="pt-3 border-t border-outline-variant/60 flex items-center gap-3">
-                <a href="product.html?id=tahitian-vanilla" class="flex-1 text-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary hover:text-on-primary text-xs font-semibold transition-all">
-                  View Cake
-                </a>
-                <button onclick="quickAdd('tahitian-vanilla')" class="py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-semibold transition-all inline-flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[16px]">add_shopping_bag</span>
-                  <span>Add</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- Empty search state -->
-        <div id="emptySearchState" class="hidden text-center py-16 bg-surface-container-lowest border border-outline-variant rounded-2xl p-8">
-          <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">sentiment_dissatisfied</span>
-          <h3 class="font-headline-md text-xl text-primary font-medium">No matching cakes found</h3>
-          <p class="text-xs text-on-surface-variant mt-1">Try another search term or click "All Cakes" above.</p>
-          <button onclick="filterCakes('All')" class="mt-4 px-4 py-2 bg-primary text-on-primary text-xs font-semibold rounded-lg">
-            Show All Cakes
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 5. THE ATELIER STANDARDS (WHY CHOOSE US) -->
-    <section class="py-16 lg:py-20 bg-surface border-b border-outline-variant" id="standards">
-      <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <span class="text-secondary text-xs uppercase tracking-widest font-semibold">The Atelier Standard</span>
-          <h2 class="font-headline-lg text-3xl lg:text-4xl text-primary mt-1">Why Discerning Patrons Choose Us</h2>
-          <p class="text-on-surface-variant text-sm mt-2">
-            Every creation is treated as an editorial work of gastronomy, prepared strictly without shortcuts.
+          <p class="text-sm sm:text-base text-brand-dark/75 max-w-md leading-relaxed font-normal">
+            Delicious. Beautiful. Customizable.<br/>
+            Made with the finest ingredients, just for you.
           </p>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          <!-- Card 1 -->
-          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 text-center flex flex-col items-center shadow-sm">
-            <div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-primary mb-5">
-              <span class="material-symbols-outlined text-2xl">bakery_dining</span>
-            </div>
-            <h3 class="font-headline-md text-xl text-primary mb-2 font-medium">Freshly Made Bakes</h3>
-            <p class="text-on-surface-variant text-xs leading-relaxed">
-              Baked fresh in small morning batches at our Bengaluru kitchen. No thawed stock or yesterday's surplus ever reaches your celebration.
-            </p>
+          <!-- Order Now CTA -->
+          <div class="pt-2">
+            <a href="#popular-cakes" class="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-sm font-semibold tracking-wide transition-all shadow-md active:scale-95">
+              <span>Order Now</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
           </div>
 
-          <!-- Card 2 -->
-          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 text-center flex flex-col items-center shadow-sm">
-            <div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-primary mb-5">
-              <span class="material-symbols-outlined text-2xl">ac_unit</span>
+          <!-- 3 Micro Features in Circles -->
+          <div class="pt-4 flex flex-wrap items-center gap-6 text-xs text-brand-dark/80">
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="w-10 h-10 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary">
+                <span class="material-symbols-outlined text-[18px]">eco</span>
+              </div>
+              <span class="font-medium text-[11px]">Freshly<br/>Baked</span>
             </div>
-            <h3 class="font-headline-md text-xl text-primary mb-2 font-medium">Chilled Courier Transit</h3>
-            <p class="text-on-surface-variant text-xs leading-relaxed">
-              Delivered exclusively in temperature-controlled carriers with custom suspension boxes to preserve every delicate garnish intact.
-            </p>
-          </div>
 
-          <!-- Card 3 -->
-          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 text-center flex flex-col items-center shadow-sm">
-            <div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-primary mb-5">
-              <span class="material-symbols-outlined text-2xl">nutrition</span>
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="w-10 h-10 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary">
+                <span class="material-symbols-outlined text-[18px]">cake</span>
+              </div>
+              <span class="font-medium text-[11px]">Custom<br/>Designs</span>
             </div>
-            <h3 class="font-headline-md text-xl text-primary mb-2 font-medium">Pure Couverture Chocolate</h3>
-            <p class="text-on-surface-variant text-xs leading-relaxed">
-              We exclusively use 100% cocoa butter French &amp; Belgian chocolate. No hydrogenated palm oils, artificial essences, or preservatives.
-            </p>
+
+            <div class="flex flex-col items-center text-center gap-1.5">
+              <div class="w-10 h-10 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary">
+                <span class="material-symbols-outlined text-[18px]">local_shipping</span>
+              </div>
+              <span class="font-medium text-[11px]">On-Time<br/>Delivery</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 4. PATRON REVIEWS -->
-    <section class="py-16 lg:py-20 bg-surface border-b border-outline-variant" id="reviews">
-      <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16">
-        <div class="text-center max-w-xl mx-auto mb-12">
-          <span class="text-secondary text-xs uppercase tracking-widest font-semibold">Patron Feedback</span>
-          <h2 class="font-headline-lg text-3xl text-primary font-medium mt-1">Loved by Bengaluru's Connoisseurs</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
-            <div class="flex text-amber-500 mb-3 text-sm">★★★★★</div>
-            <p class="text-xs text-on-surface-variant leading-relaxed italic">
-              "The Velvet Noir was simply breathtaking. The dark chocolate mirror glaze was flawless and the hazelnut crunch gave it the perfect texture."
-            </p>
-            <div class="mt-4 pt-3 border-t border-outline-variant/50">
-              <span class="text-xs font-semibold text-primary block">Priyanka R.</span>
-              <span class="text-[10px] text-on-surface-variant">Indiranagar • Anniversary Order</span>
-            </div>
+        <!-- Right Visual with Big Pink Strawberry Cake & Script Text -->
+        <div class="lg:col-span-6 relative flex items-center justify-center">
+          <div class="relative w-full max-w-lg aspect-square sm:aspect-[4/3] lg:aspect-square flex items-center justify-center">
+            <img class="w-full h-full object-contain drop-shadow-2xl rounded-2xl" alt="Fresh Strawberry Celebration Cake" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1000&auto=format&fit=crop&q=80"/>
           </div>
 
-          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
-            <div class="flex text-amber-500 mb-3 text-sm">★★★★★</div>
-            <p class="text-xs text-on-surface-variant leading-relaxed italic">
-              "Finding a genuinely authentic pistachio cake that is 100% eggless seemed impossible until Crumb &amp; Cocoa. Our guests couldn't stop praising it."
+          <!-- Script Handwriting Calligraphy Text on Right -->
+          <div class="absolute -top-2 right-2 sm:right-6 select-none pointer-events-none hidden sm:block">
+            <p class="font-cursive text-3xl sm:text-4xl lg:text-5xl text-brand-primary/85 leading-tight rotate-[-4deg] text-right">
+              Sweet<br/>
+              Moments<br/>
+              Bigger<br/>
+              Happiness ♡
             </p>
-            <div class="mt-4 pt-3 border-t border-outline-variant/50">
-              <span class="text-xs font-semibold text-primary block">Arjun Mehra</span>
-              <span class="text-[10px] text-on-surface-variant">Lavelle Road • Birthday Celebration</span>
-            </div>
           </div>
 
-          <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
-            <div class="flex text-amber-500 mb-3 text-sm">★★★★★</div>
-            <p class="text-xs text-on-surface-variant leading-relaxed italic">
-              "Chilled delivery was right on the dot. The packaging is pure luxury and the cake arrived in pristine condition."
-            </p>
-            <div class="mt-4 pt-3 border-t border-outline-variant/50">
-              <span class="text-xs font-semibold text-primary block">Dr. Sahana K.</span>
-              <span class="text-[10px] text-on-surface-variant">Koramangala • Milestone Event</span>
-            </div>
+          <!-- Pagination Dots (Bottom Right) -->
+          <div class="absolute bottom-1 right-4 flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-primary"></span>
+            <span class="w-2 h-2 rounded-full bg-brand-primary/30"></span>
+            <span class="w-2 h-2 rounded-full bg-brand-primary/30"></span>
+            <span class="w-2 h-2 rounded-full bg-brand-primary/30"></span>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- 3. CIRCULAR CATEGORIES ROW (10 ICONS) -->
+    <section class="py-2" id="categories">
+      <div class="flex items-start justify-between gap-3 sm:gap-6 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth">
+        
+        <!-- 1. All Cakes (Active) -->
+        <button type="button" data-circle-cat="All" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('All', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pink text-white flex items-center justify-center shadow-md scale-105 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">cake</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-bold text-brand-dark transition-colors whitespace-nowrap">All Cakes</span>
+        </button>
+
+        <!-- 2. Birthday -->
+        <button type="button" data-circle-cat="Birthday" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Birthday', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">celebration</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Birthday</span>
+        </button>
+
+        <!-- 3. Anniversary -->
+        <button type="button" data-circle-cat="Anniversary" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Anniversary', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">favorite</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Anniversary</span>
+        </button>
+
+        <!-- 4. Cupcakes -->
+        <button type="button" data-circle-cat="Cupcakes" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Cupcakes', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">bakery_dining</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Cupcakes</span>
+        </button>
+
+        <!-- 5. Custom Cake -->
+        <button type="button" data-circle-cat="Custom" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Custom', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">edit</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Custom Cake</span>
+        </button>
+
+        <!-- 6. Chocolate -->
+        <button type="button" data-circle-cat="Chocolate" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Chocolate', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">cookie</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Chocolate</span>
+        </button>
+
+        <!-- 7. Fruit Cakes -->
+        <button type="button" data-circle-cat="Fruit Cakes" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Fruit Cakes', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">nutrition</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Fruit Cakes</span>
+        </button>
+
+        <!-- 8. Photo Cakes -->
+        <button type="button" data-circle-cat="Photo Cakes" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Photo Cakes', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">image</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Photo Cakes</span>
+        </button>
+
+        <!-- 9. Theme Cakes -->
+        <button type="button" data-circle-cat="Theme Cakes" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Theme Cakes', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">star</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Theme Cakes</span>
+        </button>
+
+        <!-- 10. Festive -->
+        <button type="button" data-circle-cat="Festive" class="category-circle-btn group flex flex-col items-center shrink-0 cursor-pointer text-center focus:outline-none" onclick="filterCategoryCircle('Festive', this)">
+          <div class="category-circle-ring w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-pill border border-brand-border/60 text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">featured_seasonal_and_gifts</span>
+          </div>
+          <span class="category-circle-label mt-2 text-xs sm:text-sm font-medium text-brand-dark/70 group-hover:text-brand-dark transition-colors whitespace-nowrap">Festive</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- 4. POPULAR CAKES SECTION (BESTSELLERS GRID) -->
+    <section class="space-y-6" id="popular-cakes">
+      
+      <!-- Section Header -->
+      <div class="flex items-end justify-between border-b border-brand-border/60 pb-3">
+        <div>
+          <h2 class="font-serif text-2xl sm:text-3xl text-brand-dark font-bold">Popular Cakes</h2>
+          <p class="text-xs sm:text-sm text-brand-dark/60 mt-0.5 font-normal">Our bestsellers loved by everyone</p>
+        </div>
+        <a href="#popular-cakes" onclick="filterCategoryCircle('All')" class="text-xs sm:text-sm font-semibold text-brand-primary hover:text-brand-pink transition-colors inline-flex items-center gap-1">
+          <span>View All</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- 6 Product Cards Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6" id="popularCakeGrid">
+
+        <!-- Card 1: Chocolate Truffle -->
+        <div class="cake-card bg-white rounded-2xl overflow-hidden border border-brand-border/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative" data-category="Chocolate" data-flavor="Dutch Chocolate Ganache">
+          <!-- Image container with Wishlist Heart -->
+          <div class="relative aspect-square overflow-hidden bg-brand-peach/40">
+            <a href="product.html?id=choco-truffle" class="block w-full h-full">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Chocolate Truffle" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80"/>
+            </a>
+            <button onclick="toggleWishlist(this)" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 text-on-surface-variant/70 shadow-sm flex items-center justify-center hover:scale-110 transition-transform z-10" aria-label="Add to wishlist">
+              <span class="material-symbols-outlined text-[16px]">favorite</span>
+            </button>
+          </div>
+          <!-- Body -->
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2">
+            <div>
+              <a href="product.html?id=choco-truffle" class="block font-semibold text-xs sm:text-sm text-brand-dark hover:text-brand-pink transition-colors truncate cake-name">
+                Chocolate Truffle
+              </a>
+              <!-- Rating Stars -->
+              <div class="flex items-center gap-1 text-[11px] text-amber-500 mt-1">
+                <span>★★★★★</span>
+                <span class="text-[10px] text-brand-dark/50 font-medium">(120)</span>
+              </div>
+              <!-- Price -->
+              <div class="mt-1.5 font-bold text-sm sm:text-base text-brand-dark">
+                ₹650
+              </div>
+            </div>
+            <!-- Add to Cart Pill Button -->
+            <button onclick="quickAdd('choco-truffle')" class="w-full py-2 px-2 bg-brand-pill hover:bg-brand-peach text-brand-primary rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center justify-center gap-1.5 active:scale-95 border border-brand-border/60">
+              <span class="material-symbols-outlined text-[15px]">shopping_cart</span>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Fresh Strawberry -->
+        <div class="cake-card bg-white rounded-2xl overflow-hidden border border-brand-border/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative" data-category="Fruit Cakes" data-flavor="Fresh Strawberries & Cream">
+          <div class="relative aspect-square overflow-hidden bg-brand-peach/40">
+            <a href="product.html?id=fresh-strawberry" class="block w-full h-full">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Fresh Strawberry" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&auto=format&fit=crop&q=80"/>
+            </a>
+            <button onclick="toggleWishlist(this)" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 text-on-surface-variant/70 shadow-sm flex items-center justify-center hover:scale-110 transition-transform z-10" aria-label="Add to wishlist">
+              <span class="material-symbols-outlined text-[16px]">favorite</span>
+            </button>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2">
+            <div>
+              <a href="product.html?id=fresh-strawberry" class="block font-semibold text-xs sm:text-sm text-brand-dark hover:text-brand-pink transition-colors truncate cake-name">
+                Fresh Strawberry
+              </a>
+              <div class="flex items-center gap-1 text-[11px] text-amber-500 mt-1">
+                <span>★★★★★</span>
+                <span class="text-[10px] text-brand-dark/50 font-medium">(98)</span>
+              </div>
+              <div class="mt-1.5 font-bold text-sm sm:text-base text-brand-dark">
+                ₹700
+              </div>
+            </div>
+            <button onclick="quickAdd('fresh-strawberry')" class="w-full py-2 px-2 bg-brand-pill hover:bg-brand-peach text-brand-primary rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center justify-center gap-1.5 active:scale-95 border border-brand-border/60">
+              <span class="material-symbols-outlined text-[15px]">shopping_cart</span>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Red Velvet -->
+        <div class="cake-card bg-white rounded-2xl overflow-hidden border border-brand-border/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative" data-category="Anniversary" data-flavor="Velvet Cocoa & Cream Cheese">
+          <div class="relative aspect-square overflow-hidden bg-brand-peach/40">
+            <a href="product.html?id=red-velvet" class="block w-full h-full">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Red Velvet" src="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=600&auto=format&fit=crop&q=80"/>
+            </a>
+            <button onclick="toggleWishlist(this)" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 text-on-surface-variant/70 shadow-sm flex items-center justify-center hover:scale-110 transition-transform z-10" aria-label="Add to wishlist">
+              <span class="material-symbols-outlined text-[16px]">favorite</span>
+            </button>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2">
+            <div>
+              <a href="product.html?id=red-velvet" class="block font-semibold text-xs sm:text-sm text-brand-dark hover:text-brand-pink transition-colors truncate cake-name">
+                Red Velvet
+              </a>
+              <div class="flex items-center gap-1 text-[11px] text-amber-500 mt-1">
+                <span>★★★★★</span>
+                <span class="text-[10px] text-brand-dark/50 font-medium">(84)</span>
+              </div>
+              <div class="mt-1.5 font-bold text-sm sm:text-base text-brand-dark">
+                ₹750
+              </div>
+            </div>
+            <button onclick="quickAdd('red-velvet')" class="w-full py-2 px-2 bg-brand-pill hover:bg-brand-peach text-brand-primary rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center justify-center gap-1.5 active:scale-95 border border-brand-border/60">
+              <span class="material-symbols-outlined text-[15px]">shopping_cart</span>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4: Butterscotch Delight -->
+        <div class="cake-card bg-white rounded-2xl overflow-hidden border border-brand-border/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative" data-category="Birthday" data-flavor="Butterscotch Crunch">
+          <div class="relative aspect-square overflow-hidden bg-brand-peach/40">
+            <a href="product.html?id=butterscotch" class="block w-full h-full">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Butterscotch Delight" src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=600&auto=format&fit=crop&q=80"/>
+            </a>
+            <button onclick="toggleWishlist(this)" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 text-on-surface-variant/70 shadow-sm flex items-center justify-center hover:scale-110 transition-transform z-10" aria-label="Add to wishlist">
+              <span class="material-symbols-outlined text-[16px]">favorite</span>
+            </button>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2">
+            <div>
+              <a href="product.html?id=butterscotch" class="block font-semibold text-xs sm:text-sm text-brand-dark hover:text-brand-pink transition-colors truncate cake-name">
+                Butterscotch Delight
+              </a>
+              <div class="flex items-center gap-1 text-[11px] text-amber-500 mt-1">
+                <span>★★★★★</span>
+                <span class="text-[10px] text-brand-dark/50 font-medium">(72)</span>
+              </div>
+              <div class="mt-1.5 font-bold text-sm sm:text-base text-brand-dark">
+                ₹600
+              </div>
+            </div>
+            <button onclick="quickAdd('butterscotch')" class="w-full py-2 px-2 bg-brand-pill hover:bg-brand-peach text-brand-primary rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center justify-center gap-1.5 active:scale-95 border border-brand-border/60">
+              <span class="material-symbols-outlined text-[15px]">shopping_cart</span>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 5: Blueberry Cheesecake -->
+        <div class="cake-card bg-white rounded-2xl overflow-hidden border border-brand-border/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative" data-category="Fruit Cakes" data-flavor="New York Cheesecake & Blueberry">
+          <div class="relative aspect-square overflow-hidden bg-brand-peach/40">
+            <a href="product.html?id=blueberry-cheesecake" class="block w-full h-full">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Blueberry Cheesecake" src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&auto=format&fit=crop&q=80"/>
+            </a>
+            <button onclick="toggleWishlist(this)" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 text-on-surface-variant/70 shadow-sm flex items-center justify-center hover:scale-110 transition-transform z-10" aria-label="Add to wishlist">
+              <span class="material-symbols-outlined text-[16px]">favorite</span>
+            </button>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2">
+            <div>
+              <a href="product.html?id=blueberry-cheesecake" class="block font-semibold text-xs sm:text-sm text-brand-dark hover:text-brand-pink transition-colors truncate cake-name">
+                Blueberry Cheesecake
+              </a>
+              <div class="flex items-center gap-1 text-[11px] text-amber-500 mt-1">
+                <span>★★★★★</span>
+                <span class="text-[10px] text-brand-dark/50 font-medium">(65)</span>
+              </div>
+              <div class="mt-1.5 font-bold text-sm sm:text-base text-brand-dark">
+                ₹800
+              </div>
+            </div>
+            <button onclick="quickAdd('blueberry-cheesecake')" class="w-full py-2 px-2 bg-brand-pill hover:bg-brand-peach text-brand-primary rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center justify-center gap-1.5 active:scale-95 border border-brand-border/60">
+              <span class="material-symbols-outlined text-[15px]">shopping_cart</span>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 6: Unicorn Theme Cake -->
+        <div class="cake-card bg-white rounded-2xl overflow-hidden border border-brand-border/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative" data-category="Theme Cakes" data-flavor="Rainbow Vanilla Swirl">
+          <div class="relative aspect-square overflow-hidden bg-brand-peach/40">
+            <a href="product.html?id=unicorn-theme" class="block w-full h-full">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Unicorn Theme Cake" src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=600&auto=format&fit=crop&q=80"/>
+            </a>
+            <button onclick="toggleWishlist(this)" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 text-on-surface-variant/70 shadow-sm flex items-center justify-center hover:scale-110 transition-transform z-10" aria-label="Add to wishlist">
+              <span class="material-symbols-outlined text-[16px]">favorite</span>
+            </button>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2">
+            <div>
+              <a href="product.html?id=unicorn-theme" class="block font-semibold text-xs sm:text-sm text-brand-dark hover:text-brand-pink transition-colors truncate cake-name">
+                Unicorn Theme Cake
+              </a>
+              <div class="flex items-center gap-1 text-[11px] text-amber-500 mt-1">
+                <span>★★★★★</span>
+                <span class="text-[10px] text-brand-dark/50 font-medium">(59)</span>
+              </div>
+              <div class="mt-1.5 font-bold text-sm sm:text-base text-brand-dark">
+                ₹1,200
+              </div>
+            </div>
+            <button onclick="quickAdd('unicorn-theme')" class="w-full py-2 px-2 bg-brand-pill hover:bg-brand-peach text-brand-primary rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center justify-center gap-1.5 active:scale-95 border border-brand-border/60">
+              <span class="material-symbols-outlined text-[15px]">shopping_cart</span>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty search state -->
+      <div id="emptySearchState" class="hidden text-center py-12 bg-white rounded-2xl border border-brand-border/60 p-8">
+        <span class="material-symbols-outlined text-4xl text-brand-primary/40 mb-2">cake</span>
+        <h3 class="font-serif text-lg text-brand-dark font-medium">No matching cakes found</h3>
+        <p class="text-xs text-brand-dark/60 mt-1">Try another search term or click "All Cakes" above.</p>
+        <button onclick="filterCategoryCircle('All')" class="mt-4 px-5 py-2 bg-brand-dark text-white text-xs font-semibold rounded-full">
+          Show All Cakes
+        </button>
+      </div>
+
+    </section>
+
+    <!-- 5. BOTTOM 2-CARD BANNER (CUSTOM CAKES & TRUST BADGES) -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      
+      <!-- Left Card: Custom Cakes Made Just for You! (Dark Cocoa Background) -->
+      <div class="lg:col-span-7 bg-[#421613] text-white rounded-3xl p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative shadow-sm">
+        <div class="space-y-3 z-10 max-w-sm text-center sm:text-left">
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold leading-tight">
+            Custom Cakes<br/>
+            Made Just for You!
+          </h3>
+          <p class="text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
+            Tell us your idea, and we'll bring it to life.
+          </p>
+          <div class="pt-2">
+            <a href="cart.html" class="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-brand-dark hover:bg-brand-peach rounded-full text-xs font-bold tracking-wide transition-all shadow active:scale-95">
+              <span>Request Custom Cake</span>
+              <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side Peeking Cake Image -->
+        <div class="w-44 sm:w-56 h-36 sm:h-44 shrink-0 relative flex items-center justify-center">
+          <img class="w-full h-full object-contain rounded-2xl drop-shadow-xl" alt="Custom Drip Cake" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&auto=format&fit=crop&q=80"/>
+        </div>
+      </div>
+
+      <!-- Right Card: 3 Key Features (Peach Background) -->
+      <div class="lg:col-span-5 bg-brand-peach border border-brand-border/60 rounded-3xl p-6 sm:p-8 flex flex-col justify-center gap-5 shadow-sm">
+        
+        <!-- Feature 1 -->
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">eco</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-brand-dark">Premium Ingredients</h4>
+            <p class="text-[11px] text-brand-dark/60 mt-0.5">100% pure butter, Belgian cocoa, no artificial mixes.</p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">edit</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-brand-dark">100% Customizable</h4>
+            <p class="text-[11px] text-brand-dark/60 mt-0.5">Choose flavors, eggless options, weight &amp; icing message.</p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-brand-dark">Safe &amp; Timely Delivery</h4>
+            <p class="text-[11px] text-brand-dark/60 mt-0.5">Chilled couriers ensure your cake arrives in pristine condition.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
-  <!-- 8. FOOTER -->
-  <footer class="bg-primary text-surface-container-low py-12 border-t border-primary-container" id="footer">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div class="space-y-3">
-        <span class="font-headline-md text-2xl text-on-primary font-medium block">Crumb &amp; Cocoa</span>
-        <p class="text-xs text-outline-variant leading-relaxed">
-          Haute Pâtisserie Atelier dedicated to artisanal craftsmanship, pure couverture chocolates, and memorable celebrations.
-        </p>
-      </div>
-
-      <div class="space-y-2 text-xs">
-        <span class="font-semibold text-on-primary uppercase tracking-wider block mb-2">Quick Links</span>
-        <a href="index.html" class="block text-outline-variant hover:text-on-primary transition-colors">Home</a>
-        <a href="#all-cakes" class="block text-outline-variant hover:text-on-primary transition-colors">Our Cake Collection</a>
-        <a href="cart.html" class="block text-outline-variant hover:text-on-primary transition-colors">Shopping Bag &amp; Checkout</a>
-        <a href="dashboard.html" class="block text-secondary-fixed hover:text-on-primary transition-colors font-medium">Owner Dashboard</a>
-      </div>
-
-      <div class="space-y-2 text-xs">
-        <span class="font-semibold text-on-primary uppercase tracking-wider block mb-2">Atelier Hours</span>
-        <p class="text-outline-variant">Monday – Sunday: 8:00 AM – 10:00 PM</p>
-        <p class="text-outline-variant">Same-Day Dispatch Orders: Before 2:00 PM</p>
-        <p class="text-outline-variant">Cold-Chain Delivery: Bengaluru Metro</p>
-      </div>
-
-      <div class="space-y-2 text-xs">
-        <span class="font-semibold text-on-primary uppercase tracking-wider block mb-2">Contact &amp; Kitchen</span>
-        <p class="text-outline-variant">100 Feet Road, Indiranagar, Bengaluru, KA 560038</p>
-        <p class="text-outline-variant">Email: atelier@crumbandcocoa.com</p>
-        <p class="text-outline-variant">Direct Kitchen Phone: +91 98450 12345</p>
-      </div>
-    </div>
-
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 mt-8 pt-6 border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between text-[11px] text-outline-variant">
-      <span>&copy; 2026 Crumb &amp; Cocoa Atelier. All rights reserved.</span>
-      <div class="flex items-center gap-4 mt-2 sm:mt-0">
-        <a href="dashboard.html" class="hover:text-on-primary transition-colors">Admin Portal</a>
+  <!-- FOOTER -->
+  <footer class="mt-12 bg-white border-t border-brand-border/60 py-10">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-dark/60">
+      <div class="flex items-center gap-2">
+        <span class="font-serif font-bold text-brand-dark text-base">SweetNest</span>
         <span>•</span>
-        <a href="cart.html" class="hover:text-on-primary transition-colors">Cart</a>
+        <span>Homemade Cakes with Love</span>
       </div>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="hover:text-brand-pink transition-colors">Home</a>
+        <a href="#popular-cakes" class="hover:text-brand-pink transition-colors">Cakes</a>
+        <a href="cart.html" class="hover:text-brand-pink transition-colors">Cart</a>
+        <a href="dashboard.html" class="hover:text-brand-pink transition-colors font-medium text-brand-primary">Owner Portal</a>
+      </div>
+      <p>&copy; 2026 SweetNest. All rights reserved.</p>
     </div>
   </footer>
 
   <!-- Toast Notification Floating Widget -->
-  <div id="quickToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-surface-container-lowest border border-secondary/40 shadow-xl p-4 rounded-xl max-w-sm flex items-center gap-3">
-    <div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
-      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+  <div id="quickToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-white border border-brand-pink/40 shadow-2xl p-4 rounded-2xl max-w-sm flex items-center gap-3">
+    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+      <span class="material-symbols-outlined text-[20px]">check_circle</span>
     </div>
     <div class="flex-1 min-w-0">
-      <p class="text-xs font-semibold text-primary" id="toastTitle">Added to Bag</p>
-      <p class="text-[11px] text-on-surface-variant truncate" id="toastMessage">Item has been added to your shopping bag.</p>
+      <p class="text-xs font-bold text-brand-dark" id="toastTitle">Added to Cart</p>
+      <p class="text-[11px] text-brand-dark/70 truncate" id="toastMessage">Your cake choice has been added to cart.</p>
     </div>
-    <a href="cart.html" class="px-3 py-1.5 bg-primary text-on-primary rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors shrink-0">
-      View Bag
+    <a href="cart.html" class="px-3.5 py-1.5 bg-brand-primary text-white rounded-full text-xs font-semibold hover:bg-brand-dark transition-colors shrink-0">
+      View Cart
     </a>
   </div>
 
