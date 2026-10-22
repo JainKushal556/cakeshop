@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html class="h-full bg-background" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Crumb &amp; Cocoa | Checkout &amp; Order Review</title>
+  
+  <!-- Google Fonts: EB Garamond & DM Sans -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#fcdbd2",
+            "on-primary-fixed-variant": "#58423b",
+            "secondary-container": "#febf8e",
+            "on-primary-fixed": "#281712",
+            "surface": "#fff8f4",
+            "on-primary": "#ffffff",
+            "on-background": "#201b16",
+            "surface-container": "#f8ece3",
+            "on-secondary-fixed-variant": "#673d17",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#2f1500",
+            "background": "#fff8f4",
+            "on-tertiary-fixed-variant": "#50443f",
+            "on-secondary": "#ffffff",
+            "outline": "#817471",
+            "primary-fixed-dim": "#dfc0b6",
+            "secondary-fixed-dim": "#f8b989",
+            "tertiary-fixed-dim": "#d4c3bb",
+            "surface-dim": "#e3d8d0",
+            "surface-variant": "#ece0d8",
+            "secondary": "#83542c",
+            "on-surface": "#201b16",
+            "inverse-primary": "#dfc0b6",
+            "on-primary-container": "#a78b82",
+            "tertiary": "#1c130f",
+            "tertiary-container": "#312722",
+            "inverse-on-surface": "#fbefe6",
+            "on-surface-variant": "#4f4441",
+            "surface-container-high": "#f2e6de",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "primary": "#21110c",
+            "on-secondary-container": "#794b24",
+            "surface-container-low": "#fef1e9",
+            "on-tertiary-fixed": "#231a15",
+            "surface-tint": "#715952",
+            "inverse-surface": "#362f2a",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed": "#f1dfd7",
+            "primary-container": "#38251f",
+            "error": "#ba1a1a",
+            "outline-variant": "#d3c3bf",
+            "secondary-fixed": "#ffdcc3",
+            "surface-bright": "#fff8f4",
+            "surface-container-highest": "#ece0d8",
+            "on-tertiary-container": "#9d8d86"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "body-md": ["DM Sans", "sans-serif"],
+            "label-sm": ["DM Sans", "sans-serif"],
+            "display-lg-mobile": ["EB Garamond", "serif"],
+            "headline-lg": ["EB Garamond", "serif"],
+            "headline-md": ["EB Garamond", "serif"],
+            "body-lg": ["DM Sans", "sans-serif"],
+            "headline-sm": ["EB Garamond", "serif"],
+            "display-lg": ["EB Garamond", "serif"],
+            "body-sm": ["DM Sans", "sans-serif"],
+            "title-md": ["DM Sans", "sans-serif"],
+            "label-md": ["DM Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Project Design System CSS -->
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-secondary-fixed selection:text-primary">
+
+  <!-- TOP LUXURY NAVIGATION BAR -->
+  <header class="bg-surface border-b border-outline-variant docked full-width top-0 sticky z-40">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-16 sm:h-20">
+      <div class="flex items-center gap-8">
+        <a class="font-headline-md text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-primary flex items-center gap-2" href="index.html">
+          <span class="tracking-normal font-headline-lg italic text-secondary text-2xl sm:text-3xl font-medium">C&amp;C</span>
+          <span class="border-l border-outline-variant pl-2.5 sm:pl-3 ml-1 text-lg sm:text-xl lg:text-2xl">Crumb &amp; Cocoa</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#all-cakes">Collection</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#custom-order">Bespoke Orders</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#story">Atelier Story</a>
+          <a class="text-secondary hover:text-primary font-medium transition-colors duration-200 border-l border-outline-variant pl-4 flex items-center gap-1" href="dashboard.html">
+            <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+            <span>Owner Portal</span>
+          </a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center text-xs font-semibold text-secondary bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant">
+          <span class="material-symbols-outlined text-[16px] mr-1.5">verified</span>
+          Artisanal Bengaluru Atelier
+        </div>
+        <a href="cart.html" class="text-primary border-b border-secondary pb-1 font-semibold text-xs flex items-center gap-1.5 cursor-pointer">
+          <span class="material-symbols-outlined text-[18px] material-symbols-fill">shopping_bag</span>
+          <span class="cart-bag-text">Bag (2)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CANVAS CONTAINER -->
+  <main class="flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-8 lg:py-10">
+    
+    <!-- View Switcher & Page Header -->
+    <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-outline-variant">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-semibold text-secondary mb-1 uppercase tracking-wider">
+          <span class="material-symbols-outlined text-[16px]">local_mall</span>
+          <span>Artisan Batch Reservation • Direct Baker Verification</span>
+        </div>
+        <h1 class="font-headline-lg text-3xl sm:text-4xl text-primary font-medium">Cart Review &amp; Checkout</h1>
+        <p class="text-xs text-on-surface-variant mt-1">
+          Handcrafted daily with cold-pressed French butter &amp; single-origin Valrhona chocolate. No payment collected online.
+        </p>
+      </div>
+
+      <!-- Quick Dual-State Inspector Toggle for Demo / Testing -->
+      <div class="flex items-center bg-surface-container-low border border-outline-variant p-1 rounded-lg">
+        <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 bg-primary text-on-primary" id="viewBtnReview" onclick="switchMainView('review')">
+          1. Review &amp; Checkout
+        </button>
+        <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 text-on-surface-variant hover:text-primary flex items-center gap-1.5" id="viewBtnSuccess" onclick="switchMainView('success')">
+          <span>2. Order Received State</span>
+          <span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.2 rounded-full font-semibold" id="toggleRefBadge">#CC-2026-109</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- VIEW 1: CART REVIEW & CHECKOUT (Split 65% / 35%) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="checkoutMainLayout">
+      
+      <!-- LEFT SIDE (65% -> 8 columns on 12-col grid) -->
+      <section class="lg:col-span-8 space-y-6">
+        
+        <!-- Stepper -->
+        <nav aria-label="Checkout Progress" class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 sm:p-5">
+          <div class="grid grid-cols-3 gap-2">
+            <!-- Step 1 -->
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center shrink-0">1</span>
+              <div>
+                <p class="text-xs font-semibold text-primary leading-tight">Cart Items</p>
+                <p class="text-[11px] text-secondary font-medium" id="stepperItemCount">2 Creations</p>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="flex items-center gap-3 border-l border-outline-variant pl-4">
+              <span class="w-7 h-7 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center shrink-0">2</span>
+              <div>
+                <p class="text-xs font-semibold text-primary leading-tight">Delivery &amp; Contact</p>
+                <p class="text-[11px] text-on-surface-variant">Scheduled Slot</p>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="flex items-center gap-3 border-l border-outline-variant pl-4">
+              <span class="w-7 h-7 rounded-full bg-surface-container-high text-primary text-xs font-semibold flex items-center justify-center shrink-0 border border-outline-variant">3</span>
+              <div>
+                <p class="text-xs font-semibold text-primary leading-tight">Order Review</p>
+                <p class="text-[11px] text-on-surface-variant">Chef Call In ~1h</p>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Segment 1: Cart Items List (Dynamically Rendered) -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 sm:p-6 space-y-5">
+          <div class="flex items-center justify-between border-b border-outline-variant pb-3">
+            <h2 class="font-headline-sm text-lg text-primary flex items-center gap-2 font-medium">
+              <span class="material-symbols-outlined text-secondary text-[22px]">cake</span>
+              <span>1. Commissioned Cart Items</span>
+            </h2>
+            <button onclick="clearAllCart()" class="text-xs text-error hover:underline flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">delete_sweep</span>
+              <span>Clear Cart</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Container for Cart Items -->
+          <div class="divide-y divide-outline-variant/60" id="cartItemsList">
+            <!-- Rendered by assets/js/cart.js -->
+          </div>
+        </div>
+
+        <!-- Segment 2: Customer Information & Delivery Details (SRS Section 4 Requirements) -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 sm:p-6 space-y-6">
+          <div class="flex items-center justify-between border-b border-outline-variant pb-3">
+            <h2 class="font-headline-sm text-lg text-primary flex items-center gap-2 font-medium">
+              <span class="material-symbols-outlined text-secondary text-[22px]">person_pin</span>
+              <span>2. Patron &amp; Delivery Logistics (SRS Requirements)</span>
+            </h2>
+            <span class="text-xs text-secondary font-medium">Chef Call Follow-up</span>
+          </div>
+
+          <form id="checkoutForm" onsubmit="handleOrderSubmission(event)" class="space-y-5">
+            
+            <!-- Patron Contact Fields -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+                  Patron Name <span class="text-secondary">*</span>
+                </label>
+                <input type="text" id="custName" required placeholder="Full Name" value="Aanya Sen" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+                  Mobile Number <span class="text-secondary">*</span>
+                </label>
+                <input type="tel" id="custPhone" required placeholder="+91 98201 44521" value="+91 98201 44521" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+                <span class="text-[10px] text-outline mt-0.5 block">Used by Head Chef to confirm order details</span>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+                  Email Address <span class="text-secondary">*</span>
+                </label>
+                <input type="email" id="custEmail" required placeholder="aanya.sen@example.com" value="aanya.sen@example.com" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+                <span class="text-[10px] text-outline mt-0.5 block">Receives order received &amp; approval emails</span>
+              </div>
+            </div>
+
+            <!-- Fulfilment Type & Schedule -->
+            <div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant space-y-4">
+              <span class="text-xs font-semibold uppercase tracking-wider text-secondary block">
+                Fulfilment Method &amp; Drop Timing
+              </span>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-primary mb-1">Fulfilment Type <span class="text-secondary">*</span></label>
+                  <select id="custFulfilment" onchange="toggleCartAddressField(this.value)" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-xs font-medium">
+                    <option value="Delivery" selected>Chilled Courier Delivery (Metro)</option>
+                    <option value="Pickup">Atelier Kitchen Pickup (Indiranagar)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-primary mb-1">Dispatch / Pickup Date <span class="text-secondary">*</span></label>
+                  <input type="date" id="custDate" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-xs font-medium"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-primary mb-1">Preferred Time Window <span class="text-secondary">*</span></label>
+                  <select id="custTimeSlot" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-xs font-medium">
+                    <option value="Morning 10:00 AM - 1:00 PM">Morning 10:00 AM - 1:00 PM</option>
+                    <option value="Afternoon 2:00 PM - 5:00 PM" selected>Afternoon 2:00 PM - 5:00 PM</option>
+                    <option value="Evening 5:00 PM - 8:00 PM">Evening 5:00 PM - 8:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Conditional Address Container -->
+              <div id="cartAddressBlock">
+                <label class="block text-xs font-medium text-primary mb-1">Delivery Destination Address (Bengaluru Metro) <span class="text-secondary">*</span></label>
+                <input type="text" id="custAddress" required placeholder="Flat 402, Magnolia Enclave, 12th Main Road, Indiranagar, Bengaluru - 560038" value="Flat 402, Magnolia Enclave, 12th Main Road, Indiranagar, Bengaluru - 560038" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3.5 py-2 text-xs focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+              </div>
+            </div>
+
+            <!-- Additional Notes / Allergies / Gate Instructions (SRS Requirement) -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+                Additional Notes / Gate Pass / Dietary Instructions (Optional)
+              </label>
+              <textarea id="custNotes" rows="2" placeholder="e.g. Please ring bell twice, temperature-sensitive package. Gate pass code #402. All eggless." class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-xs focus:border-secondary focus:ring-1 focus:ring-secondary/20">Please ring bell twice, temperature-sensitive package.</textarea>
+            </div>
+
+          </form>
+        </div>
+
+      </section>
+
+      <!-- RIGHT SIDE (35% -> 4 columns on 12-col grid) -->
+      <aside class="lg:col-span-4 space-y-6 sticky top-24">
+        
+        <!-- Order Summary Card -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 sm:p-6 shadow-sm">
+          <div class="flex items-center justify-between border-b border-outline-variant pb-3 mb-4">
+            <h2 class="font-headline-sm text-lg text-primary font-medium">Price Breakdown</h2>
+            <span class="text-xs text-secondary bg-surface-container-low px-2 py-0.5 rounded font-medium" id="summaryPill">2 Creations</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div class="flex justify-between items-center text-on-surface-variant">
+              <span>Cart Subtotal</span>
+              <span class="text-primary font-semibold" id="cartSubtotalVal">₹8,200</span>
+            </div>
+            <div class="flex justify-between items-center text-on-surface-variant">
+              <span class="flex items-center gap-1">
+                Artisanal Chilled Delivery
+                <span class="material-symbols-outlined text-[14px] text-outline" title="Dedicated temperature-controlled vehicle in Bengaluru">help_outline</span>
+              </span>
+              <span class="text-secondary font-semibold" id="deliveryFeeVal">Free</span>
+            </div>
+            <div class="flex justify-between items-center text-on-surface-variant">
+              <span>Insulated Thermal Packaging</span>
+              <span class="text-secondary font-semibold">Included</span>
+            </div>
+
+            <div class="pt-3 border-t border-outline-variant flex justify-between items-baseline">
+              <div>
+                <p class="text-xs uppercase tracking-wider font-semibold text-primary">Estimated Total</p>
+                <p class="text-[10px] text-on-surface-variant">Pay upon delivery / Baker phone verification</p>
+              </div>
+              <p class="font-headline-md text-3xl text-primary font-bold" id="cartTotalVal">₹8,200</p>
+            </div>
+          </div>
+
+          <!-- Explicit Business Rule Notice (Mandatory SRS Prompt Requirement) -->
+          <div class="mt-5 p-4 rounded-lg bg-surface-container-low border border-secondary/40 space-y-2">
+            <div class="flex items-center gap-2 text-secondary text-xs font-semibold uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[18px]">lock_clock</span>
+              <span>No Payment Collected Online</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">
+              No online payment gateway or card needed. This order request is <strong class="text-primary font-semibold">not automatically confirmed</strong>. The head chef will call you in ~1 hr to verify your delivery slot and final price before baking.
+            </p>
+          </div>
+
+          <!-- Primary Submit Action Button -->
+          <button type="button" onclick="submitOrderBtnClick()" class="mt-6 w-full py-3.5 px-4 bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] text-xs font-semibold uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 transition-all duration-150 shadow-sm" id="submitOrderBtn">
+            <span>Submit Order Request</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+          <p class="mt-3 text-center text-[10px] text-outline">
+            Safe Commission • French Recipe Integrity Guarantee
+          </p>
+        </div>
+
+        <!-- Baker Atelier Assurance Card -->
+        <div class="bg-surface-container-high/60 border border-outline-variant rounded-lg p-5 flex items-start gap-3.5">
+          <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[20px]">cooking</span>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-primary uppercase tracking-wide">Chef Clara Atelier Protocol</h4>
+            <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+              Every creation is whipped within 4 hours of courier pickup. Chef Clara guarantees exact weight and chill temperature preservation across Bengaluru delivery routes.
+            </p>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- VIEW 2: ORDER SUCCESS PREVIEW CONTAINER / OVERLAY MODAL (SRS Section 3.1 & Section 6) -->
+    <div class="hidden fixed inset-0 z-50 overflow-y-auto bg-primary/60 backdrop-blur-sm p-4 sm:p-6 lg:p-10 flex items-center justify-center transition-opacity duration-200" id="orderSuccessModal">
+      <div class="bg-surface-container-lowest max-w-2xl w-full border border-outline-variant rounded-xl shadow-2xl overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200">
+        
+        <!-- Modal Top Bar -->
+        <div class="bg-surface-container-low border-b border-outline-variant p-4 sm:p-6 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-secondary text-[24px]">mark_email_read</span>
+            <div>
+              <span class="text-xs font-semibold text-secondary uppercase tracking-wider">Transmission Successful</span>
+              <p class="text-base font-semibold text-primary" id="successModalRefId">Order Request Reference: #CC-2026-109</p>
+            </div>
+          </div>
+          <button aria-label="Close modal" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" onclick="toggleSuccessModal(false)">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          
+          <!-- Explicit Status Badge (Mandatory SRS Rule: Order Received, NOT Confirmed) -->
+          <div class="bg-secondary-fixed/50 border border-secondary/30 p-3.5 rounded-lg flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+              <span class="text-xs text-primary font-semibold">
+                Order Request Received — Awaiting Baker Confirmation
+              </span>
+            </div>
+            <span class="text-xs bg-surface-container-lowest text-secondary px-2.5 py-1 rounded border border-outline-variant font-medium">
+              Not Confirmed Yet
+            </span>
+          </div>
+
+          <div class="text-center sm:text-left">
+            <h2 class="font-headline-lg text-2xl sm:text-3xl text-primary font-medium" id="successHeading">Merci, Aanya. Your order request is in our oven queue.</h2>
+            <p class="text-sm text-on-surface-variant mt-1.5" id="successSubtext">
+              We have acknowledged your request for your celebration cakes. Our Head Chef will review and call you.
+            </p>
+          </div>
+
+          <!-- Expected Next Steps Timeline -->
+          <div class="bg-surface-container-low p-5 rounded-lg border border-outline-variant">
+            <h3 class="text-xs font-semibold text-primary mb-4 flex items-center gap-2 uppercase tracking-wider">
+              <span class="material-symbols-outlined text-secondary text-[18px]">schedule</span>
+              <span>Expected Next Steps Timeline</span>
+            </h3>
+            <ol class="relative border-l border-outline-variant ml-3 space-y-5">
+              <!-- Step 1 -->
+              <li class="pl-6 relative">
+                <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary text-on-primary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[10px]">check</span>
+                </span>
+                <div class="flex items-baseline justify-between">
+                  <p class="text-xs font-semibold text-primary">1. Order Request Received</p>
+                  <span class="text-[11px] text-secondary font-medium">Logged Now</span>
+                </div>
+                <p class="text-xs text-on-surface-variant">Order specifications securely registered into Crumb &amp; Cocoa central production matrix.</p>
+              </li>
+              <!-- Step 2 -->
+              <li class="pl-6 relative">
+                <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-secondary-fixed border-2 border-secondary flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                </span>
+                <div class="flex items-baseline justify-between">
+                  <p class="text-xs font-semibold text-primary">2. Head Chef Clara Phone Consultation</p>
+                  <span class="text-[11px] bg-secondary-fixed text-on-secondary-fixed-variant px-1.5 py-0.5 rounded font-medium">Pending • Next 60 mins</span>
+                </div>
+                <p class="text-xs text-on-surface-variant" id="successPhoneDesc">
+                  Baker calling your phone number to verify cold chain timing, cream colour balance, and personalized piping notes.
+                </p>
+              </li>
+              <!-- Step 3 -->
+              <li class="pl-6 relative">
+                <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-surface-container border border-outline-variant"></span>
+                <div class="flex items-baseline justify-between">
+                  <p class="text-xs font-semibold text-on-surface-variant">3. Email Acknowledgement Sent</p>
+                  <span class="text-[11px] text-outline">Queue</span>
+                </div>
+                <p class="text-xs text-on-surface-variant" id="successEmailDesc">
+                  Detailed commission summary dispatched to your email address.
+                </p>
+              </li>
+              <!-- Step 4 -->
+              <li class="pl-6 relative">
+                <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-surface-container border border-outline-variant"></span>
+                <div class="flex items-baseline justify-between">
+                  <p class="text-xs font-semibold text-on-surface-variant">4. Fresh Dawn Bake &amp; Chilled Courier Handover</p>
+                  <span class="text-[11px] text-outline" id="successDateSlot">Tomorrow Afternoon</span>
+                </div>
+                <p class="text-xs text-on-surface-variant" id="successAddressDesc">
+                  Dispatched via temperature-regulated van to your specified Indiranagar address.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Quick Recap Slip -->
+          <div class="border border-dashed border-outline-variant rounded-lg p-4 bg-surface-container-lowest flex justify-between items-center text-xs">
+            <div>
+              <p class="font-semibold text-primary text-sm" id="successSummaryTitle">Summary: Commission Items</p>
+              <p class="text-xs text-on-surface-variant" id="successSummaryItems">Artisan cake selections</p>
+            </div>
+            <div class="text-right">
+              <span class="font-headline-sm text-2xl font-bold text-primary" id="successSummaryTotal">₹8,200</span>
+              <p class="text-[10px] text-secondary font-medium">Pay upon Delivery (Offline)</p>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <a href="index.html#all-cakes" class="flex-1 py-3 px-4 bg-primary text-on-primary hover:bg-primary-container text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">restaurant_menu</span>
+              <span>Return to Collection</span>
+            </a>
+            <a href="dashboard.html" class="flex-1 py-3 px-4 bg-secondary text-on-secondary hover:bg-secondary/90 text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+              <span>View in Owner Dashboard →</span>
+            </a>
+            <button class="px-5 py-3 border border-outline-variant text-primary hover:bg-surface-container-high text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-1.5" onclick="window.print()">
+              <span class="material-symbols-outlined text-[16px]">print</span>
+              <span>Print Slip</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full mt-auto bg-surface-container-high border-t border-outline-variant">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-16 flex flex-col space-y-10">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <a class="font-headline-lg text-2xl text-primary font-medium" href="index.html">Crumb &amp; Cocoa</a>
+          <p class="text-xs text-on-surface-variant mt-1">Haute Pâtisserie Atelier • Bengaluru, India</p>
+        </div>
+        <div class="flex flex-wrap gap-6 text-xs font-medium">
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#all-cakes">Ready-Made Cakes</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#custom-order">Bespoke Orders</a>
+          <a class="text-secondary hover:text-primary transition-colors flex items-center gap-1 font-semibold" href="dashboard.html">
+            <span class="material-symbols-outlined text-[14px]">admin_panel_settings</span>
+            <span>Owner Portal</span>
+          </a>
+        </div>
+      </div>
+      <div class="pt-6 border-t border-outline-variant/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
+        <p>© 2026 Crumb &amp; Cocoa Haute Pâtisserie Atelier. Handcrafted daily with French butter and single-origin cocoa.</p>
+        <div class="flex items-center gap-3 text-secondary text-xs font-medium">
+          <span class="material-symbols-outlined text-[16px]">support_agent</span>
+          <span>Atelier Concierge: +91 80 4912 3300</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/cart.js"></script>
+</body>
+</html>
