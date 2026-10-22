@@ -101,77 +101,75 @@
 
   <main class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-6 sm:py-8 space-y-10 sm:space-y-12">
 
-    <!-- 2. HERO SLIDER BANNER (SWEETNEST SIGNATURE) -->
-    <section class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#faeae5] via-[#fcefe9] to-[#f6dad5] border border-brand-border/70 p-6 sm:p-10 lg:p-14 shadow-sm">
+    <!-- 2. HERO SLIDER BANNER (SWEETNEST SIGNATURE - COMPACT HEIGHT) -->
+    <section class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#faeae5] via-[#fcefe9] to-[#f6dad5] border border-brand-border/70 py-6 px-6 sm:py-8 sm:px-10 lg:py-8 lg:px-12 shadow-sm">
       
       <!-- Left & Right Carousel Arrow Controls -->
-      <button onclick="showToast('Gallery', 'Displaying current signature collection')" class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 text-brand-dark shadow-md flex items-center justify-center hover:bg-white hover:scale-105 transition-all z-20" aria-label="Previous Slide">
-        <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+      <button onclick="showToast('Gallery', 'Displaying current signature collection')" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 text-brand-dark shadow-md flex items-center justify-center hover:bg-white hover:scale-105 transition-all z-20" aria-label="Previous Slide">
+        <span class="material-symbols-outlined text-[18px]">chevron_left</span>
       </button>
-      <button onclick="showToast('Gallery', 'Displaying current signature collection')" class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 text-brand-dark shadow-md flex items-center justify-center hover:bg-white hover:scale-105 transition-all z-20" aria-label="Next Slide">
-        <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+      <button onclick="showToast('Gallery', 'Displaying current signature collection')" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 text-brand-dark shadow-md flex items-center justify-center hover:bg-white hover:scale-105 transition-all z-20" aria-label="Next Slide">
+        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
       </button>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         
         <!-- Left Content -->
-        <div class="lg:col-span-6 space-y-4 sm:space-y-6 z-10">
-          <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-brand-primary/80 block">
+        <div class="lg:col-span-7 space-y-3 sm:space-y-4 z-10">
+          <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-brand-primary/80 block">
             HOMEMADE • FRESHLY BAKED • MADE WITH LOVE
           </span>
 
-          <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl text-brand-dark font-bold leading-[1.15]">
-            Cakes for<br/>
-            Every Celebration ♡
+          <h1 class="font-serif text-2xl sm:text-4xl lg:text-4xl text-brand-dark font-bold leading-tight">
+            Cakes for Every Celebration ♡
           </h1>
 
-          <p class="text-sm sm:text-base text-brand-dark/75 max-w-md leading-relaxed font-normal">
-            Delicious. Beautiful. Customizable.<br/>
-            Made with the finest ingredients, just for you.
+          <p class="text-xs sm:text-sm text-brand-dark/75 max-w-md leading-relaxed font-normal">
+            Delicious. Beautiful. Customizable. Made with the finest ingredients, just for you.
           </p>
 
           <!-- Order Now CTA -->
-          <div class="pt-2">
-            <a href="#popular-cakes" class="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-sm font-semibold tracking-wide transition-all shadow-md active:scale-95">
+          <div class="pt-1">
+            <a href="#popular-cakes" class="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md active:scale-95">
               <span>Order Now</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
             </a>
           </div>
 
-          <!-- 3 Micro Features in Circles -->
-          <div class="pt-4 flex flex-wrap items-center gap-6 text-xs text-brand-dark/80">
-            <div class="flex flex-col items-center text-center gap-1.5">
-              <div class="w-10 h-10 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary">
-                <span class="material-symbols-outlined text-[18px]">eco</span>
+          <!-- 3 Micro Features in Compact Circles -->
+          <div class="pt-2 flex flex-wrap items-center gap-5 sm:gap-7 text-xs text-brand-dark/80">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+                <span class="material-symbols-outlined text-[16px]">eco</span>
               </div>
-              <span class="font-medium text-[11px]">Freshly<br/>Baked</span>
+              <span class="font-semibold text-[11px]">Freshly Baked</span>
             </div>
 
-            <div class="flex flex-col items-center text-center gap-1.5">
-              <div class="w-10 h-10 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary">
-                <span class="material-symbols-outlined text-[18px]">cake</span>
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+                <span class="material-symbols-outlined text-[16px]">cake</span>
               </div>
-              <span class="font-medium text-[11px]">Custom<br/>Designs</span>
+              <span class="font-semibold text-[11px]">Custom Designs</span>
             </div>
 
-            <div class="flex flex-col items-center text-center gap-1.5">
-              <div class="w-10 h-10 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary">
-                <span class="material-symbols-outlined text-[18px]">local_shipping</span>
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-white/80 border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+                <span class="material-symbols-outlined text-[16px]">local_shipping</span>
               </div>
-              <span class="font-medium text-[11px]">On-Time<br/>Delivery</span>
+              <span class="font-semibold text-[11px]">On-Time Delivery</span>
             </div>
           </div>
         </div>
 
-        <!-- Right Visual with Big Pink Strawberry Cake & Script Text -->
-        <div class="lg:col-span-6 relative flex items-center justify-center">
-          <div class="relative w-full max-w-lg aspect-square sm:aspect-[4/3] lg:aspect-square flex items-center justify-center">
-            <img class="w-full h-full object-contain drop-shadow-2xl rounded-2xl" alt="Fresh Strawberry Celebration Cake" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1000&auto=format&fit=crop&q=80"/>
+        <!-- Right Visual with Cake & Script Text -->
+        <div class="lg:col-span-5 relative flex items-center justify-center">
+          <div class="relative w-full max-w-sm h-48 sm:h-56 lg:h-64 flex items-center justify-center">
+            <img class="w-full h-full object-contain drop-shadow-xl rounded-xl" alt="Fresh Strawberry Celebration Cake" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&auto=format&fit=crop&q=80"/>
           </div>
 
           <!-- Script Handwriting Calligraphy Text on Right -->
-          <div class="absolute -top-2 right-2 sm:right-6 select-none pointer-events-none hidden sm:block">
-            <p class="font-cursive text-3xl sm:text-4xl lg:text-5xl text-brand-primary/85 leading-tight rotate-[-4deg] text-right">
+          <div class="absolute -top-1 right-1 sm:right-4 select-none pointer-events-none hidden sm:block">
+            <p class="font-cursive text-2xl sm:text-3xl lg:text-4xl text-brand-primary/85 leading-tight rotate-[-4deg] text-right">
               Sweet<br/>
               Moments<br/>
               Bigger<br/>
@@ -180,11 +178,11 @@
           </div>
 
           <!-- Pagination Dots (Bottom Right) -->
-          <div class="absolute bottom-1 right-4 flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-brand-primary"></span>
-            <span class="w-2 h-2 rounded-full bg-brand-primary/30"></span>
-            <span class="w-2 h-2 rounded-full bg-brand-primary/30"></span>
-            <span class="w-2 h-2 rounded-full bg-brand-primary/30"></span>
+          <div class="absolute bottom-0 right-3 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/30"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/30"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/30"></span>
           </div>
         </div>
       </div>
