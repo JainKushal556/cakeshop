@@ -75,12 +75,12 @@ function filterCategoryCircle(category, el) {
     const ring = btn.querySelector('.category-circle-ring');
     const label = btn.querySelector('.category-circle-label');
     if (ring) {
-      ring.classList.remove('bg-[#e06b74]', 'text-white', 'shadow-md', 'scale-105');
-      ring.classList.add('bg-[#fceee9]', 'text-[#521c19]');
+      ring.classList.remove('border-[#e06b74]', 'ring-2', 'ring-[#e06b74]/30', 'scale-105', 'shadow-md');
+      ring.classList.add('border-[#f0d5ce]/80');
     }
     if (label) {
-      label.classList.remove('text-[#521c19]', 'font-bold');
-      label.classList.add('text-on-surface-variant', 'font-medium');
+      label.classList.remove('text-[#3d1411]', 'font-bold');
+      label.classList.add('text-[#3d1411]/70', 'font-medium');
     }
   });
 
@@ -88,12 +88,12 @@ function filterCategoryCircle(category, el) {
     const ring = el.querySelector('.category-circle-ring');
     const label = el.querySelector('.category-circle-label');
     if (ring) {
-      ring.classList.remove('bg-[#fceee9]', 'text-[#521c19]');
-      ring.classList.add('bg-[#e06b74]', 'text-white', 'shadow-md', 'scale-105');
+      ring.classList.remove('border-[#f0d5ce]/80');
+      ring.classList.add('border-[#e06b74]', 'ring-2', 'ring-[#e06b74]/30', 'scale-105', 'shadow-md');
     }
     if (label) {
-      label.classList.remove('text-on-surface-variant', 'font-medium');
-      label.classList.add('text-[#521c19]', 'font-bold');
+      label.classList.remove('text-[#3d1411]/70', 'font-medium');
+      label.classList.add('text-[#3d1411]', 'font-bold');
     }
   }
 
