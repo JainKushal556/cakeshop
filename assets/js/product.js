@@ -80,12 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Gallery
   if (cakeGalleries[found.id]) {
     currentGallery = cakeGalleries[found.id];
-    const mainImg = document.getElementById('mainProductImage');
-    if (mainImg) mainImg.src = currentGallery[0];
-    for (let i = 0; i < 4; i++) {
-      const th = document.getElementById('thumb' + i);
-      if (th && currentGallery[i]) th.src = currentGallery[i];
-    }
+  } else {
+    currentGallery = [found.image, found.image, found.image, found.image];
+  }
+  const mainImg = document.getElementById('mainProductImage');
+  if (mainImg) mainImg.src = currentGallery[0];
+  for (let i = 0; i < 4; i++) {
+    const th = document.getElementById('thumb' + i);
+    if (th && currentGallery[i]) th.src = currentGallery[i];
   }
 
   // Update size prices

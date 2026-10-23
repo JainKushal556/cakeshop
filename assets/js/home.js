@@ -5,8 +5,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize cart badge
-  if (window.CC_CORE) {
-    CC_CORE.updateCartBadges();
+  if (window.CC_CORE && window.CC_CORE.updateBadges) {
+    CC_CORE.updateBadges();
   }
 
   // Setup search input listener
@@ -95,13 +95,14 @@ function quickAdd(cakeId) {
       name: item.name,
       size: item.size || '6 inch',
       flavor: item.flavor || 'Signature Bake',
-      creamColor: item.creamColor || 'Original Frosting',
-      writingOnCake: 'Fresh Bake',
       price: item.price,
       quantity: 1,
       image: item.image,
       eggless: item.eggless !== undefined ? item.eggless : true
     });
+    if (window.CC_CORE.updateBadges) {
+      window.CC_CORE.updateBadges();
+    }
     showToast(item.name, 'Added to your cart!');
   }
 }

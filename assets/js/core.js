@@ -234,11 +234,8 @@ const CC_CORE = {
   addToCart(item) {
     const cart = this.getCart();
     const existingIndex = cart.findIndex(i => 
-      i.name === item.name && 
-      i.size === item.size && 
-      i.flavor === item.flavor && 
-      i.creamColor === item.creamColor &&
-      i.writingOnCake === item.writingOnCake
+      (i.cakeId && item.cakeId && i.cakeId === item.cakeId && i.size === item.size) ||
+      (i.name === item.name && i.size === item.size)
     );
 
     if (existingIndex > -1) {
@@ -291,12 +288,12 @@ const CC_CORE = {
 
   updateBadges() {
     const count = this.getCartTotalCount();
-    const countEls = document.querySelectorAll('.cart-badge-count, #cartBadge, .cart-count-pill');
+    const countEls = document.querySelectorAll('.cart-badge-count, #cartBadge, .cart-count-pill, #homeCartBadge');
     countEls.forEach(el => {
       el.textContent = count;
-      if (count > 0) {
-        el.classList.remove('hidden');
-      }
+      // Pulse animation effect
+      el.classList.add('scale-125');
+      setTimeout(() => el.classList.remove('scale-125'), 200);
     });
 
     const bagTextEls = document.querySelectorAll('.cart-bag-text');
@@ -317,6 +314,10 @@ const CC_CORE = {
         mobileBagBar.classList.add('hidden');
       }
     }
+  },
+
+  updateCartBadges() {
+    this.updateBadges();
   },
 
   // Orders Management (For Customer Checkout & Owner Dashboard)
