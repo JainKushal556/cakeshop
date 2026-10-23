@@ -455,3 +455,67 @@ const CC_CORE = {
 document.addEventListener('DOMContentLoaded', () => {
   CC_CORE.updateBadges();
 });
+
+// --- Global Track Order Modal Handlers ---
+window.openTrackOrderModal = function() {
+  const modal = document.getElementById('trackOrderModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    const orders = window.CC_CORE ? CC_CORE.getOrders() : [];
+    const latestOrder = orders.length > 0 ? orders[0] : null;
+    const input = document.getElementById('trackOrderInput');
+    if (input && latestOrder && !input.value) {
+      input.value = latestOrder.id;
+    }
+    executeTrackOrder();
+  }
+};
+
+window.closeTrackOrderModal = function() {
+  const modal = document.getElementById('trackOrderModal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+};
+
+window.executeTrackOrder = function() {
+  const input = document.getElementById('trackOrderInput');
+  const query = input ? input.value.trim().toUpperCase() : '';
+  const resultContainer = document.getElementById('trackOrderResult');
+  if (!resultContainer) return;
+
+  const orders = window.CC_CORE ? CC_CORE.getOrders() : [];
+  let found = null;
+  if (query) {
+    found = orders.find(o => o.id.toUpperCase().includes(query) || (o.phone && o.phone.includes(query)));
+  }
+  if (!found && orders.length > 0) {
+    found = orders[0];
+  }
+
+  if (!found) {
+    resultContainer.innerHTML = `
+      <div class="text-center py-6 text-brand-dark/60 text-xs">
+        <span class="material-symbols-outlined text-3xl text-brand-dark/30 mb-2 block">receipt_long</span>
+        No orders found for reference "${query}". Please verify your order ID.
+      </div>
+    `;
+    return;
+  }
+
+  resultContainer.innerHTML = `
+    <div class="p-3.5 bg-brand-peach/50 rounded-2xl border border-brand-border/60 text-xs space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="font-bold text-brand-dark text-sm">#${found.id}</span>
+        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${found.status === 'Completed' ? 'bg-emerald-100 text-emerald-800' : 'bg-brand-pink/20 text-brand-dark'}">
+          ${found.status || 'In Kitchen'}
+        </span>
+      </div>
+      <p class="text-brand-dark/70 text-[11px]">${found.items ? found.items.map(i => `${i.name} (x${i.qty || 1})`).join(', ') : 'Custom Celebration Cake'}</p>
+      <div class="flex items-center justify-between pt-1 border-t border-brand-border/40 text-[10px] text-brand-dark/60">
+        <span>Delivery: ${found.requestedDate || 'Scheduled'} • ${found.timeSlot || 'Afternoon'}</span>
+        <span class="font-bold text-brand-dark">${CC_CORE.formatINR(found.totalValue)}</span>
+      </div>
+    </div>
+  `;
+};

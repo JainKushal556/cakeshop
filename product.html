@@ -95,32 +95,47 @@
 </head>
 <body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
 
-  <!-- TOP LUXURY NAVIGATION BAR -->
-  <header class="bg-surface docked full-width top-0 sticky z-40 border-b border-outline-variant">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-16 sm:h-20">
-      <!-- Brand Logo -->
-      <a class="font-headline-md text-xl sm:text-2xl font-medium tracking-tight text-primary transition-transform active:scale-[0.99] flex items-center gap-2" href="index.html">
-        <span class="tracking-normal font-headline-lg italic text-secondary text-2xl sm:text-3xl font-medium">C&amp;C</span>
-        <span class="border-l border-outline-variant pl-2.5 sm:pl-3 ml-1 text-lg sm:text-xl lg:text-2xl">Crumb &amp; Cocoa</span>
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-[#fcf6f5]/95 backdrop-blur-md border-b border-[#f0d5ce]/60">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-20">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[24px]">cake</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-2xl font-bold tracking-tight text-brand-dark">SweetNest</span>
+          <span class="text-[10px] tracking-wider text-brand-primary/70 -mt-1 font-medium">Homemade Cakes with Love</span>
+        </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center space-x-7 text-sm">
-        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#all-cakes">All Cakes</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#standards">The Atelier</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#story">Our Story</a>
-        <a class="text-secondary hover:text-primary font-medium transition-colors duration-200 border-l border-outline-variant pl-4 flex items-center gap-1" href="dashboard.html">
-          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
-          <span>Owner Portal</span>
-        </a>
+      <!-- Center Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-dark/80">
+        <a href="index.html" class="hover:text-brand-pink transition-colors">Home</a>
+        <a href="index.html#popular-cakes" class="hover:text-brand-pink transition-colors">Cakes</a>
+        <a href="index.html#categories" class="hover:text-brand-pink transition-colors">Categories</a>
+        <a href="index.html#standards" class="hover:text-brand-pink transition-colors">Quality &amp; Standards</a>
+        <a href="dashboard.html" class="hover:text-brand-pink transition-colors">About</a>
       </nav>
 
-      <!-- Trailing Action -->
-      <div class="flex items-center space-x-4">
-        <!-- Bag CTA with Counter Pill -->
-        <a href="cart.html" class="relative bg-primary text-on-primary hover:bg-primary-container px-4 py-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all active:scale-[0.98]">
-          <span class="material-symbols-outlined text-[18px] material-symbols-fill">shopping_bag</span>
-          <span class="cart-bag-text">Bag (2)</span>
+      <!-- Right Action Cluster: Track, Login, Cart -->
+      <div class="flex items-center gap-2.5 sm:gap-4">
+        <!-- 1. Track Order Button -->
+        <button type="button" onclick="openTrackOrderModal()" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full border border-brand-border/80 bg-white/80 hover:bg-white text-xs font-semibold text-brand-dark hover:text-brand-primary shadow-sm hover:border-brand-pink transition-all active:scale-95 cursor-pointer">
+          <span class="material-symbols-outlined text-[17px] text-brand-primary">local_shipping</span>
+          <span>Track Order</span>
+        </button>
+
+        <!-- 2. Login Button -->
+        <a href="dashboard.html" class="px-5 py-2 bg-brand-dark hover:bg-brand-primary text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
+          Login
+        </a>
+
+        <!-- 3. Cart Button with Badge -->
+        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2.5 rounded-full bg-white/80 hover:bg-white border border-brand-border/70 text-brand-dark hover:text-brand-pink shadow-sm transition-all flex items-center justify-center active:scale-95">
+          <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+          <span id="cartBadge" class="cart-badge-count absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand-pink text-white text-[10px] font-bold flex items-center justify-center shadow-sm transition-transform duration-200">0</span>
         </a>
       </div>
     </div>
@@ -504,16 +519,17 @@
 
   <!-- FOOTER -->
   <footer class="w-full mt-20 bg-surface-container-high border-t border-outline-variant">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-16 flex flex-col space-y-10">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-12 flex flex-col space-y-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-          <a class="font-headline-lg text-2xl text-primary font-medium" href="index.html">Crumb &amp; Cocoa</a>
-          <p class="text-xs text-on-surface-variant mt-1">Haute Pâtisserie Atelier • Bengaluru, India</p>
+          <a class="font-serif text-2xl font-bold tracking-tight text-brand-dark" href="index.html">SweetNest</a>
+          <p class="text-xs text-on-surface-variant mt-1">Homemade Cakes with Love • Bengaluru, India</p>
         </div>
         <div class="flex flex-wrap gap-6 text-xs font-medium">
           <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#standards">The Atelier</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="cart.html">View Bag</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#popular-cakes">Cakes</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#categories">Categories</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#standards">Quality &amp; Standards</a>
           <a class="text-secondary hover:text-primary transition-colors flex items-center gap-1 font-semibold" href="dashboard.html">
             <span class="material-symbols-outlined text-[14px]">admin_panel_settings</span>
             <span>Owner Portal</span>
@@ -521,14 +537,50 @@
         </div>
       </div>
       <div class="pt-6 border-t border-outline-variant/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
-        <p>© 2026 Crumb &amp; Cocoa Haute Pâtisserie Atelier. Handcrafted daily with French butter and single-origin cocoa.</p>
+        <p>© 2026 SweetNest Bakery Atelier. Handcrafted daily with fresh cream, fruits and premium chocolate.</p>
         <div class="flex items-center gap-3 text-secondary text-xs font-medium">
           <span class="material-symbols-outlined text-[16px]">support_agent</span>
-          <span>Atelier Concierge: +91 80 4912 3300</span>
+          <span>Chef Concierge: +91 98201 44521</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Track Order Modal (Popup for real-time tracking) -->
+  <div id="trackOrderModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-brand-border/80 space-y-5 animate-in fade-in zoom-in-95 duration-200 relative">
+      <button onclick="closeTrackOrderModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/70 hover:text-brand-dark hover:bg-brand-border/50 transition-all cursor-pointer">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+          <span class="material-symbols-outlined text-[22px]">local_shipping</span>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-brand-dark">Track Your Cake Order</h3>
+          <p class="text-xs text-brand-dark/60 mt-0.5">Real-time baking &amp; chilled courier tracking</p>
+        </div>
+      </div>
+
+      <!-- Search Input for Order -->
+      <div class="flex gap-2">
+        <div class="relative flex-1">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-brand-dark/40 text-[18px]">search</span>
+          <input type="text" id="trackOrderInput" placeholder="Enter Order ID (e.g. CC-2026-109)..." class="w-full pl-9 pr-3 py-2.5 bg-brand-light border border-brand-border rounded-xl text-xs text-brand-dark outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink/20 transition-all"/>
+        </div>
+        <button onclick="executeTrackOrder()" class="px-5 py-2.5 bg-brand-dark hover:bg-brand-primary text-white text-xs font-semibold rounded-xl transition-all shadow-sm active:scale-95 cursor-pointer">
+          Track
+        </button>
+      </div>
+
+      <!-- Live Order Status Result Container -->
+      <div id="trackOrderResult" class="space-y-4 pt-1">
+        <!-- Will be populated dynamically by JS -->
+      </div>
+    </div>
+  </div>
 
   <!-- Sticky Commercial App Mobile Action Bar for Phone Screens -->
   <aside class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant px-4 py-3 shadow-2xl flex items-center justify-between gap-3">

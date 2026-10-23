@@ -60,87 +60,104 @@ function renderCart() {
   const container = document.getElementById('cartItemsList');
   const countEl = document.getElementById('stepperItemCount');
   const summaryPill = document.getElementById('summaryPill');
-
-  if (!container) return;
+  const checkoutLayout = document.getElementById('checkoutMainLayout');
+  const emptyCartView = document.getElementById('emptyCartView');
+  const headerActions = document.getElementById('cartHeaderActions');
+  const pageTitle = document.getElementById('cartPageTitle');
+  const pageSubtext = document.getElementById('cartPageSubtext');
+  const headerBadge = document.getElementById('cartHeaderBadge');
 
   if (cart.length === 0) {
-    container.innerHTML = `
-      <div class="py-12 text-center flex flex-col items-center">
-        <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-outline mb-4">
-          <span class="material-symbols-outlined text-3xl">shopping_bag</span>
-        </div>
-        <h3 class="font-headline-sm text-xl text-primary font-medium">Your Atelier Bag is Empty</h3>
-        <p class="text-xs text-on-surface-variant mt-1 max-w-sm">Explore our freshly finished morning bakes and bespoke cakes to commission your celebration.</p>
-        <a href="index.html#all-cakes" class="mt-6 px-6 py-2.5 bg-primary text-on-primary rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-primary-container transition-all">
-          Explore Collection
-        </a>
-      </div>
-    `;
+    // Hide checkout layout completely (forms, stepper, price breakdown, submit button)
+    if (checkoutLayout) checkoutLayout.classList.add('hidden');
+    // Reveal clean empty state view
+    if (emptyCartView) emptyCartView.classList.remove('hidden');
+    // Hide demo view switcher
+    if (headerActions) headerActions.classList.add('hidden');
+    
+    // Set appropriate page titles
+    if (pageTitle) pageTitle.textContent = 'Your Cart';
+    if (pageSubtext) pageSubtext.textContent = 'Your cart is currently waiting for your sweet celebration selection.';
+    if (headerBadge) headerBadge.textContent = 'Fresh Artisanal Bakes • Bengaluru';
+
     if (countEl) countEl.innerText = '0 Creations';
     if (summaryPill) summaryPill.innerText = '0 Creations';
     recalculateCartTotals();
+    CC_CORE.updateBadges();
     return;
   }
+
+  // Cart has items: Show checkout layout and hide empty cart state
+  if (checkoutLayout) checkoutLayout.classList.remove('hidden');
+  if (emptyCartView) emptyCartView.classList.add('hidden');
+  if (headerActions) headerActions.classList.remove('hidden');
+
+  if (pageTitle) pageTitle.textContent = 'Cart Review & Checkout';
+  if (pageSubtext) pageSubtext.textContent = 'Handcrafted daily with cold-pressed French butter & single-origin Valrhona chocolate. No payment collected online.';
+  if (headerBadge) headerBadge.textContent = 'Artisan Batch Reservation • Direct Baker Verification';
 
   if (countEl) countEl.innerText = `${cart.length} Creation${cart.length > 1 ? 's' : ''}`;
   if (summaryPill) summaryPill.innerText = `${cart.length} Creation${cart.length > 1 ? 's' : ''}`;
 
-  container.innerHTML = cart.map(item => {
-    const itemTotal = item.price * (item.quantity || 1);
-    return `
-      <article class="py-5 first:pt-2 flex flex-col sm:flex-row gap-5 items-start">
-        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-lg overflow-hidden shrink-0 border border-outline-variant bg-surface-container">
-          <img class="w-full h-full object-cover" src="${item.image}" alt="${item.name}"/>
-        </div>
-        <div class="flex-1 min-w-0">
-          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
-            <div>
-              <h3 class="font-headline-sm text-lg text-primary font-medium">${item.name}</h3>
-              <p class="text-xs text-on-surface-variant">Flavour: <span class="text-primary font-medium">${item.flavor || 'Signature'}</span></p>
-              ${item.creamColor ? `<p class="text-xs text-on-surface-variant">Cream Finish: <span class="text-secondary font-semibold">${item.creamColor}</span></p>` : ''}
-              ${item.writingOnCake ? `<p class="text-xs text-secondary mt-0.5 italic">Piping: "${item.writingOnCake}"</p>` : ''}
-            </div>
-            <div class="text-left sm:text-right mt-1 sm:mt-0">
-              <span class="font-headline-sm text-lg text-primary font-semibold">${CC_CORE.formatINR(itemTotal)}</span>
-              <p class="text-[11px] text-secondary">Taxes Included</p>
-            </div>
+  if (container) {
+    container.innerHTML = cart.map(item => {
+      const itemTotal = item.price * (item.quantity || 1);
+      return `
+        <article class="py-5 first:pt-2 flex flex-col sm:flex-row gap-5 items-start">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-lg overflow-hidden shrink-0 border border-outline-variant bg-surface-container">
+            <img class="w-full h-full object-cover" src="${item.image}" alt="${item.name}"/>
           </div>
-          <div class="mt-2.5 flex flex-wrap items-center gap-2">
-            <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-surface-container border border-outline-variant text-[11px] font-semibold text-primary">
-              Size: ${item.size || 'Standard'}
-            </span>
-            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-secondary-fixed/40 text-[11px] font-semibold text-on-secondary-fixed-variant">
-              <span class="material-symbols-outlined text-[13px]">ac_unit</span> Chilled Box
-            </span>
-            ${item.eggless ? `
-              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 text-[11px] font-semibold">
-                <span class="material-symbols-outlined text-[13px]">eco</span> Eggless
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
+              <div>
+                <h3 class="font-headline-sm text-lg text-primary font-medium">${item.name}</h3>
+                <p class="text-xs text-on-surface-variant">Flavour: <span class="text-primary font-medium">${item.flavor || 'Signature'}</span></p>
+                ${item.creamColor ? `<p class="text-xs text-on-surface-variant">Cream Finish: <span class="text-secondary font-semibold">${item.creamColor}</span></p>` : ''}
+                ${item.writingOnCake ? `<p class="text-xs text-secondary mt-0.5 italic">Piping: "${item.writingOnCake}"</p>` : ''}
+              </div>
+              <div class="text-left sm:text-right mt-1 sm:mt-0">
+                <span class="font-headline-sm text-lg text-primary font-semibold">${CC_CORE.formatINR(itemTotal)}</span>
+                <p class="text-[11px] text-secondary">Taxes Included</p>
+              </div>
+            </div>
+            <div class="mt-2.5 flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-surface-container border border-outline-variant text-[11px] font-semibold text-primary">
+                Size: ${item.size || 'Standard'}
               </span>
-            ` : ''}
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-dashed border-outline-variant/60 pt-3">
-            <!-- Quantity Controls -->
-            <div class="inline-flex items-center border border-outline-variant rounded-lg bg-surface-container-low">
-              <button type="button" class="px-2.5 py-1 text-on-surface hover:bg-surface-container transition-colors" onclick="changeItemQty('${item.id}', -1)">
-                <span class="material-symbols-outlined text-[14px]">remove</span>
-              </button>
-              <span class="px-3 py-1 text-xs font-semibold text-primary">${item.quantity || 1}</span>
-              <button type="button" class="px-2.5 py-1 text-on-surface hover:bg-surface-container transition-colors" onclick="changeItemQty('${item.id}', 1)">
-                <span class="material-symbols-outlined text-[14px]">add</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-secondary-fixed/40 text-[11px] font-semibold text-on-secondary-fixed-variant">
+                <span class="material-symbols-outlined text-[13px]">ac_unit</span> Chilled Box
+              </span>
+              ${item.eggless ? `
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 text-[11px] font-semibold">
+                  <span class="material-symbols-outlined text-[13px]">eco</span> Eggless
+                </span>
+              ` : ''}
+            </div>
+            <div class="mt-4 flex items-center justify-between border-t border-dashed border-outline-variant/60 pt-3">
+              <!-- Quantity Controls -->
+              <div class="inline-flex items-center border border-outline-variant rounded-lg bg-surface-container-low">
+                <button type="button" class="px-2.5 py-1 text-on-surface hover:bg-surface-container transition-colors" onclick="changeItemQty('${item.id}', -1)">
+                  <span class="material-symbols-outlined text-[14px]">remove</span>
+                </button>
+                <span class="px-3 py-1 text-xs font-semibold text-primary">${item.quantity || 1}</span>
+                <button type="button" class="px-2.5 py-1 text-on-surface hover:bg-surface-container transition-colors" onclick="changeItemQty('${item.id}', 1)">
+                  <span class="material-symbols-outlined text-[14px]">add</span>
+                </button>
+              </div>
+              <!-- Remove Action -->
+              <button type="button" class="text-xs text-error hover:opacity-80 transition-opacity flex items-center gap-1" onclick="removeItem('${item.id}')">
+                <span class="material-symbols-outlined text-[16px]">delete_outline</span>
+                <span>Remove</span>
               </button>
             </div>
-            <!-- Remove Action -->
-            <button type="button" class="text-xs text-error hover:opacity-80 transition-opacity flex items-center gap-1" onclick="removeItem('${item.id}')">
-              <span class="material-symbols-outlined text-[16px]">delete_outline</span>
-              <span>Remove</span>
-            </button>
           </div>
-        </div>
-      </article>
-    `;
-  }).join('');
+        </article>
+      `;
+    }).join('');
+  }
 
   recalculateCartTotals();
+  CC_CORE.updateBadges();
 }
 
 function changeItemQty(itemId, delta) {

@@ -95,32 +95,47 @@
 </head>
 <body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-secondary-fixed selection:text-primary">
 
-  <!-- TOP LUXURY NAVIGATION BAR -->
-  <header class="bg-surface border-b border-outline-variant docked full-width top-0 sticky z-40">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-16 sm:h-20">
-      <div class="flex items-center gap-8">
-        <a class="font-headline-md text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-primary flex items-center gap-2" href="index.html">
-          <span class="tracking-normal font-headline-lg italic text-secondary text-2xl sm:text-3xl font-medium">C&amp;C</span>
-          <span class="border-l border-outline-variant pl-2.5 sm:pl-3 ml-1 text-lg sm:text-xl lg:text-2xl">Crumb &amp; Cocoa</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#all-cakes">All Cakes</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#standards">The Atelier</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html#story">Our Story</a>
-          <a class="text-secondary hover:text-primary font-medium transition-colors duration-200 border-l border-outline-variant pl-4 flex items-center gap-1" href="dashboard.html">
-            <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
-            <span>Owner Portal</span>
-          </a>
-        </nav>
-      </div>
-      <div class="flex items-center gap-4">
-        <div class="hidden sm:flex items-center text-xs font-semibold text-secondary bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant">
-          <span class="material-symbols-outlined text-[16px] mr-1.5">verified</span>
-          Artisanal Bengaluru Atelier
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-[#fcf6f5]/95 backdrop-blur-md border-b border-[#f0d5ce]/60">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-20">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[24px]">cake</span>
         </div>
-        <a href="cart.html" class="text-primary border-b border-secondary pb-1 font-semibold text-xs flex items-center gap-1.5 cursor-pointer">
-          <span class="material-symbols-outlined text-[18px] material-symbols-fill">shopping_bag</span>
-          <span class="cart-bag-text">Bag (2)</span>
+        <div class="flex flex-col">
+          <span class="font-serif text-2xl font-bold tracking-tight text-brand-dark">SweetNest</span>
+          <span class="text-[10px] tracking-wider text-brand-primary/70 -mt-1 font-medium">Homemade Cakes with Love</span>
+        </div>
+      </a>
+
+      <!-- Center Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-dark/80">
+        <a href="index.html" class="hover:text-brand-pink transition-colors">Home</a>
+        <a href="index.html#popular-cakes" class="hover:text-brand-pink transition-colors">Cakes</a>
+        <a href="index.html#categories" class="hover:text-brand-pink transition-colors">Categories</a>
+        <a href="index.html#standards" class="hover:text-brand-pink transition-colors">Quality &amp; Standards</a>
+        <a href="dashboard.html" class="hover:text-brand-pink transition-colors">About</a>
+      </nav>
+
+      <!-- Right Action Cluster: Track, Login, Cart -->
+      <div class="flex items-center gap-2.5 sm:gap-4">
+        <!-- 1. Track Order Button -->
+        <button type="button" onclick="openTrackOrderModal()" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full border border-brand-border/80 bg-white/80 hover:bg-white text-xs font-semibold text-brand-dark hover:text-brand-primary shadow-sm hover:border-brand-pink transition-all active:scale-95 cursor-pointer">
+          <span class="material-symbols-outlined text-[17px] text-brand-primary">local_shipping</span>
+          <span>Track Order</span>
+        </button>
+
+        <!-- 2. Login Button -->
+        <a href="dashboard.html" class="px-5 py-2 bg-brand-dark hover:bg-brand-primary text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
+          Login
+        </a>
+
+        <!-- 3. Cart Button with Badge -->
+        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2.5 rounded-full bg-white/80 hover:bg-white border border-brand-border/70 text-brand-dark hover:text-brand-pink shadow-sm transition-all flex items-center justify-center active:scale-95">
+          <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+          <span id="cartBadge" class="cart-badge-count absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand-pink text-white text-[10px] font-bold flex items-center justify-center shadow-sm transition-transform duration-200">0</span>
         </a>
       </div>
     </div>
@@ -134,16 +149,16 @@
       <div>
         <div class="flex items-center gap-2 text-xs font-semibold text-secondary mb-1 uppercase tracking-wider">
           <span class="material-symbols-outlined text-[16px]">local_mall</span>
-          <span>Artisan Batch Reservation • Direct Baker Verification</span>
+          <span id="cartHeaderBadge">Artisan Batch Reservation • Direct Baker Verification</span>
         </div>
-        <h1 class="font-headline-lg text-3xl sm:text-4xl text-primary font-medium">Cart Review &amp; Checkout</h1>
-        <p class="text-xs text-on-surface-variant mt-1">
+        <h1 class="font-headline-lg text-3xl sm:text-4xl text-primary font-medium" id="cartPageTitle">Cart Review &amp; Checkout</h1>
+        <p class="text-xs text-on-surface-variant mt-1" id="cartPageSubtext">
           Handcrafted daily with cold-pressed French butter &amp; single-origin Valrhona chocolate. No payment collected online.
         </p>
       </div>
 
-      <!-- Quick Dual-State Inspector Toggle for Demo / Testing -->
-      <div class="flex items-center bg-surface-container-low border border-outline-variant p-1 rounded-lg">
+      <!-- Quick Dual-State Inspector Toggle for Demo / Testing (Hidden on empty cart) -->
+      <div class="flex items-center bg-surface-container-low border border-outline-variant p-1 rounded-lg" id="cartHeaderActions">
         <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 bg-primary text-on-primary" id="viewBtnReview" onclick="switchMainView('review')">
           1. Review &amp; Checkout
         </button>
@@ -151,6 +166,79 @@
           <span>2. Order Received State</span>
           <span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.2 rounded-full font-semibold" id="toggleRefBadge">#CC-2026-109</span>
         </button>
+      </div>
+    </div>
+
+    <!-- EMPTY CART STATE (Clean, minimal, with no unnecessary forms or empty totals) -->
+    <div id="emptyCartView" class="hidden py-8 sm:py-14 text-center max-w-2xl mx-auto px-4 animate-in fade-in duration-200">
+      <!-- Icon with luxury aura -->
+      <div class="relative inline-flex items-center justify-center mb-6">
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-surface-container-high/80 border border-outline-variant flex items-center justify-center shadow-inner">
+          <span class="material-symbols-outlined text-4xl sm:text-5xl text-secondary">shopping_bag</span>
+        </div>
+        <div class="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-md">
+          <span class="material-symbols-outlined text-[18px]">cake</span>
+        </div>
+      </div>
+
+      <h2 class="font-headline-lg text-3xl sm:text-4xl text-primary font-medium tracking-tight">Your Cake Bag is Empty</h2>
+      <p class="text-sm text-on-surface-variant mt-2.5 max-w-md mx-auto leading-relaxed">
+        You haven't commissioned any handcrafted cakes yet. Indulge in our freshly baked Valrhona chocolate creations, fresh berry cakes, and bespoke celebration specials.
+      </p>
+
+      <!-- Primary Action CTAs -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="index.html#popular-cakes" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-primary text-on-primary hover:bg-primary-container text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+          <span>Explore Bestsellers &amp; Cakes</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </a>
+        <a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-primary text-xs font-semibold uppercase tracking-wider transition-all">
+          <span>Return to Atelier Home</span>
+        </a>
+      </div>
+
+      <!-- Quick Category Pills -->
+      <div class="mt-10 pt-7 border-t border-outline-variant/60">
+        <p class="text-[11px] font-semibold uppercase tracking-wider text-secondary mb-3.5">Popular Categories to Discover</p>
+        <div class="flex flex-wrap items-center justify-center gap-2.5">
+          <a href="index.html#popular-cakes" class="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container border border-outline-variant text-xs font-medium text-primary transition-colors flex items-center gap-1.5 shadow-xs">
+            <span>🍫</span> Chocolate Truffle
+          </a>
+          <a href="index.html#popular-cakes" class="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container border border-outline-variant text-xs font-medium text-primary transition-colors flex items-center gap-1.5 shadow-xs">
+            <span>🍓</span> Fresh Berry &amp; Fruit
+          </a>
+          <a href="index.html#popular-cakes" class="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container border border-outline-variant text-xs font-medium text-primary transition-colors flex items-center gap-1.5 shadow-xs">
+            <span>🌱</span> 100% Eggless Specials
+          </a>
+          <a href="index.html#popular-cakes" class="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container border border-outline-variant text-xs font-medium text-primary transition-colors flex items-center gap-1.5 shadow-xs">
+            <span>✨</span> Signature Theme Cakes
+          </a>
+        </div>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-left">
+        <div class="p-4 bg-surface-container-low/70 rounded-xl border border-outline-variant/60 flex items-start gap-3">
+          <span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">local_shipping</span>
+          <div>
+            <h4 class="text-xs font-semibold text-primary">Chilled Metro Delivery</h4>
+            <p class="text-[11px] text-on-surface-variant mt-0.5">Temperature-regulated cold van delivery in Bengaluru.</p>
+          </div>
+        </div>
+        <div class="p-4 bg-surface-container-low/70 rounded-xl border border-outline-variant/60 flex items-start gap-3">
+          <span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">phone_in_talk</span>
+          <div>
+            <h4 class="text-xs font-semibold text-primary">Chef Consultation</h4>
+            <p class="text-[11px] text-on-surface-variant mt-0.5">Baker calls within 1h to confirm flavor notes and piping.</p>
+          </div>
+        </div>
+        <div class="p-4 bg-surface-container-low/70 rounded-xl border border-outline-variant/60 flex items-start gap-3">
+          <span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">payments</span>
+          <div>
+            <h4 class="text-xs font-semibold text-primary">Zero Online Payment</h4>
+            <p class="text-[11px] text-on-surface-variant mt-0.5">No prepayment required. Pay upon delivery after inspection.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -498,16 +586,17 @@
 
   <!-- FOOTER -->
   <footer class="w-full mt-auto bg-surface-container-high border-t border-outline-variant">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-16 flex flex-col space-y-10">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-12 flex flex-col space-y-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-          <a class="font-headline-lg text-2xl text-primary font-medium" href="index.html">Crumb &amp; Cocoa</a>
-          <p class="text-xs text-on-surface-variant mt-1">Haute Pâtisserie Atelier • Bengaluru, India</p>
+          <a class="font-serif text-2xl font-bold tracking-tight text-brand-dark" href="index.html">SweetNest</a>
+          <p class="text-xs text-on-surface-variant mt-1">Homemade Cakes with Love • Bengaluru, India</p>
         </div>
         <div class="flex flex-wrap gap-6 text-xs font-medium">
           <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#all-cakes">All Cakes</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#standards">The Atelier</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#popular-cakes">Cakes</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#categories">Categories</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#standards">Quality &amp; Standards</a>
           <a class="text-secondary hover:text-primary transition-colors flex items-center gap-1 font-semibold" href="dashboard.html">
             <span class="material-symbols-outlined text-[14px]">admin_panel_settings</span>
             <span>Owner Portal</span>
@@ -515,14 +604,50 @@
         </div>
       </div>
       <div class="pt-6 border-t border-outline-variant/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
-        <p>© 2026 Crumb &amp; Cocoa Haute Pâtisserie Atelier. Handcrafted daily with French butter and single-origin cocoa.</p>
+        <p>© 2026 SweetNest Bakery Atelier. Handcrafted daily with fresh cream, fruits and premium chocolate.</p>
         <div class="flex items-center gap-3 text-secondary text-xs font-medium">
           <span class="material-symbols-outlined text-[16px]">support_agent</span>
-          <span>Atelier Concierge: +91 80 4912 3300</span>
+          <span>Chef Concierge: +91 98201 44521</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Track Order Modal (Popup for real-time tracking) -->
+  <div id="trackOrderModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-brand-border/80 space-y-5 animate-in fade-in zoom-in-95 duration-200 relative">
+      <button onclick="closeTrackOrderModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/70 hover:text-brand-dark hover:bg-brand-border/50 transition-all cursor-pointer">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+          <span class="material-symbols-outlined text-[22px]">local_shipping</span>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-brand-dark">Track Your Cake Order</h3>
+          <p class="text-xs text-brand-dark/60 mt-0.5">Real-time baking &amp; chilled courier tracking</p>
+        </div>
+      </div>
+
+      <!-- Search Input for Order -->
+      <div class="flex gap-2">
+        <div class="relative flex-1">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-brand-dark/40 text-[18px]">search</span>
+          <input type="text" id="trackOrderInput" placeholder="Enter Order ID (e.g. CC-2026-109)..." class="w-full pl-9 pr-3 py-2.5 bg-brand-light border border-brand-border rounded-xl text-xs text-brand-dark outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink/20 transition-all"/>
+        </div>
+        <button onclick="executeTrackOrder()" class="px-5 py-2.5 bg-brand-dark hover:bg-brand-primary text-white text-xs font-semibold rounded-xl transition-all shadow-sm active:scale-95 cursor-pointer">
+          Track
+        </button>
+      </div>
+
+      <!-- Live Order Status Result Container -->
+      <div id="trackOrderResult" class="space-y-4 pt-1">
+        <!-- Will be populated dynamically by JS -->
+      </div>
+    </div>
+  </div>
 
   <!-- Modular Scripts -->
   <script src="assets/js/core.js"></script>
