@@ -50,17 +50,22 @@
   <!-- MAIN WRAPPER (Mobile App Screen Format on Phone, Centered Elegant Frame on Desktop) -->
   <div class="w-full max-w-md sm:max-w-lg mx-auto min-h-screen bg-white sm:my-4 sm:rounded-[2.5rem] shadow-xl sm:border sm:border-brand-border/60 overflow-hidden relative flex flex-col">
 
-    <!-- 1. TOP CAKE IMAGE HERO SECTION (50% SCREEN HEIGHT) -->
-    <div class="relative w-full h-[50vh] bg-[#22100d] overflow-hidden select-none shrink-0" id="galleryContainer">
+    <!-- 1. TOP CAKE IMAGE HERO SECTION (BALANCED SIZE, SMOOTH 4-IMAGE SNAP SLIDER, ULTRA-THIN SCROLLBAR) -->
+    <div class="relative w-full aspect-[4/3.5] xs:aspect-[4/3.8] bg-[#22100d] overflow-hidden select-none shrink-0" id="galleryContainer">
       
-      <!-- Main Cake Image Display -->
-      <img id="mainProductImage" class="w-full h-full object-cover product-img-fade" alt="Cake Visual" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80"/>
+      <!-- Smooth Horizontal Snap-Scroll Track for All 4 Images -->
+      <div id="productGalleryTrack" class="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar select-none" onscroll="handleGalleryScroll()">
+        <!-- Dynamic slides populated by product.js -->
+        <div class="w-full h-full shrink-0 snap-center relative">
+          <img class="w-full h-full object-cover" alt="Cake View 1" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80"/>
+        </div>
+      </div>
 
       <!-- Dark Gradient Overlay for optimal floating icon contrast -->
       <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/25 pointer-events-none"></div>
 
       <!-- Floating Top Header Bar -->
-      <div class="absolute top-0 left-0 right-0 p-4 xs:p-5 flex items-center justify-between z-20">
+      <div class="absolute top-0 left-0 right-0 p-4 xs:p-5 flex items-center justify-between z-20 pointer-events-auto">
         <!-- Floating Back Button (<) -->
         <button type="button" onclick="navigateBack()" aria-label="Go Back" class="text-white hover:text-white/80 transition-all duration-200 active:scale-90 cursor-pointer drop-shadow-md flex items-center justify-center">
           <span class="material-symbols-outlined text-[26px] xs:text-[28px] leading-none select-none">chevron_left</span>
@@ -86,6 +91,11 @@
       <!-- Floating Image Counter Badge (Bottom Right 1/4) -->
       <div id="imageCounterBadge" class="absolute bottom-3.5 right-4 bg-black/55 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full select-none z-10 tracking-wider">
         1/4
+      </div>
+
+      <!-- ULTRA-THIN PROGRESS SCROLLBAR (Moves smoothly as images slide) -->
+      <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-black/30 z-20 overflow-hidden pointer-events-none">
+        <div id="galleryScrollThumb" class="h-full bg-white/95 rounded-full transition-transform duration-100 ease-out" style="width: 25%; transform: translateX(0%);"></div>
       </div>
 
     </div>

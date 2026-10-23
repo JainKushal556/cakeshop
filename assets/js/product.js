@@ -93,7 +93,6 @@ const cakeGalleries = {
 
 document.addEventListener('DOMContentLoaded', () => {
   initProductPage();
-  setupTouchGestures();
   updateFloatingCartBadge();
   initDeliveryDate();
 });
@@ -139,7 +138,7 @@ function initProductPage() {
     ];
   }
   currentImageIndex = 0;
-  displayCurrentImage();
+  initGallery();
 
   // Calculate Size Card Prices
   calculateSizePrices();
@@ -238,54 +237,78 @@ function updateSummary() {
   if (bottomBarSummary) bottomBarSummary.innerText = `${selectedSize} • ${selectedShape}`;
 }
 
-function displayCurrentImage() {
-  const mainImg = document.getElementById('mainProductImage');
+function initGallery() {
+  const track = document.getElementById('productGalleryTrack');
+  const thumb = document.getElementById('galleryScrollThumb');
+  if (!track || !currentGallery) return;
+
+  track.innerHTML = currentGallery.map((imgUrl, i) => `
+    <div class="w-full h-full shrink-0 snap-center relative">
+      <img class="w-full h-full object-cover select-none pointer-events-none" alt="${currentCake ? currentCake.name : 'Cake'} View ${i + 1}" src="${imgUrl}"/>
+    </div>
+  `).join('');
+
+  if (thumb) {
+    thumb.style.width = `${100 / currentGallery.length}%`;
+    thumb.style.transform = 'translateX(0%)';
+  }
+
+  track.scrollLeft = 0;
+  currentImageIndex = 0;
+  handleGalleryScroll();
+}
+
+function handleGalleryScroll() {
+  const track = document.getElementById('productGalleryTrack');
+  const thumb = document.getElementById('galleryScrollThumb');
   const badge = document.getElementById('imageCounterBadge');
+  if (!track || !currentGallery || currentGallery.length === 0) return;
 
-  if (mainImg && currentGallery[currentImageIndex]) {
-    mainImg.style.opacity = '0.5';
-    setTimeout(() => {
-      mainImg.src = currentGallery[currentImageIndex];
-      mainImg.style.opacity = '1';
-    }, 120);
+  const scrollLeft = track.scrollLeft;
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  
+  if (maxScroll > 0) {
+    const scrollRatio = Math.max(0, Math.min(1, scrollLeft / maxScroll));
+    // When thumb width is (100 / length)%, total translation across track is (length - 1) * 100%
+    const maxTranslatePercent = (currentGallery.length - 1) * 100;
+    if (thumb) {
+      thumb.style.transform = `translateX(${scrollRatio * maxTranslatePercent}%)`;
+    }
   }
 
-  if (badge) {
-    badge.innerText = `${currentImageIndex + 1}/${currentGallery.length}`;
+  const itemWidth = track.clientWidth;
+  if (itemWidth > 0) {
+    const index = Math.min(
+      currentGallery.length - 1,
+      Math.max(0, Math.round(scrollLeft / itemWidth))
+    );
+    currentImageIndex = index;
+    if (badge) {
+      badge.innerText = `${index + 1}/${currentGallery.length}`;
+    }
   }
+}
+
+function scrollToImage(index) {
+  const track = document.getElementById('productGalleryTrack');
+  if (!track) return;
+  const itemWidth = track.clientWidth;
+  track.scrollTo({
+    left: index * itemWidth,
+    behavior: 'smooth'
+  });
 }
 
 function nextImage() {
   if (currentGallery.length === 0) return;
-  currentImageIndex = (currentImageIndex + 1) % currentGallery.length;
-  displayCurrentImage();
+  const nextIdx = (currentImageIndex + 1) % currentGallery.length;
+  scrollToImage(nextIdx);
 }
 
 function prevImage() {
   if (currentGallery.length === 0) return;
-  currentImageIndex = (currentImageIndex - 1 + currentGallery.length) % currentGallery.length;
-  displayCurrentImage();
-}
-
-function setupTouchGestures() {
-  const container = document.getElementById('galleryContainer');
-  if (!container) return;
-
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  container.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  container.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    if (touchEndX < touchStartX - 40) {
-      nextImage(); // Swipe left -> next
-    } else if (touchEndX > touchStartX + 40) {
-      prevImage(); // Swipe right -> prev
-    }
-  }, { passive: true });
+  const prevIdx = (currentImageIndex - 1 + currentGallery.length) % currentGallery.length;
+  scrollToImage(prevIdx);
 }
 
 function updateCharCount(input) {
