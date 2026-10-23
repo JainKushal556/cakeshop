@@ -22,7 +22,7 @@ const CC_CORE = {
       image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80',
       category: 'Chocolate',
       eggless: true,
-      desc: 'Decadent chocolate sponge soaked in chocolate liqueur syrup, layered with smooth dark chocolate ganache and chocolate curls.'
+      desc: 'Rich and moist chocolate sponge layered with smooth chocolate ganache, topped with premium chocolate truffle.'
     },
     {
       id: 'fresh-strawberry',

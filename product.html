@@ -3,601 +3,255 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title id="pageTitle">The Velvet Noir — Crumb &amp; Cocoa Haute Pâtisserie Atelier</title>
+  <title id="pageTitle">Chocolate Truffle — SweetNest Homemade Cakes</title>
   
   <!-- Material Symbols & Typography -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script id="tailwind-config">
+  <script>
     tailwind.config = {
-      darkMode: "class",
       theme: {
         extend: {
-          "colors": {
-            "primary-fixed": "#fcdbd2",
-            "on-primary-fixed-variant": "#58423b",
-            "secondary-container": "#febf8e",
-            "on-primary-fixed": "#281712",
-            "surface": "#fff8f4",
-            "on-primary": "#ffffff",
-            "on-background": "#201b16",
-            "surface-container": "#f8ece3",
-            "on-secondary-fixed-variant": "#673d17",
-            "error-container": "#ffdad6",
-            "on-tertiary": "#ffffff",
-            "on-secondary-fixed": "#2f1500",
-            "background": "#fff8f4",
-            "on-tertiary-fixed-variant": "#50443f",
-            "on-secondary": "#ffffff",
-            "outline": "#817471",
-            "primary-fixed-dim": "#dfc0b6",
-            "secondary-fixed-dim": "#f8b989",
-            "tertiary-fixed-dim": "#d4c3bb",
-            "surface-dim": "#e3d8d0",
-            "surface-variant": "#ece0d8",
-            "secondary": "#83542c",
-            "on-surface": "#201b16",
-            "inverse-primary": "#dfc0b6",
-            "on-primary-container": "#a78b82",
-            "tertiary": "#1c130f",
-            "tertiary-container": "#312722",
-            "inverse-on-surface": "#fbefe6",
-            "on-surface-variant": "#4f4441",
-            "surface-container-high": "#f2e6de",
-            "on-error-container": "#93000a",
-            "on-error": "#ffffff",
-            "primary": "#21110c",
-            "on-secondary-container": "#794b24",
-            "surface-container-low": "#fef1e9",
-            "on-tertiary-fixed": "#231a15",
-            "surface-tint": "#715952",
-            "inverse-surface": "#362f2a",
-            "surface-container-lowest": "#ffffff",
-            "tertiary-fixed": "#f1dfd7",
-            "primary-container": "#38251f",
-            "error": "#ba1a1a",
-            "outline-variant": "#d3c3bf",
-            "secondary-fixed": "#ffdcc3",
-            "surface-bright": "#fff8f4",
-            "surface-container-highest": "#ece0d8",
-            "on-tertiary-container": "#9d8d86"
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['DM Sans', 'sans-serif'],
           },
-          "borderRadius": {
-            "DEFAULT": "0.125rem",
-            "lg": "0.25rem",
-            "xl": "0.5rem",
-            "full": "0.75rem"
-          },
-          "fontFamily": {
-            "body-md": ["DM Sans", "sans-serif"],
-            "label-sm": ["DM Sans", "sans-serif"],
-            "display-lg-mobile": ["EB Garamond", "serif"],
-            "headline-lg": ["EB Garamond", "serif"],
-            "headline-md": ["EB Garamond", "serif"],
-            "body-lg": ["DM Sans", "sans-serif"],
-            "headline-sm": ["EB Garamond", "serif"],
-            "display-lg": ["EB Garamond", "serif"],
-            "body-sm": ["DM Sans", "sans-serif"],
-            "title-md": ["DM Sans", "sans-serif"],
-            "label-md": ["DM Sans", "sans-serif"]
+          colors: {
+            brand: {
+              dark: '#271410',
+              primary: '#b5655a',
+              pink: '#e06b74',
+              accent: '#af5c52',
+              pill: '#faece9',
+              border: '#ebdcd7',
+              bg: '#faf6f2',
+            }
           }
         }
       }
-    }
+    };
   </script>
 
   <!-- Project Design System CSS -->
   <link rel="stylesheet" href="assets/css/main.css"/>
+  <style>
+    /* Clean image transition */
+    .product-img-fade {
+      transition: opacity 0.25s ease-in-out;
+    }
+  </style>
 </head>
-<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<body class="bg-[#faf6f2] text-brand-dark antialiased min-h-screen font-sans selection:bg-brand-pill selection:text-brand-dark">
 
-  <!-- TOP NAVIGATION BAR -->
-  <header class="sticky top-0 z-40 bg-[#fcf6f5]/95 backdrop-blur-md border-b border-[#f0d5ce]/60">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-20">
+  <!-- MAIN WRAPPER (Mobile App Screen Format on Phone, Centered Elegant Frame on Desktop) -->
+  <div class="w-full max-w-md sm:max-w-lg mx-auto min-h-screen bg-white sm:my-4 sm:rounded-[2.5rem] shadow-xl sm:border sm:border-brand-border/60 overflow-hidden relative flex flex-col">
+
+    <!-- 1. TOP CAKE IMAGE HERO SECTION WITH FLOATING OVERLAYS -->
+    <div class="relative w-full aspect-[4/3.5] xs:aspect-[4/3.8] bg-[#22100d] overflow-hidden select-none" id="galleryContainer">
       
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary group-hover:scale-105 transition-transform">
-          <span class="material-symbols-outlined text-[24px]">cake</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="font-serif text-2xl font-bold tracking-tight text-brand-dark">SweetNest</span>
-          <span class="text-[10px] tracking-wider text-brand-primary/70 -mt-1 font-medium">Homemade Cakes with Love</span>
-        </div>
-      </a>
+      <!-- Main Cake Image Display -->
+      <img id="mainProductImage" class="w-full h-full object-cover product-img-fade" alt="Cake Visual" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80"/>
 
-      <!-- Center Links -->
-      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-dark/80">
-        <a href="index.html" class="hover:text-brand-pink transition-colors">Home</a>
-        <a href="index.html#popular-cakes" class="hover:text-brand-pink transition-colors">Cakes</a>
-        <a href="index.html#categories" class="hover:text-brand-pink transition-colors">Categories</a>
-        <a href="index.html#standards" class="hover:text-brand-pink transition-colors">Quality &amp; Standards</a>
-        <a href="dashboard.html" class="hover:text-brand-pink transition-colors">About</a>
-      </nav>
+      <!-- Dark Gradient Overlay for optimal floating icon contrast -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/25 pointer-events-none"></div>
 
-      <!-- Right Action Cluster: Track, Login, Cart -->
-      <div class="flex items-center gap-2.5 sm:gap-4">
-        <!-- 1. Track Order Button -->
-        <button type="button" onclick="openTrackOrderModal()" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full border border-brand-border/80 bg-white/80 hover:bg-white text-xs font-semibold text-brand-dark hover:text-brand-primary shadow-sm hover:border-brand-pink transition-all active:scale-95 cursor-pointer">
-          <span class="material-symbols-outlined text-[17px] text-brand-primary">local_shipping</span>
-          <span>Track Order</span>
+      <!-- Floating Top Header Bar -->
+      <div class="absolute top-0 left-0 right-0 p-4 xs:p-5 flex items-center justify-between z-20">
+        <!-- Floating Back Button (<) -->
+        <button type="button" onclick="navigateBack()" aria-label="Go Back" class="text-white hover:text-white/80 transition-all duration-200 active:scale-90 cursor-pointer drop-shadow-md flex items-center justify-center">
+          <span class="material-symbols-outlined text-[26px] xs:text-[28px] leading-none select-none">chevron_left</span>
         </button>
 
-        <!-- 2. Login Button -->
-        <a href="dashboard.html" class="px-5 py-2 bg-brand-dark hover:bg-brand-primary text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
-          Login
-        </a>
-
-        <!-- 3. Cart Button with Badge -->
-        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2.5 rounded-full bg-white/80 hover:bg-white border border-brand-border/70 text-brand-dark hover:text-brand-pink shadow-sm transition-all flex items-center justify-center active:scale-95">
-          <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
-          <span id="cartBadge" class="cart-badge-count absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand-pink text-white text-[10px] font-bold flex items-center justify-center shadow-sm transition-transform duration-200">0</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- MAIN CANVAS -->
-  <main class="flex-grow max-w-[1720px] mx-auto w-full px-4 sm:px-8 lg:px-16 py-6">
-    <!-- Editorial Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="mb-6 flex items-center text-xs text-on-surface-variant">
-      <a class="hover:text-primary transition-colors" href="index.html">Home</a>
-      <span class="material-symbols-outlined text-[14px] mx-2 text-outline-variant">chevron_right</span>
-      <a class="hover:text-primary transition-colors" href="index.html#all-cakes">Ready-Made Collection</a>
-      <span class="material-symbols-outlined text-[14px] mx-2 text-outline-variant">chevron_right</span>
-      <span class="text-primary font-semibold" id="breadcrumbName">The Velvet Noir</span>
-    </nav>
-
-    <!-- PRODUCT SHOWCASE -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-      
-      <!-- LEFT COLUMN: Haute Pâtisserie Gallery (6 cols) -->
-      <div class="lg:col-span-6 flex flex-col-reverse md:flex-row gap-4 sticky lg:top-28">
-        <!-- Thumbnails Strip -->
-        <div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible shrink-0 custom-scrollbar pb-2 md:pb-0" id="thumbnailStrip">
-          <button class="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 border-primary transition-all p-0.5 bg-surface-container-lowest focus:outline-none" onclick="changeImage(0)">
-            <img id="thumb0" class="w-full h-full object-cover rounded" alt="Detail 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzIPI1ZLCHBo4cxUiQ7fOIhk3Sx-3xehgbvQ_3EHXaG4-_Doj1_WV-HTRQ_vPJ-B--949hOnPmkYzmAPSv308zG4DBIx0gmRmcb7yf1rYySkWnJVotHcRPuycOXMiQTtVeHs5JkACkCRtX9VoBG1LwRjfXa61umjPSuKvuLxRmyxdNfSvtvRo6ydgcVdnWe-aHKE55ov1Hz2_1XTH6V7lLJ7Mpmrt17sTmrcjzxgLbkIy4XEWiTPKD"/>
-          </button>
-          <button class="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border border-outline-variant hover:border-secondary transition-all p-0.5 bg-surface-container-lowest focus:outline-none" onclick="changeImage(1)">
-            <img id="thumb1" class="w-full h-full object-cover rounded" alt="Detail 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtqgTVd2ofpvyUrNY6pkU_Y-ILOXrBtgNvxM2WmRYwyi4ybdtTuRZWV7XXb8N5cNmUATom5QzTunQcqwjFepoAS1bOrkTCxiXKneoAbAuyYJpzuz31FUpNd5rA9PXsHrx61qH7W_bS4-tyIuzH28Y86ZoWTkxg0Z-HExnuMHA5M_MA6eEfWHEYmYtd06JgF9rp8o0r25gX5ApoKWdW__p9a_uVSaNHhpwRMQKyfil-g2iRCWRFkIGP"/>
-          </button>
-          <button class="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border border-outline-variant hover:border-secondary transition-all p-0.5 bg-surface-container-lowest focus:outline-none" onclick="changeImage(2)">
-            <img id="thumb2" class="w-full h-full object-cover rounded" alt="Detail 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0LmfiCi-C7IYxZDVI89LvlBP57iSg541mDvQfrtZsTyZsk6y3A8NkIKSBFLsOXgqtjT80aoK-aak-XdhwahMbKLS2C2EVx2Oahh2Iy8efGO7gtKNQIMXQwtdgqAUnJ0EjHn608rNiD8QV9XdMDwkL3puUsv1rDcew61sN0hMGIvbSpjdVkOL2P928yauOBhnkHryA9z0fhcYmtdrMZEV71SCBgzJRrUQ-pNUTIiP0ZXBRhPl0HNtX"/>
-          </button>
-          <button class="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border border-outline-variant hover:border-secondary transition-all p-0.5 bg-surface-container-lowest focus:outline-none" onclick="changeImage(3)">
-            <img id="thumb3" class="w-full h-full object-cover rounded" alt="Packaging Case" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-CfHczdDwhpuTBbKTAtK7S_QGTbtcJ11P0oaV7z2bSAOwS5-hp8hKTQn_nNizxSCpiqk6a7ZVpwuMCJPwWYTLyKzOyCA1ZrIbXWe8GtoE8Je5t-hphPvEsbw2e8E40dDXr6SkwXovXxdBrVO110j8nCy2BCJSsfoFyLBQqd-3vQhfC1D-zGRxYKUkNibNnXf81Vn3YA5L2S8EZ7D2g3mIqEJACg1xxL3-Jx3G-Ho954gvcLGcwsiO"/>
-          </button>
-        </div>
-
-        <!-- Main Display Canvas -->
-        <div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden relative group">
-          <div class="aspect-[4/5] w-full relative overflow-hidden bg-surface-container-low flex items-center justify-center">
-            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" id="mainProductImage" alt="Master Cake Showcase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWHtgLvx7Q2r_fdMQ9AFqIuPo_SSuXGQ9makUUoHQoY3fW2FshkBU3_Ui7p0J4Q4Lp1x-Vb36upG_-5M42koFbCK1_weQ098ZLMjXC4j4UAoSvVC0rQVx_-75l1KLf_xGKS37lB1-QzUUfIrFlWZ-PGTCb-HnpJdjRnWivXUnsq9y4LK5cyu4Z3HrJCYQDso91LB0AFO3MOyDI-cilwwu8db_1cn11tTY5VLjhCVgcyaPP7hlnUT9s"/>
-            <!-- Badges -->
-            <div class="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none">
-              <span class="bg-primary/90 text-on-primary text-xs font-semibold uppercase px-2.5 py-1 rounded-full backdrop-blur-sm tracking-wider" id="cakeCategoryBadge">Haute Entremet</span>
-              <span class="bg-surface-container-lowest/90 text-primary border border-outline-variant text-xs px-2.5 py-0.5 rounded-full backdrop-blur-sm font-semibold flex items-center gap-1" id="egglessIndicator">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> 100% Eggless
-              </span>
-            </div>
-            <!-- Zoom Icon -->
-            <div class="absolute bottom-4 right-4 bg-surface-container-lowest/80 border border-outline-variant p-2 rounded-lg text-primary backdrop-blur-sm shadow-sm pointer-events-none">
-              <span class="material-symbols-outlined text-[18px]">zoom_in</span>
-            </div>
-          </div>
-          <!-- Sensory Highlights -->
-          <div class="p-4 bg-surface-container-low/60 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant font-medium">
-            <div class="flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-secondary text-[16px]">temp_preferences_custom</span>
-              <span>Keep Chilled at 4°C</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
-              <span id="originBadge">French Valrhona 72% Pur Noir</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT COLUMN: Luxury Cake Details & Interactive Customizer (6 cols) -->
-      <div class="lg:col-span-6 flex flex-col space-y-6">
-        
-        <!-- Header & Assurance Bar -->
-        <div class="border-b border-outline-variant pb-5 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold text-secondary uppercase tracking-widest">Crumb &amp; Cocoa Grand Cru</span>
-            <!-- Rating Badge -->
-            <div class="flex items-center gap-1.5 bg-surface-container-low px-2.5 py-1 rounded border border-outline-variant">
-              <span class="text-xs font-bold text-primary">4.9</span>
-              <div class="flex text-amber-600">
-                <span class="material-symbols-outlined text-[15px] material-symbols-fill">star</span>
-              </div>
-              <span class="text-xs text-outline border-l border-outline-variant pl-1.5 ml-0.5">142 reviews</span>
-            </div>
-          </div>
-          <h1 class="font-headline-lg text-3xl sm:text-4xl text-primary font-medium tracking-tight" id="cakeTitle">The Velvet Noir</h1>
-          <p class="text-sm text-on-surface-variant leading-relaxed" id="cakeDescription">
-            72% Valrhona dark chocolate mousse, salted hazelnut praline crunch, dark cocoa mirror glaze, and flourless chocolate sponge. Handcrafted daily with Normandy butter and zero artificial essences.
-          </p>
-          <!-- Same Day Dispatch Badge -->
-          <div class="flex items-center gap-2 pt-2 text-emerald-800 text-xs font-medium">
-            <span class="material-symbols-outlined text-[18px] text-emerald-700">bolt</span>
-            <span class="font-semibold">In Stock</span>
-            <span class="text-outline-variant">•</span>
-            <span>Same-Day Dispatch available for orders placed before 2:00 PM</span>
-          </div>
-        </div>
-
-        <!-- Pricing Card Container -->
-        <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-          <div>
-            <div class="flex items-baseline gap-2">
-              <span class="font-headline-md text-3xl text-primary font-semibold" id="dynamicPrice">₹3,400</span>
-              <span class="text-xs text-outline-variant line-through" id="originalPrice">₹3,900</span>
-              <span class="text-xs font-semibold text-secondary uppercase bg-secondary-fixed/50 px-2 py-0.5 rounded">Atelier Batch</span>
-            </div>
-            <p class="text-xs text-outline mt-0.5">Inclusive of artisanal taxes &amp; thermodynamic travel box</p>
-          </div>
-          <div class="text-right">
-            <span class="text-xs text-secondary font-medium flex items-center sm:justify-end gap-1">
-              <span class="material-symbols-outlined text-[14px]">local_shipping</span> Flat Chilled Courier ₹150 (Free for 2+ cakes)
-            </span>
-          </div>
-        </div>
-
-        <!-- SELECTORS: SIZE, FLAVOR, AND SRS CUSTOMIZATION (SRS Section 4) -->
-        <div class="space-y-5">
+        <!-- Floating Right Cluster: Heart (Wishlist) & Cart with Count Badge -->
+        <div class="flex items-center gap-3.5 xs:gap-4">
           
-          <!-- Selector 1: Size & Portion -->
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-xs font-semibold text-primary uppercase tracking-wider">Size &amp; Portions</label>
-              <span class="text-xs text-outline" id="selectedWeightLabel">1.0 kg (Calibrated)</span>
-            </div>
-            <div class="grid grid-cols-3 gap-2.5" id="sizeOptionsGrid">
-              <!-- 6 inch -->
-              <label class="size-card relative flex flex-col p-3 border-2 border-primary bg-surface-container-lowest rounded-lg cursor-pointer transition-all">
-                <input checked class="sr-only" name="cake_size" onchange="selectSize('6 inch', 1.0, '1.0 kg', this)" type="radio" value="6 inch"/>
-                <div class="flex justify-between items-center">
-                  <span class="font-semibold text-xs text-primary">6 inch</span>
-                  <span class="radio-indicator w-3.5 h-3.5 rounded-full bg-primary flex items-center justify-center">
-                    <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-                  </span>
-                </div>
-                <span class="text-[11px] text-on-surface-variant mt-1">6–8 Servings</span>
-                <span class="text-xs font-semibold text-primary mt-2" id="price6">₹3,400</span>
-              </label>
-              <!-- 8 inch -->
-              <label class="size-card relative flex flex-col p-3 border border-outline-variant hover:border-secondary bg-surface-container-lowest rounded-lg cursor-pointer transition-all">
-                <input class="sr-only" name="cake_size" onchange="selectSize('8 inch', 1.35, '1.5 kg', this)" type="radio" value="8 inch"/>
-                <div class="flex justify-between items-center">
-                  <span class="font-semibold text-xs text-primary">8 inch</span>
-                  <span class="radio-indicator w-3.5 h-3.5 rounded-full border border-outline-variant"></span>
-                </div>
-                <span class="text-[11px] text-on-surface-variant mt-1">10–14 Servings</span>
-                <span class="text-xs font-semibold text-secondary mt-2" id="price8">₹4,600</span>
-              </label>
-              <!-- 10 inch -->
-              <label class="size-card relative flex flex-col p-3 border border-outline-variant hover:border-secondary bg-surface-container-lowest rounded-lg cursor-pointer transition-all">
-                <input class="sr-only" name="cake_size" onchange="selectSize('10 inch', 1.8, '2.0 kg', this)" type="radio" value="10 inch"/>
-                <div class="flex justify-between items-center">
-                  <span class="font-semibold text-xs text-primary">10 inch</span>
-                  <span class="radio-indicator w-3.5 h-3.5 rounded-full border border-outline-variant"></span>
-                </div>
-                <span class="text-[11px] text-on-surface-variant mt-1">16–20 Servings</span>
-                <span class="text-xs font-semibold text-secondary mt-2" id="price10">₹6,200</span>
-              </label>
-            </div>
-          </div>
+          <!-- Heart / Wishlist Button -->
+          <button type="button" id="wishlistBtn" onclick="toggleWishlist()" aria-label="Add to Wishlist" class="text-white hover:text-rose-400 transition-all duration-200 active:scale-90 cursor-pointer drop-shadow-md group flex items-center justify-center">
+            <span id="wishlistIcon" class="material-symbols-outlined text-[24px] xs:text-[26px] transition-transform duration-200 group-hover:scale-110">favorite_border</span>
+          </button>
 
-          <!-- Selector 2: Flavor Infusion Variation -->
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-xs font-semibold text-primary uppercase tracking-wider">Atelier Flavor Balance</label>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="flavorOptionsContainer">
-              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-primary bg-surface-container-low text-xs font-medium cursor-pointer">
-                <input checked class="text-primary focus:ring-secondary border-outline-variant" name="flavor" type="radio" value="Signature Dark Valrhona"/>
-                <span>Signature Valrhona</span>
-              </label>
-              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-outline-variant hover:border-secondary bg-surface-container-lowest text-xs font-medium cursor-pointer">
-                <input class="text-primary focus:ring-secondary border-outline-variant" name="flavor" type="radio" value="Dark Roasted Hazelnut"/>
-                <span>Roasted Hazelnut</span>
-              </label>
-              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-outline-variant hover:border-secondary bg-surface-container-lowest text-xs font-medium cursor-pointer">
-                <input class="text-primary focus:ring-secondary border-outline-variant" name="flavor" type="radio" value="Espresso Infused Dark"/>
-                <span>Espresso Infused</span>
-              </label>
-            </div>
-          </div>
-
-
-          <!-- Selector 4: Quantity & Live Batch Scarcity -->
-          <div class="pt-2">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <!-- Quantity Stepper -->
-              <div class="flex items-center gap-3">
-                <span class="text-xs font-semibold text-primary uppercase tracking-wider">Quantity:</span>
-                <div class="inline-flex items-center border border-outline-variant rounded-lg bg-surface-container-lowest">
-                  <button class="px-3 py-1.5 text-on-surface hover:bg-surface-container transition-colors disabled:opacity-40" id="btnDec" onclick="decrementQty()">
-                    <span class="material-symbols-outlined text-[16px]">remove</span>
-                  </button>
-                  <span class="px-4 py-1.5 text-xs font-semibold text-primary" id="qtyVal">1</span>
-                  <button class="px-3 py-1.5 text-on-surface hover:bg-surface-container transition-colors" id="btnInc" onclick="incrementQty()">
-                    <span class="material-symbols-outlined text-[16px]">add</span>
-                  </button>
-                </div>
-              </div>
-              <!-- Morning Batch Alert -->
-              <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-900 rounded-lg text-xs">
-                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                <span>Only <strong>3 cakes left</strong> in today's morning bake</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACTION CTAs -->
-        <div class="space-y-3 pt-2">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <!-- Add to Cart Action -->
-            <button class="bg-primary text-on-primary hover:bg-primary-container border border-primary px-6 py-3.5 rounded-lg text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98]" onclick="handleAddToCart()">
-              <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
-              <span>Add to Atelier Bag</span>
-            </button>
-            <!-- Direct Checkout CTA -->
-            <button class="bg-secondary text-on-secondary hover:bg-secondary/90 px-6 py-3.5 rounded-lg text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98]" onclick="handleBuyNow()">
-              <span class="material-symbols-outlined text-[18px]">lock</span>
-              <span>Direct Checkout / Review</span>
-            </button>
-          </div>
-
-          <!-- Toast Feedback Alert Container -->
-          <div class="hidden transition-all duration-300 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 text-xs flex items-center justify-between shadow-sm" id="cartToast">
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-emerald-700 text-[18px]">check_circle</span>
-              <span id="toastCakeDesc"><strong>The Velvet Noir</strong> has been added to your Atelier Bag.</span>
-            </div>
-            <a class="font-semibold underline text-emerald-950 hover:text-emerald-700" href="cart.html">View Bag &amp; Checkout →</a>
-          </div>
-
-          <!-- MANDATORY ORDER NOTICE & ASSURANCE BANNER -->
-          <div class="p-4 bg-surface-container rounded-xl border border-outline-variant flex items-start gap-3.5">
-            <span class="material-symbols-outlined text-secondary text-[24px] mt-0.5 shrink-0">phone_callback</span>
-            <div class="space-y-1">
-              <h4 class="text-xs font-semibold text-primary uppercase tracking-wide">Atelier Verification &amp; Offline Settlement</h4>
-              <p class="text-xs text-on-surface-variant leading-relaxed">
-                No online payment gateway or card needed. The Head Chef calls within 1 hour to verify temperature requirements, piping text, and delivery timing.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- KEY SPECIFICATIONS TABLE -->
-        <div class="border border-outline-variant rounded-xl overflow-hidden bg-surface-container-lowest">
-          <div class="px-5 py-3.5 bg-surface-container-low border-b border-outline-variant flex items-center justify-between">
-            <h3 class="font-headline-sm text-lg text-primary font-medium">Key Specifications</h3>
-            <span class="font-label-sm text-[11px] uppercase tracking-wider text-outline">Atelier Batch Record</span>
-          </div>
-          <div class="divide-y divide-outline-variant text-xs">
-            <div class="grid grid-cols-3 px-5 py-3">
-              <span class="text-on-surface-variant font-medium">Shelf Life</span>
-              <span class="col-span-2 text-primary font-medium">72 hours when chilled at 4°C (Do not freeze)</span>
-            </div>
-            <div class="grid grid-cols-3 px-5 py-3">
-              <span class="text-on-surface-variant font-medium">Allergen Disclosures</span>
-              <div class="col-span-2 space-y-1">
-                <span class="text-primary font-medium" id="specAllergens">Contains Dairy &amp; Hazelnuts.</span>
-                <p class="text-emerald-800 font-semibold flex items-center gap-1" id="specEggless">
-                  <span class="material-symbols-outlined text-[16px]">eco</span>
-                  100% Strictly Eggless Formulation
-                </p>
-              </div>
-            </div>
-            <div class="grid grid-cols-3 px-5 py-3">
-              <span class="text-on-surface-variant font-medium">Packaging Suite</span>
-              <span class="col-span-2 text-primary">Insulated thermodynamic travel case with reusable dry-ice gel pips and embossed cake knife included.</span>
-            </div>
-            <div class="grid grid-cols-3 px-5 py-3">
-              <span class="text-on-surface-variant font-medium">Origin Ingredients</span>
-              <span class="col-span-2 text-primary" id="specOrigin">Valrhona single-plantation Guanaja 72% dark chocolate (Tain-l'Hermitage, France), Normandy AOP butter.</span>
-            </div>
-            <div class="grid grid-cols-3 px-5 py-3">
-              <span class="text-on-surface-variant font-medium">Dispatch Slot</span>
-              <span class="col-span-2 text-primary">Same-day hand-courier in temperature-monitored refrigerated vans across Bengaluru metropolitan zone.</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- RELATED READY-MADE CAKES CAROUSEL / BENTO STRIP -->
-    <section class="mt-20 pt-10 border-t border-outline-variant">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-        <div>
-          <span class="text-xs font-semibold text-secondary uppercase tracking-widest">Morning Bake Selections</span>
-          <h2 class="font-headline-lg text-2xl lg:text-3xl text-primary mt-1 font-medium">Complementary Creations</h2>
-        </div>
-        <a class="text-xs text-primary font-semibold hover:text-secondary flex items-center gap-1.5 transition-colors uppercase tracking-wider" href="index.html#all-cakes">
-          <span>Explore Entire Ready-Made Vault</span>
-          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-6">
-        <!-- Related Cake 1 -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col justify-between group hover:border-secondary transition-all duration-300 shadow-sm p-2 sm:p-4">
-          <div>
-            <div class="aspect-square relative overflow-hidden bg-surface-container-low rounded-lg mb-2">
-              <a href="product.html?id=ivoire-framboise" class="block w-full h-full">
-                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="L'Ivoire & Framboise" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBobSYylttAxmQg5hwfYP9YuGMxNm9nQ_A1N4zRvbDgclfDoDYgF4XbP_B4ZAsLlexFjSN78ZfKt1YlnJ1anshPoq7KgQsm9lUNIyZWMy70RLo6Y4vMzv_eTdtookWckHSCFfeAedaU73JP-4KmY4QUJnjo25ine6MO8wLndzJwmxS39AmapPGZX6rvTf0ln_f-LFCJ7KCKrRWitpkACXBEbNF5wk1dQmquYZF8jVE9522V40MvrdDY"/>
-              </a>
-              <span class="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[8px] sm:text-[10px] px-1.5 py-0.5 rounded-full font-medium">Eggless</span>
-            </div>
-            <div>
-              <div class="flex flex-col sm:flex-row justify-between sm:items-baseline gap-0.5">
-                <a href="product.html?id=ivoire-framboise" class="font-headline-sm text-xs sm:text-lg text-primary group-hover:text-secondary transition-colors font-medium line-clamp-1 hover:underline">L'Ivoire &amp; Framboise</a>
-                <span class="text-xs sm:text-base font-bold text-primary">₹3,200</span>
-              </div>
-              <p class="text-[10px] sm:text-xs text-on-surface-variant mt-1 line-clamp-2">
-                White chocolate mousse with wild raspberry coulis.
-              </p>
-            </div>
-          </div>
-          <div class="mt-2.5 pt-2 border-t border-outline-variant flex items-center justify-between">
-            <a href="product.html?id=ivoire-framboise" class="text-[10px] sm:text-xs text-secondary hover:underline font-semibold">View</a>
-            <button class="px-2 py-1 sm:px-3 sm:py-1.5 bg-primary text-on-primary rounded text-[10px] sm:text-xs font-semibold flex items-center gap-1 active:scale-95" onclick="quickAddRelated('ivoire-framboise')">
-              <span class="material-symbols-outlined text-[13px] sm:text-[16px]">add</span>
-              <span>Add</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Related Cake 2 -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col justify-between group hover:border-secondary transition-all duration-300 shadow-sm p-2 sm:p-4">
-          <div>
-            <div class="aspect-square relative overflow-hidden bg-surface-container-low rounded-lg mb-2">
-              <a href="product.html?id=pistache-citrus" class="block w-full h-full">
-                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Pistache & Citrus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhpgl5gclsAB_nQDrFU42FIK90rUDAX3l-mI0xsvbi-hez6J94HcVsP0zo-mZt5YNLwmpCDzyaNzmJGdgnmXIkslzEv7rSi8XTJRI3v71huTO9YngLYmKzLRCY_YACthnjvMoWgoiBBNSu8gM85AOdgEDswL0uGbTaV4GwKd4ruF1agbW3_mk75KHJC907WOCtlXTrHfOFqf-cHkwXPUEpr7X6HuGLjlifE9twj2HZRvPhZUZYNkCO"/>
-              </a>
-              <span class="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[8px] sm:text-[10px] px-1.5 py-0.5 rounded-full font-medium">Eggless</span>
-            </div>
-            <div>
-              <div class="flex flex-col sm:flex-row justify-between sm:items-baseline gap-0.5">
-                <a href="product.html?id=pistache-citrus" class="font-headline-sm text-xs sm:text-lg text-primary group-hover:text-secondary transition-colors font-medium line-clamp-1 hover:underline">Pistache &amp; Citrus</a>
-                <span class="text-xs sm:text-base font-bold text-primary">₹3,600</span>
-              </div>
-              <p class="text-[10px] sm:text-xs text-on-surface-variant mt-1 line-clamp-2">
-                Pistachio cremoso with roasted Meyer lemon marmalade.
-              </p>
-            </div>
-          </div>
-          <div class="mt-2.5 pt-2 border-t border-outline-variant flex items-center justify-between">
-            <a href="product.html?id=pistache-citrus" class="text-[10px] sm:text-xs text-secondary hover:underline font-semibold">View</a>
-            <button class="px-2 py-1 sm:px-3 sm:py-1.5 bg-primary text-on-primary rounded text-[10px] sm:text-xs font-semibold flex items-center gap-1 active:scale-95" onclick="quickAddRelated('pistache-citrus')">
-              <span class="material-symbols-outlined text-[13px] sm:text-[16px]">add</span>
-              <span>Add</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Related Cake 3 -->
-        <div class="hidden md:flex bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex-col justify-between group hover:border-secondary transition-all duration-300 shadow-sm p-4">
-          <div>
-            <div class="aspect-square relative overflow-hidden bg-surface-container-low rounded-lg mb-2">
-              <a href="product.html?id=caramel-espresso" class="block w-full h-full">
-                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Caramel Salé & Espresso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwy_P0vxRp9I-4BsBZBEcuTTWeXe1ilRk2i_YrERpmQfotNbMQETy_fgmxhQygASjsTFKkg4ze0HVEl3HELOx8x0tpT7BBgl7W1Kjgj4mnO3PEczxUcQWlJBu-Xwr1IDBOgD86va0MetO01AvuBphGkpu-1zudRWeRW0zvroGykEgzHvMzTqnNUBFrRjxdCQ9c5K7b0HifMBzvBnDwxLaARCHBvPWOcXfArU-WdpWxJu-oTVOCjhZK"/>
-              </a>
-              <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[10px] px-2.5 py-0.5 rounded-full font-medium">Classic</span>
-            </div>
-            <div>
-              <div class="flex justify-between items-baseline">
-                <h3 class="font-headline-sm text-lg text-primary group-hover:text-secondary transition-colors font-medium">Caramel Salé &amp; Espresso</h3>
-                <span class="text-base font-bold text-primary">₹2,900</span>
-              </div>
-              <p class="text-xs text-on-surface-variant mt-1.5 line-clamp-2">
-                Salted caramel swirl, cold-brew coffee sponge, and mascarpone.
-              </p>
-            </div>
-          </div>
-          <div class="mt-4 pt-4 border-t border-outline-variant flex items-center justify-between">
-            <a href="product.html?id=caramel-espresso" class="text-xs text-secondary hover:underline font-semibold">View Cake</a>
-            <button class="px-3 py-1.5 bg-primary text-on-primary rounded text-xs font-semibold flex items-center gap-1.5" onclick="quickAddRelated('caramel-espresso')">
-              <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
-              <span>Add to Bag</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="w-full mt-20 bg-surface-container-high border-t border-outline-variant">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-12 flex flex-col space-y-8">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div>
-          <a class="font-serif text-2xl font-bold tracking-tight text-brand-dark" href="index.html">SweetNest</a>
-          <p class="text-xs text-on-surface-variant mt-1">Homemade Cakes with Love • Bengaluru, India</p>
-        </div>
-        <div class="flex flex-wrap gap-6 text-xs font-medium">
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#popular-cakes">Cakes</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#categories">Categories</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#standards">Quality &amp; Standards</a>
-          <a class="text-secondary hover:text-primary transition-colors flex items-center gap-1 font-semibold" href="dashboard.html">
-            <span class="material-symbols-outlined text-[14px]">admin_panel_settings</span>
-            <span>Owner Portal</span>
+          <!-- Cart Button with Red Notification Badge -->
+          <a href="cart.html" aria-label="Shopping Cart" class="relative text-white hover:text-white/80 transition-all duration-200 active:scale-90 cursor-pointer drop-shadow-md flex items-center justify-center">
+            <span class="material-symbols-outlined text-[24px] xs:text-[26px]">shopping_cart</span>
+            <span id="floatingCartBadge" class="cart-badge-count absolute -top-1.5 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-[#e05445] text-white text-[10px] font-bold flex items-center justify-center shadow-md">2</span>
           </a>
+
         </div>
       </div>
-      <div class="pt-6 border-t border-outline-variant/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
-        <p>© 2026 SweetNest Bakery Atelier. Handcrafted daily with fresh cream, fruits and premium chocolate.</p>
-        <div class="flex items-center gap-3 text-secondary text-xs font-medium">
-          <span class="material-symbols-outlined text-[16px]">support_agent</span>
-          <span>Chef Concierge: +91 98201 44521</span>
-        </div>
+
+      <!-- Floating Image Counter Badge (Bottom Right 1/4) -->
+      <div id="imageCounterBadge" class="absolute bottom-3.5 right-4 bg-black/55 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full select-none z-10 tracking-wider">
+        1/4
       </div>
+
     </div>
-  </footer>
 
-  <!-- Track Order Modal (Popup for real-time tracking) -->
-  <div id="trackOrderModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-brand-border/80 space-y-5 animate-in fade-in zoom-in-95 duration-200 relative">
-      <button onclick="closeTrackOrderModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/70 hover:text-brand-dark hover:bg-brand-border/50 transition-all cursor-pointer">
-        <span class="material-symbols-outlined text-[18px]">close</span>
-      </button>
-
-      <!-- Modal Header -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
-          <span class="material-symbols-outlined text-[22px]">local_shipping</span>
+    <!-- 2. DETAILS & SELECTION SECTION -->
+    <div class="flex-1 bg-white px-5 py-5 xs:py-6 space-y-5 pb-36">
+      
+      <!-- Title & Price Block -->
+      <div class="space-y-1">
+        <h1 id="cakeTitle" class="font-serif text-2xl xs:text-[26px] font-bold text-brand-dark tracking-tight leading-tight">
+          Chocolate Truffle
+        </h1>
+        <div class="flex items-baseline gap-2 pt-0.5">
+          <span id="dynamicPrice" class="text-xl xs:text-2xl font-bold text-[#5e201b]">
+            ₹650
+          </span>
         </div>
-        <div>
-          <h3 class="font-serif text-xl font-bold text-brand-dark">Track Your Cake Order</h3>
-          <p class="text-xs text-brand-dark/60 mt-0.5">Real-time baking &amp; chilled courier tracking</p>
+
+        <!-- Star Rating -->
+        <div class="flex items-center gap-1 pt-1">
+          <div class="flex text-amber-500">
+            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
+            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
+            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
+            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
+            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
+          </div>
+          <span id="reviewsCount" class="text-xs text-[#705b56] font-medium ml-1">
+            (120 reviews)
+          </span>
         </div>
       </div>
 
-      <!-- Search Input for Order -->
-      <div class="flex gap-2">
-        <div class="relative flex-1">
-          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-brand-dark/40 text-[18px]">search</span>
-          <input type="text" id="trackOrderInput" placeholder="Enter Order ID (e.g. CC-2026-109)..." class="w-full pl-9 pr-3 py-2.5 bg-brand-light border border-brand-border rounded-xl text-xs text-brand-dark outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink/20 transition-all"/>
+      <!-- Description -->
+      <p id="cakeDescription" class="text-xs xs:text-sm text-[#5a4843] leading-relaxed font-normal">
+        Rich and moist chocolate sponge layered with smooth chocolate ganache, topped with premium chocolate truffle.
+      </p>
+
+      <!-- Eggless Available Tag Pill -->
+      <div id="egglessPill" class="flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-[#edf7f0] border border-[#d2edd9] text-[#235835] text-xs font-medium cursor-pointer transition-colors hover:bg-[#e4f3e8]">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+          <span id="egglessText" class="font-semibold text-emerald-900">Eggless available</span>
         </div>
-        <button onclick="executeTrackOrder()" class="px-5 py-2.5 bg-brand-dark hover:bg-brand-primary text-white text-xs font-semibold rounded-xl transition-all shadow-sm active:scale-95 cursor-pointer">
-          Track
+        <span class="material-symbols-outlined text-[18px] text-[#235835]">chevron_right</span>
+      </div>
+
+      <!-- SIZE SELECTION (3 CARDS) -->
+      <div class="space-y-2 pt-1">
+        <label class="block text-xs xs:text-sm font-bold text-[#2e1511]">
+          Size
+        </label>
+        
+        <div class="grid grid-cols-3 gap-2.5" id="sizeOptionsContainer">
+          
+          <!-- Option 1: 0.5 kg (Default Active) -->
+          <button type="button" onclick="selectSize('0.5 kg', 1.0, '(4-6 servings)', this)" class="size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] transition-all cursor-pointer text-center select-none shadow-xs">
+            <span class="text-xs xs:text-sm font-bold text-[#2e1511]">0.5 kg</span>
+            <span class="text-[10px] xs:text-[11px] text-[#705b56] mt-0.5">(4-6 servings)</span>
+            <span class="text-xs xs:text-sm font-bold text-[#2e1511] mt-1.5" id="sizePrice0">₹650</span>
+          </button>
+
+          <!-- Option 2: 1 kg -->
+          <button type="button" onclick="selectSize('1 kg', 1.6923, '(8-10 servings)', this)" class="size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border border-brand-border bg-white hover:border-[#b5655a]/60 transition-all cursor-pointer text-center select-none">
+            <span class="text-xs xs:text-sm font-bold text-[#2e1511]">1 kg</span>
+            <span class="text-[10px] xs:text-[11px] text-[#705b56] mt-0.5">(8-10 servings)</span>
+            <span class="text-xs xs:text-sm font-bold text-[#2e1511] mt-1.5" id="sizePrice1">₹1,100</span>
+          </button>
+
+          <!-- Option 3: 1.5 kg -->
+          <button type="button" onclick="selectSize('1.5 kg', 2.3846, '(12-15 servings)', this)" class="size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border border-brand-border bg-white hover:border-[#b5655a]/60 transition-all cursor-pointer text-center select-none">
+            <span class="text-xs xs:text-sm font-bold text-[#2e1511]">1.5 kg</span>
+            <span class="text-[10px] xs:text-[11px] text-[#705b56] mt-0.5">(12-15 servings)</span>
+            <span class="text-xs xs:text-sm font-bold text-[#2e1511] mt-1.5" id="sizePrice2">₹1,550</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- SHAPE SELECTION (3 PILLS) -->
+      <div class="space-y-2 pt-1">
+        <label class="block text-xs xs:text-sm font-bold text-[#2e1511]">
+          Shape
+        </label>
+        
+        <div class="grid grid-cols-3 gap-2.5" id="shapeOptionsContainer">
+          <!-- Round (Default Selected) -->
+          <button type="button" onclick="selectShape('Round', this)" class="shape-btn py-2.5 px-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] text-[#2e1511] text-xs xs:text-sm font-bold transition-all text-center cursor-pointer select-none">
+            Round
+          </button>
+          <!-- Square -->
+          <button type="button" onclick="selectShape('Square', this)" class="shape-btn py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+            Square
+          </button>
+          <!-- Heart -->
+          <button type="button" onclick="selectShape('Heart', this)" class="shape-btn py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+            Heart
+          </button>
+        </div>
+      </div>
+
+      <!-- CUSTOM MESSAGE (OPTIONAL) -->
+      <div class="space-y-1.5 pt-1">
+        <label for="customMessageInput" class="block text-xs xs:text-sm font-bold text-[#2e1511]">
+          Custom Message <span class="font-normal text-[#8c7873] text-[11px] xs:text-xs">(Optional)</span>
+        </label>
+        <div class="relative">
+          <input type="text" id="customMessageInput" maxlength="30" placeholder="Happy Birthday!" oninput="updateCharCount(this)" class="w-full px-4 py-3 rounded-2xl border border-brand-border bg-[#fcfaf8] text-xs xs:text-sm text-[#2e1511] placeholder:text-[#a08c86] focus:border-[#b5655a] focus:bg-white focus:ring-1 focus:ring-[#b5655a]/20 outline-none transition-all"/>
+        </div>
+        <div class="flex justify-between items-center text-[10px] xs:text-[11px] text-[#8c7873] px-1">
+          <span>Max 30 characters</span>
+          <span id="charCountLabel">16/30</span>
+        </div>
+      </div>
+
+      <!-- DELIVERY DATE SELECTOR -->
+      <div class="space-y-1.5 pt-1">
+        <label class="block text-xs xs:text-sm font-bold text-[#2e1511]">
+          Delivery Date
+        </label>
+        <div class="relative">
+          <div class="w-full px-4 py-3 rounded-2xl border border-brand-border bg-white flex items-center justify-between text-xs xs:text-sm text-[#2e1511] cursor-pointer hover:border-[#b5655a]/60 transition-all shadow-2xs">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[19px] text-[#b5655a]">calendar_today</span>
+              <span id="deliveryDateDisplay" class="font-medium text-[#2e1511]">Fri, 24 Oct 2026</span>
+            </div>
+            <span class="material-symbols-outlined text-[19px] text-[#705b56]">expand_more</span>
+          </div>
+          <!-- Transparent Native Date Input overlay -->
+          <input type="date" id="deliveryDateInput" onchange="updateDeliveryDate(this)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"/>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. FLOATING STICKY ACTION BAR AT BOTTOM -->
+    <aside class="fixed bottom-3 left-1/2 -translate-x-1/2 w-full max-w-md sm:max-w-lg px-3 z-40 select-none">
+      <div class="w-full bg-[#4a2620] rounded-3xl p-3 xs:px-5 xs:py-3.5 shadow-2xl flex items-center justify-between gap-3 border border-[#61362f]/60 text-white select-none">
+        
+        <!-- Left: Dynamic Price & Selection Summary -->
+        <div class="min-w-0 flex-1 pl-1">
+          <span id="bottomBarPrice" class="text-base xs:text-lg font-bold text-white block leading-tight">
+            ₹650
+          </span>
+          <span id="bottomBarSummary" class="text-[10px] xs:text-[11px] text-white/70 block mt-0.5 truncate">
+            0.5 kg • Round
+          </span>
+        </div>
+
+        <!-- Right: Add to Cart Button -->
+        <button type="button" id="btnAddToCart" onclick="handleAddToCart()" class="px-5 xs:px-6 py-2.5 xs:py-3 bg-[#af5c52] hover:bg-[#9a4b41] active:scale-95 text-white text-xs xs:text-sm font-semibold rounded-full flex items-center gap-1.5 xs:gap-2 shadow-md transition-all cursor-pointer shrink-0">
+          <span>Add to Cart</span>
+          <span class="material-symbols-outlined text-[17px] xs:text-[18px]">shopping_cart</span>
         </button>
-      </div>
 
-      <!-- Live Order Status Result Container -->
-      <div id="trackOrderResult" class="space-y-4 pt-1">
-        <!-- Will be populated dynamically by JS -->
       </div>
+    </aside>
+
+    <!-- Sleek Toast Notification Popup on Add to Cart -->
+    <div id="cartToast" class="hidden fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#271410] text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-white/20 text-xs animate-in fade-in slide-in-from-top-4 duration-300">
+      <span class="material-symbols-outlined text-emerald-400 text-[18px]">check_circle</span>
+      <span id="toastCakeDesc">Chocolate Truffle added to cart</span>
+      <a href="cart.html" class="underline text-brand-pink font-semibold ml-1">View Cart →</a>
     </div>
+
   </div>
-
-  <!-- Sticky Commercial App Mobile Action Bar for Phone Screens -->
-  <aside class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant px-4 py-3 shadow-2xl flex items-center justify-between gap-3">
-    <div>
-      <span class="font-headline-md text-base font-bold text-primary block leading-tight" id="stickyMobilePrice">₹3,400</span>
-      <span class="text-[10px] text-on-surface-variant block truncate max-w-[130px]" id="stickyMobileSize">6 inch (1.0 kg)</span>
-    </div>
-    <div class="flex items-center gap-2">
-      <button onclick="handleAddToCart()" class="px-4 py-2.5 bg-primary text-on-primary hover:bg-primary-container rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 active:scale-95 shadow-md">
-        <span class="material-symbols-outlined text-[15px]">add_shopping_cart</span>
-        <span>Add to Bag</span>
-      </button>
-      <a href="cart.html" class="p-2 border border-outline-variant text-primary rounded-xl flex items-center justify-center hover:bg-surface-container">
-        <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
-      </a>
-    </div>
-  </aside>
 
   <!-- Modular Scripts -->
   <script src="assets/js/core.js"></script>
