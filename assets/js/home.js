@@ -17,19 +17,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initialize auto-slide for hero carousel
-  startHeroAutoSlide();
-  const heroSection = document.getElementById('heroSliderSection');
-  if (heroSection) {
-    heroSection.addEventListener('mouseenter', stopHeroAutoSlide);
-    heroSection.addEventListener('mouseleave', startHeroAutoSlide);
-  }
+  // Initialize hero carousel with progress loader
+  initHeroSlider();
 });
 
-// --- Hero Carousel Slider Logic (3 Premium Website-Relevant Banners) ---
+// --- Hero Carousel Slider with Loading Pill Progress ---
 let currentHeroSlide = 0;
 const totalHeroSlides = 3;
-let heroAutoSlideInterval = null;
+
+function initHeroSlider() {
+  const heroSection = document.getElementById('heroSliderSection');
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', () => {
+      heroSection.classList.add('is-paused');
+    });
+    heroSection.addEventListener('mouseleave', () => {
+      heroSection.classList.remove('is-paused');
+    });
+  }
+  updateHeroSlider();
+}
 
 function updateHeroSlider() {
   const track = document.getElementById('heroSliderTrack');
@@ -37,15 +44,28 @@ function updateHeroSlider() {
     track.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
   }
 
-  // Update pagination dots
-  const dots = document.querySelectorAll('.hero-dot');
-  dots.forEach((dot, idx) => {
+  // Update indicators: active slide has elongated pill with animated loader bar, others are compact dots
+  const indicators = document.querySelectorAll('.hero-indicator');
+  indicators.forEach((indicator, idx) => {
+    indicator.innerHTML = ''; // Clear previous loader element
+
     if (idx === currentHeroSlide) {
-      dot.classList.remove('bg-brand-primary/30', 'w-1.5');
-      dot.classList.add('bg-brand-primary', 'w-3');
+      // Active slide: elongated pill ("boro thakbe")
+      indicator.className = 'hero-indicator relative h-2 w-10 sm:w-12 rounded-full bg-brand-primary/20 cursor-pointer overflow-hidden transition-all duration-300';
+      
+      const loader = document.createElement('div');
+      loader.className = 'hero-pill-loader h-full bg-brand-primary rounded-full';
+      loader.style.width = '0%';
+      
+      // When the loader animation completes, advance to next slide automatically
+      loader.addEventListener('animationend', () => {
+        nextHeroSlide();
+      }, { once: true });
+      
+      indicator.appendChild(loader);
     } else {
-      dot.classList.remove('bg-brand-primary', 'w-3');
-      dot.classList.add('bg-brand-primary/30', 'w-1.5');
+      // Inactive slides: small compact round dots ("2 te dot")
+      indicator.className = 'hero-indicator relative h-2 w-2 rounded-full bg-brand-primary/30 hover:bg-brand-primary/60 cursor-pointer transition-all duration-300';
     }
   });
 }
@@ -63,24 +83,6 @@ function prevHeroSlide() {
 function goToHeroSlide(index) {
   currentHeroSlide = index;
   updateHeroSlider();
-  resetHeroAutoSlide();
-}
-
-function startHeroAutoSlide() {
-  stopHeroAutoSlide();
-  heroAutoSlideInterval = setInterval(nextHeroSlide, 4500);
-}
-
-function stopHeroAutoSlide() {
-  if (heroAutoSlideInterval) {
-    clearInterval(heroAutoSlideInterval);
-    heroAutoSlideInterval = null;
-  }
-}
-
-function resetHeroAutoSlide() {
-  stopHeroAutoSlide();
-  startHeroAutoSlide();
 }
 
 // Quick Add from Catalogue Grid
