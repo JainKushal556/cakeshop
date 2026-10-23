@@ -50,8 +50,8 @@ function updateHeroSlider() {
     indicator.innerHTML = ''; // Clear previous loader element
 
     if (idx === currentHeroSlide) {
-      // Active slide: elongated pill ("boro thakbe")
-      indicator.className = 'hero-indicator relative h-2 w-10 sm:w-12 rounded-full bg-brand-primary/20 cursor-pointer overflow-hidden transition-all duration-300';
+      // Active slide: minimal small loading pill
+      indicator.className = 'hero-indicator relative h-1.5 w-6 sm:w-7 rounded-full bg-brand-primary/25 cursor-pointer overflow-hidden transition-all duration-300';
       
       const loader = document.createElement('div');
       loader.className = 'hero-pill-loader h-full bg-brand-primary rounded-full';
@@ -64,8 +64,8 @@ function updateHeroSlider() {
       
       indicator.appendChild(loader);
     } else {
-      // Inactive slides: small compact round dots ("2 te dot")
-      indicator.className = 'hero-indicator relative h-2 w-2 rounded-full bg-brand-primary/30 hover:bg-brand-primary/60 cursor-pointer transition-all duration-300';
+      // Inactive slides: minimal small dots
+      indicator.className = 'hero-indicator relative h-1.5 w-1.5 rounded-full bg-brand-primary/35 hover:bg-brand-primary/60 cursor-pointer transition-all duration-300';
     }
   });
 }
