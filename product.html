@@ -100,98 +100,98 @@
 
     </div>
 
-    <!-- 2. DETAILS & SELECTION SECTION -->
-    <div class="flex-1 bg-white px-5 py-5 xs:py-6 space-y-5 pb-36">
+    <!-- 2. DETAILS & SELECTION SECTION (WEIGHT & SHAPE FIRST, THEN NAME & PRICE, ALL DETAILS ON SCROLL) -->
+    <div class="flex-1 bg-white px-5 py-4 xs:py-5 space-y-4 pb-36">
       
-      <!-- Title & Price Block -->
-      <div class="space-y-1">
-        <h1 id="cakeTitle" class="font-serif text-2xl xs:text-[26px] font-bold text-brand-dark tracking-tight leading-tight">
-          Chocolate Truffle
-        </h1>
-        <div class="flex items-baseline gap-2 pt-0.5">
-          <span id="dynamicPrice" class="text-xl xs:text-2xl font-bold text-[#5e201b] transition-all duration-200">
-            ₹650
-          </span>
-        </div>
-
-        <!-- Star Rating -->
-        <div class="flex items-center gap-1 pt-1">
-          <div class="flex text-amber-500">
-            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
-            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
-            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
-            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
-            <span class="material-symbols-outlined text-[16px] material-symbols-fill">star</span>
-          </div>
-          <span id="reviewsCount" class="text-xs text-[#705b56] font-medium ml-1">
-            (120 reviews)
-          </span>
-        </div>
-      </div>
-
-      <!-- Description -->
-      <p id="cakeDescription" class="text-xs xs:text-sm text-[#5a4843] leading-relaxed font-normal">
-        Rich and moist chocolate sponge layered with smooth chocolate ganache, topped with premium chocolate truffle.
-      </p>
-
-      <!-- Eggless Available Tag Pill -->
-      <div id="egglessPill" class="flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-[#edf7f0] border border-[#d2edd9] text-[#235835] text-xs font-medium cursor-pointer transition-colors hover:bg-[#e4f3e8]">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
-          <span id="egglessText" class="font-semibold text-emerald-900">Eggless available</span>
-        </div>
-        <span class="material-symbols-outlined text-[18px] text-[#235835]">chevron_right</span>
-      </div>
-
-      <!-- WEIGHT SELECTION (ONLY WEIGHT DISPLAYED, ON-CLICK PRICE UPDATES AUTOMATICALLY) -->
-      <div class="space-y-2 pt-1">
+      <!-- 1. WEIGHT SELECTION (FIRST VIEW DIRECTLY UNDER CAKE IMAGE) -->
+      <div class="space-y-1.5">
         <label class="block text-xs xs:text-sm font-bold text-[#2e1511]">
           Weight
         </label>
         
         <div class="grid grid-cols-3 gap-2.5" id="sizeOptionsContainer">
-          
           <!-- Option 1: 0.5 kg (Default Active) -->
-          <button type="button" onclick="selectSize('0.5 kg', 1.0, this)" class="size-card py-2.5 px-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] text-[#2e1511] text-xs xs:text-sm font-bold transition-all text-center cursor-pointer select-none shadow-xs">
+          <button type="button" onclick="selectSize('0.5 kg', 1.0, this)" class="size-card py-2 px-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] text-[#2e1511] text-xs xs:text-sm font-bold transition-all text-center cursor-pointer select-none shadow-xs">
             0.5 kg
           </button>
 
           <!-- Option 2: 1 kg -->
-          <button type="button" onclick="selectSize('1 kg', 1.6923, this)" class="size-card py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+          <button type="button" onclick="selectSize('1 kg', 1.6923, this)" class="size-card py-2 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
             1 kg
           </button>
 
           <!-- Option 3: 1.5 kg -->
-          <button type="button" onclick="selectSize('1.5 kg', 2.3846, this)" class="size-card py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+          <button type="button" onclick="selectSize('1.5 kg', 2.3846, this)" class="size-card py-2 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
             1.5 kg
           </button>
-
         </div>
       </div>
 
-      <!-- SHAPE SELECTION (3 PILLS) -->
-      <div class="space-y-2 pt-1">
+      <!-- 2. SHAPE SELECTION -->
+      <div class="space-y-1.5">
         <label class="block text-xs xs:text-sm font-bold text-[#2e1511]">
           Shape
         </label>
         
         <div class="grid grid-cols-3 gap-2.5" id="shapeOptionsContainer">
           <!-- Round (Default Selected) -->
-          <button type="button" onclick="selectShape('Round', this)" class="shape-btn py-2.5 px-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] text-[#2e1511] text-xs xs:text-sm font-bold transition-all text-center cursor-pointer select-none">
+          <button type="button" onclick="selectShape('Round', this)" class="shape-btn py-2 px-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] text-[#2e1511] text-xs xs:text-sm font-bold transition-all text-center cursor-pointer select-none">
             Round
           </button>
           <!-- Square -->
-          <button type="button" onclick="selectShape('Square', this)" class="shape-btn py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+          <button type="button" onclick="selectShape('Square', this)" class="shape-btn py-2 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
             Square
           </button>
           <!-- Heart -->
-          <button type="button" onclick="selectShape('Heart', this)" class="shape-btn py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+          <button type="button" onclick="selectShape('Heart', this)" class="shape-btn py-2 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
             Heart
           </button>
         </div>
       </div>
 
-      <!-- FLAVOUR SELECTION (DROPDOWN LIST) -->
+      <!-- 3. TITLE & PRICE BLOCK (WITH RATING & EGGLESS BADGE) -->
+      <div class="pt-1.5 border-t border-brand-border/40 space-y-1">
+        <div class="flex items-baseline justify-between gap-2">
+          <h1 id="cakeTitle" class="font-serif text-xl xs:text-2xl font-bold text-brand-dark tracking-tight leading-tight">
+            Chocolate Truffle
+          </h1>
+          <span id="dynamicPrice" class="text-xl xs:text-2xl font-bold text-[#5e201b] transition-all duration-200 shrink-0">
+            ₹650
+          </span>
+        </div>
+
+        <!-- Star Rating & Eggless Badge in one tidy row -->
+        <div class="flex items-center justify-between gap-2 pt-0.5">
+          <div class="flex items-center gap-1">
+            <div class="flex text-amber-500">
+              <span class="material-symbols-outlined text-[15px] material-symbols-fill">star</span>
+              <span class="material-symbols-outlined text-[15px] material-symbols-fill">star</span>
+              <span class="material-symbols-outlined text-[15px] material-symbols-fill">star</span>
+              <span class="material-symbols-outlined text-[15px] material-symbols-fill">star</span>
+              <span class="material-symbols-outlined text-[15px] material-symbols-fill">star</span>
+            </div>
+            <span id="reviewsCount" class="text-[11px] xs:text-xs text-[#705b56] font-medium ml-0.5">
+              (120 reviews)
+            </span>
+          </div>
+
+          <!-- Eggless Indicator Pill -->
+          <div id="egglessPill" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#edf7f0] border border-[#d2edd9] text-[#235835] text-[10px] xs:text-[11px] font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            <span id="egglessText">Eggless available</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. ON-SCROLL DETAILS (DESCRIPTION, FLAVOUR, MESSAGE, DATE) -->
+      <!-- Description -->
+      <div class="pt-1">
+        <p id="cakeDescription" class="text-xs xs:text-sm text-[#5a4843] leading-relaxed font-normal">
+          Rich and moist chocolate sponge layered with smooth chocolate ganache, topped with premium chocolate truffle.
+        </p>
+      </div>
+
+      <!-- Flavour Selection Dropdown -->
       <div class="space-y-1.5 pt-1">
         <label for="flavorSelect" class="block text-xs xs:text-sm font-bold text-[#2e1511]">
           Flavour
@@ -210,7 +210,7 @@
         </div>
       </div>
 
-      <!-- CUSTOM MESSAGE (OPTIONAL) -->
+      <!-- Custom Message (Optional) -->
       <div class="space-y-1.5 pt-1">
         <label for="customMessageInput" class="block text-xs xs:text-sm font-bold text-[#2e1511]">
           Custom Message <span class="font-normal text-[#8c7873] text-[11px] xs:text-xs">(Optional)</span>
@@ -224,7 +224,7 @@
         </div>
       </div>
 
-      <!-- DELIVERY DATE SELECTOR -->
+      <!-- Delivery Date Selector -->
       <div class="space-y-1.5 pt-1">
         <label class="block text-xs xs:text-sm font-bold text-[#2e1511]">
           Delivery Date
