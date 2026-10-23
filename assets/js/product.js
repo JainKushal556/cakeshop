@@ -177,38 +177,20 @@ function updateSelectedFlavor(selectEl) {
 }
 
 function calculateSizePrices() {
-  if (!currentCake) return;
-  const basePrice = currentCake.price || 650;
-  
-  // 0.5 kg (1x)
-  const p0 = Math.round(basePrice);
-  // 1 kg (~1.6923x, e.g. 650 -> 1100)
-  const p1 = Math.round((basePrice * 1.6923) / 50) * 50;
-  // 1.5 kg (~2.3846x, e.g. 650 -> 1550)
-  const p2 = Math.round((basePrice * 2.3846) / 50) * 50;
-
-  const sp0 = document.getElementById('sizePrice0');
-  const sp1 = document.getElementById('sizePrice1');
-  const sp2 = document.getElementById('sizePrice2');
-
-  if (sp0) sp0.innerText = `₹${p0.toLocaleString('en-IN')}`;
-  if (sp1) sp1.innerText = `₹${p1.toLocaleString('en-IN')}`;
-  if (sp2) sp2.innerText = `₹${p2.toLocaleString('en-IN')}`;
-
   updateSummary();
 }
 
-function selectSize(sizeStr, multiplier, servings, buttonEl) {
+function selectSize(sizeStr, multiplier, buttonEl) {
   selectedSize = sizeStr;
   selectedMultiplier = multiplier;
 
   // Toggle active card styling
   document.querySelectorAll('.size-card').forEach(btn => {
-    btn.className = 'size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border border-brand-border bg-white hover:border-[#b5655a]/60 transition-all cursor-pointer text-center select-none';
+    btn.className = 'size-card py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none';
   });
 
   if (buttonEl) {
-    buttonEl.className = 'size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] transition-all cursor-pointer text-center select-none shadow-xs';
+    buttonEl.className = 'size-card py-2.5 px-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] text-[#2e1511] text-xs xs:text-sm font-bold transition-all text-center cursor-pointer select-none shadow-xs';
   }
 
   updateSummary();
@@ -247,7 +229,11 @@ function updateSummary() {
   const bottomBarPrice = document.getElementById('bottomBarPrice');
   const bottomBarSummary = document.getElementById('bottomBarSummary');
 
-  if (dynPrice) dynPrice.innerText = priceFormatted;
+  if (dynPrice) {
+    dynPrice.innerText = priceFormatted;
+    dynPrice.classList.add('scale-105');
+    setTimeout(() => dynPrice.classList.remove('scale-105'), 180);
+  }
   if (bottomBarPrice) bottomBarPrice.innerText = priceFormatted;
   if (bottomBarSummary) bottomBarSummary.innerText = `${selectedSize} • ${selectedShape}`;
 }

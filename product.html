@@ -50,8 +50,8 @@
   <!-- MAIN WRAPPER (Mobile App Screen Format on Phone, Centered Elegant Frame on Desktop) -->
   <div class="w-full max-w-md sm:max-w-lg mx-auto min-h-screen bg-white sm:my-4 sm:rounded-[2.5rem] shadow-xl sm:border sm:border-brand-border/60 overflow-hidden relative flex flex-col">
 
-    <!-- 1. TOP CAKE IMAGE HERO SECTION WITH FLOATING OVERLAYS -->
-    <div class="relative w-full aspect-[4/3.5] xs:aspect-[4/3.8] bg-[#22100d] overflow-hidden select-none" id="galleryContainer">
+    <!-- 1. TOP CAKE IMAGE HERO SECTION (50% SCREEN HEIGHT) -->
+    <div class="relative w-full h-[50vh] bg-[#22100d] overflow-hidden select-none shrink-0" id="galleryContainer">
       
       <!-- Main Cake Image Display -->
       <img id="mainProductImage" class="w-full h-full object-cover product-img-fade" alt="Cake Visual" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80"/>
@@ -99,7 +99,7 @@
           Chocolate Truffle
         </h1>
         <div class="flex items-baseline gap-2 pt-0.5">
-          <span id="dynamicPrice" class="text-xl xs:text-2xl font-bold text-[#5e201b]">
+          <span id="dynamicPrice" class="text-xl xs:text-2xl font-bold text-[#5e201b] transition-all duration-200">
             ₹650
           </span>
         </div>
@@ -133,33 +133,27 @@
         <span class="material-symbols-outlined text-[18px] text-[#235835]">chevron_right</span>
       </div>
 
-      <!-- SIZE SELECTION (3 CARDS) -->
+      <!-- WEIGHT SELECTION (ONLY WEIGHT DISPLAYED, ON-CLICK PRICE UPDATES AUTOMATICALLY) -->
       <div class="space-y-2 pt-1">
         <label class="block text-xs xs:text-sm font-bold text-[#2e1511]">
-          Size
+          Weight
         </label>
         
         <div class="grid grid-cols-3 gap-2.5" id="sizeOptionsContainer">
           
           <!-- Option 1: 0.5 kg (Default Active) -->
-          <button type="button" onclick="selectSize('0.5 kg', 1.0, '(4-6 servings)', this)" class="size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] transition-all cursor-pointer text-center select-none shadow-xs">
-            <span class="text-xs xs:text-sm font-bold text-[#2e1511]">0.5 kg</span>
-            <span class="text-[10px] xs:text-[11px] text-[#705b56] mt-0.5">(4-6 servings)</span>
-            <span class="text-xs xs:text-sm font-bold text-[#2e1511] mt-1.5" id="sizePrice0">₹650</span>
+          <button type="button" onclick="selectSize('0.5 kg', 1.0, this)" class="size-card py-2.5 px-3 rounded-2xl border-2 border-[#b5655a] bg-[#faece9] text-[#2e1511] text-xs xs:text-sm font-bold transition-all text-center cursor-pointer select-none shadow-xs">
+            0.5 kg
           </button>
 
           <!-- Option 2: 1 kg -->
-          <button type="button" onclick="selectSize('1 kg', 1.6923, '(8-10 servings)', this)" class="size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border border-brand-border bg-white hover:border-[#b5655a]/60 transition-all cursor-pointer text-center select-none">
-            <span class="text-xs xs:text-sm font-bold text-[#2e1511]">1 kg</span>
-            <span class="text-[10px] xs:text-[11px] text-[#705b56] mt-0.5">(8-10 servings)</span>
-            <span class="text-xs xs:text-sm font-bold text-[#2e1511] mt-1.5" id="sizePrice1">₹1,100</span>
+          <button type="button" onclick="selectSize('1 kg', 1.6923, this)" class="size-card py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+            1 kg
           </button>
 
           <!-- Option 3: 1.5 kg -->
-          <button type="button" onclick="selectSize('1.5 kg', 2.3846, '(12-15 servings)', this)" class="size-card flex flex-col items-center justify-center p-2.5 xs:p-3 rounded-2xl border border-brand-border bg-white hover:border-[#b5655a]/60 transition-all cursor-pointer text-center select-none">
-            <span class="text-xs xs:text-sm font-bold text-[#2e1511]">1.5 kg</span>
-            <span class="text-[10px] xs:text-[11px] text-[#705b56] mt-0.5">(12-15 servings)</span>
-            <span class="text-xs xs:text-sm font-bold text-[#2e1511] mt-1.5" id="sizePrice2">₹1,550</span>
+          <button type="button" onclick="selectSize('1.5 kg', 2.3846, this)" class="size-card py-2.5 px-3 rounded-2xl border border-brand-border bg-white text-[#705b56] hover:text-[#2e1511] text-xs xs:text-sm font-medium transition-all text-center cursor-pointer select-none">
+            1.5 kg
           </button>
 
         </div>
