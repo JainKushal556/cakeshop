@@ -34,6 +34,38 @@ function initHeroSlider() {
     heroSection.addEventListener('mouseleave', () => {
       heroSection.classList.remove('is-paused');
     });
+
+    // Touch Swipe Support for Phone Screens
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    heroSection.addEventListener('touchstart', (e) => {
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      }
+      heroSection.classList.add('is-paused');
+    }, { passive: true });
+
+    heroSection.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        touchEndX = e.changedTouches[0].clientX;
+        touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        // Require horizontal swipe to dominate vertical scrolling and exceed threshold
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+          if (diffX < 0) {
+            nextHeroSlide(); // Swiped left -> Next slide
+          } else {
+            prevHeroSlide(); // Swiped right -> Previous slide
+          }
+        }
+      }
+      heroSection.classList.remove('is-paused');
+    }, { passive: true });
   }
   updateHeroSlider();
 }
