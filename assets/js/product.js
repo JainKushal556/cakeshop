@@ -191,12 +191,6 @@ function decrementQty() {
 function getSelectedOptions() {
   const flavorInput = document.querySelector('input[name="flavor"]:checked');
   const flavor = flavorInput ? flavorInput.value : currentCake.flavor;
-
-  const colorInput = document.querySelector('input[name="cake_cream_color"]:checked');
-  const creamColor = colorInput ? colorInput.value : 'Classic Valrhona Noir';
-
-  const writingInput = document.getElementById('plaqueText');
-  const writing = writingInput && writingInput.value.trim() ? writingInput.value.trim() : 'Signature Bake';
   const unitPrice = Math.round(currentCake.price * selectedMultiplier / 50) * 50;
 
   return {
@@ -204,8 +198,6 @@ function getSelectedOptions() {
     name: currentCake.name,
     size: `${selectedSize} (${selectedWeight})`,
     flavor: flavor,
-    creamColor: creamColor,
-    writingOnCake: writing,
     price: unitPrice,
     quantity: currentQty,
     image: currentCake.image,
