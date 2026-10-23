@@ -9,7 +9,47 @@ let currentGallery = [];
 let selectedSize = '0.5 kg';
 let selectedMultiplier = 1.0;
 let selectedShape = 'Round';
+let selectedFlavor = 'Classic Chocolate Truffle (Recommended)';
 let isWishlisted = false;
+
+// Curated Gourmet Flavour Profiles per cake
+const cakeFlavors = {
+  'choco-truffle': [
+    'Classic Chocolate Truffle (Recommended)',
+    '72% Dark Belgian Truffle',
+    'Hazelnut Truffle Praline',
+    'Choco Mocha & Espresso',
+    'Chocolate Salted Caramel'
+  ],
+  'fresh-strawberry': [
+    'Fresh Strawberry & Chantilly (Recommended)',
+    'Strawberry White Chocolate',
+    'Mixed Wild Berry Coulis',
+    'Strawberry Vanilla Chiffon'
+  ],
+  'red-velvet': [
+    'Artisan Cream Cheese Red Velvet (Recommended)',
+    'Red Velvet White Chocolate Truffle',
+    'Red Velvet Raspberry Swirl',
+    'Red Velvet Choco Truffle Fusion'
+  ],
+  'butterscotch': [
+    'Cashew Butterscotch Crunch (Recommended)',
+    'Salted Butterscotch Caramel',
+    'Butterscotch Almond Praline',
+    'Butterscotch Vanilla Cream'
+  ],
+  'blueberry-cheesecake': [
+    'Wild Maine Blueberry Baked (Recommended)',
+    'Blueberry Meyer Lemon Swirl',
+    'Blueberry White Chocolate Truffle'
+  ],
+  'unicorn-theme': [
+    'Rainbow Vanilla Confetti (Recommended)',
+    'Sweet Strawberry Marshmallow',
+    'Bubblegum Buttercream Dream'
+  ]
+};
 
 // 4 High-Resolution Gallery Shots for each cake
 const cakeGalleries = {
@@ -104,9 +144,36 @@ function initProductPage() {
   // Calculate Size Card Prices
   calculateSizePrices();
 
+  // Initialize Flavour Dropdown
+  initFlavors();
+
   // Set initial character count
   const msgInput = document.getElementById('customMessageInput');
   if (msgInput) updateCharCount(msgInput);
+}
+
+function initFlavors() {
+  const select = document.getElementById('flavorSelect');
+  if (!select) return;
+
+  const flavors = (currentCake && cakeFlavors[currentCake.id]) || [
+    `${currentCake ? currentCake.name : 'Classic'} Signature (Recommended)`,
+    'Rich Dark Cocoa Truffle',
+    'Vanilla Buttercream Swirl',
+    'Caramel Nut Praline'
+  ];
+
+  select.innerHTML = flavors.map((f, i) => `
+    <option value="${f}" ${i === 0 ? 'selected' : ''}>${f}</option>
+  `).join('');
+
+  selectedFlavor = flavors[0];
+}
+
+function updateSelectedFlavor(selectEl) {
+  if (selectEl) {
+    selectedFlavor = selectEl.value;
+  }
 }
 
 function calculateSizePrices() {
@@ -332,7 +399,7 @@ function handleAddToCart() {
     name: currentCake.name,
     size: `${selectedSize} (${selectedShape})`,
     shape: selectedShape,
-    flavor: currentCake.flavor || 'Signature Truffle Ganache',
+    flavor: selectedFlavor || currentCake.flavor || 'Signature Truffle Ganache',
     writingOnCake: customMessage,
     customMessage: customMessage || 'None',
     deliveryDate: deliveryDate,
@@ -346,7 +413,8 @@ function handleAddToCart() {
   updateFloatingCartBadge();
 
   // Show Toast
-  showToast(`<strong>${currentCake.name}</strong> (${selectedSize} • ${selectedShape}) added!`);
+  const shortFlavor = (selectedFlavor || '').replace(/\(Recommended\)/i, '').trim();
+  showToast(`<strong>${currentCake.name}</strong> (${selectedSize} • ${shortFlavor || selectedShape}) added!`);
 }
 
 function showToast(htmlContent) {

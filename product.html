@@ -187,6 +187,25 @@
         </div>
       </div>
 
+      <!-- FLAVOUR SELECTION (DROPDOWN LIST) -->
+      <div class="space-y-1.5 pt-1">
+        <label for="flavorSelect" class="block text-xs xs:text-sm font-bold text-[#2e1511]">
+          Flavour
+        </label>
+        <div class="relative">
+          <select id="flavorSelect" onchange="updateSelectedFlavor(this)" class="w-full px-4 py-3 pr-10 rounded-2xl border border-brand-border bg-white text-xs xs:text-sm font-medium text-[#2e1511] appearance-none focus:border-[#b5655a] focus:ring-1 focus:ring-[#b5655a]/20 outline-none cursor-pointer transition-all shadow-2xs">
+            <option value="Classic Chocolate Truffle (Recommended)" selected>Classic Chocolate Truffle (Recommended)</option>
+            <option value="72% Dark Belgian Truffle">72% Dark Belgian Truffle</option>
+            <option value="Hazelnut Truffle Praline">Hazelnut Truffle Praline</option>
+            <option value="Choco Mocha & Espresso">Choco Mocha &amp; Espresso</option>
+            <option value="Chocolate Salted Caramel">Chocolate Salted Caramel</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#705b56]">
+            <span class="material-symbols-outlined text-[20px]">expand_more</span>
+          </div>
+        </div>
+      </div>
+
       <!-- CUSTOM MESSAGE (OPTIONAL) -->
       <div class="space-y-1.5 pt-1">
         <label for="customMessageInput" class="block text-xs xs:text-sm font-bold text-[#2e1511]">
