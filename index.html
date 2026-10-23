@@ -108,70 +108,61 @@
 
   <main class="w-full max-w-[1720px] mx-auto px-3 sm:px-8 lg:px-16 py-4 sm:py-8 space-y-7 sm:space-y-12">
 
-    <!-- 2. HERO SLIDER BANNER (3 PREMIUM AUTO-SWIPE SLIDES - MOBILE RESPONSIVE) -->
+    <!-- 2. HERO SLIDER BANNER (COMPACT 50% REDUCED HEIGHT BANNER CARD) -->
     <section id="heroSliderSection" class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-brand-border/70 shadow-sm group select-none">
       
-      <!-- Left & Right Carousel Arrow Controls (Minimal Floating Chevrons, Safe on Mobile) -->
-      <button onclick="prevHeroSlide()" class="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/40 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none text-brand-dark/50 hover:text-brand-dark transition-all duration-300 z-20 cursor-pointer hover:scale-110 active:scale-90 flex items-center justify-center" aria-label="Previous Slide">
-        <span class="material-symbols-outlined text-[24px] sm:text-[36px] leading-none select-none">chevron_left</span>
+      <!-- Left & Right Carousel Arrow Controls (Minimal Floating Chevrons) -->
+      <button onclick="prevHeroSlide()" class="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/50 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none text-brand-dark/60 hover:text-brand-dark transition-all duration-300 z-20 cursor-pointer hover:scale-110 active:scale-90 flex items-center justify-center" aria-label="Previous Slide">
+        <span class="material-symbols-outlined text-[20px] sm:text-[30px] leading-none select-none">chevron_left</span>
       </button>
-      <button onclick="nextHeroSlide()" class="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/40 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none text-brand-dark/50 hover:text-brand-dark transition-all duration-300 z-20 cursor-pointer hover:scale-110 active:scale-90 flex items-center justify-center" aria-label="Next Slide">
-        <span class="material-symbols-outlined text-[24px] sm:text-[36px] leading-none select-none">chevron_right</span>
+      <button onclick="nextHeroSlide()" class="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/50 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none text-brand-dark/60 hover:text-brand-dark transition-all duration-300 z-20 cursor-pointer hover:scale-110 active:scale-90 flex items-center justify-center" aria-label="Next Slide">
+        <span class="material-symbols-outlined text-[20px] sm:text-[30px] leading-none select-none">chevron_right</span>
       </button>
 
       <!-- Slides Track -->
       <div id="heroSliderTrack" class="flex transition-transform duration-700 ease-in-out w-full">
         
         <!-- SLIDE 1: Fresh Strawberry Celebration -->
-        <div class="min-w-full w-full shrink-0 bg-gradient-to-r from-[#faeae5] via-[#fcefe9] to-[#f6dad5] py-5 px-7 sm:py-8 sm:px-10 lg:py-9 lg:px-12 relative">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center">
-            <!-- Left Content -->
-            <div class="lg:col-span-7 space-y-2.5 sm:space-y-4 z-10 text-left">
-              <span class="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest text-brand-primary/80 block">
-                HOMEMADE • FRESHLY BAKED • MADE WITH LOVE
+        <div class="min-w-full w-full shrink-0 bg-gradient-to-r from-[#faeae5] via-[#fcefe9] to-[#f6dad5] py-3.5 px-5 sm:py-6 sm:px-10 lg:py-7 lg:px-12 relative flex items-center">
+          <div class="flex flex-row items-center justify-between w-full gap-3 sm:gap-6">
+            <!-- Left Text Content -->
+            <div class="flex-1 min-w-0 space-y-1.5 sm:space-y-2.5 z-10 text-left pl-2 sm:pl-0">
+              <span class="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-brand-primary/85 block truncate">
+                HOMEMADE • FRESHLY BAKED • WITH LOVE
               </span>
-              <h1 class="font-serif text-xl sm:text-3xl lg:text-4xl text-brand-dark font-bold leading-snug sm:leading-tight">
+              <h2 class="font-serif text-base sm:text-2xl lg:text-3xl text-brand-dark font-bold leading-tight line-clamp-2">
                 Cakes for Every Celebration ♡
-              </h1>
-              <p class="text-xs sm:text-sm text-brand-dark/75 max-w-md leading-relaxed font-normal line-clamp-2 sm:line-clamp-none">
-                Delicious. Beautiful. Customizable. Made with the finest ingredients, just for you.
+              </h2>
+              <p class="text-[11px] sm:text-xs text-brand-dark/75 line-clamp-1 sm:line-clamp-2 hidden xs:block font-normal">
+                Delicious, beautiful &amp; handcrafted with the finest ingredients.
               </p>
-              <div class="pt-0.5 sm:pt-1">
-                <a href="#popular-cakes" class="inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md active:scale-95">
+              <div class="pt-0.5">
+                <a href="#popular-cakes" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-5 sm:py-2 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-[11px] sm:text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
                   <span>Order Now</span>
-                  <span class="material-symbols-outlined text-[15px] sm:text-[16px]">arrow_forward</span>
+                  <span class="material-symbols-outlined text-[13px] sm:text-[15px]">arrow_forward</span>
                 </a>
               </div>
-              <!-- Badges: Sleek mobile micro-pills, full desktop icons -->
-              <div class="pt-1.5 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-6 text-xs text-brand-dark/80">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-brand-primary shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">eco</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">Freshly Baked</span>
-                </div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-brand-primary shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">cake</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">Custom Designs</span>
-                </div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-brand-primary shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">local_shipping</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">On-Time Delivery</span>
-                </div>
+              <!-- Desktop Micro Badges -->
+              <div class="pt-1 hidden md:flex items-center gap-4 text-xs text-brand-dark/80">
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-brand-primary">eco</span> Freshly Baked
+                </span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-brand-primary">cake</span> Custom Designs
+                </span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-brand-primary">local_shipping</span> Chilled Delivery
+                </span>
               </div>
             </div>
-            <!-- Right Visual -->
-            <div class="lg:col-span-5 relative flex items-center justify-center mt-1 sm:mt-0">
-              <div class="relative w-full max-w-[220px] sm:max-w-sm h-36 sm:h-52 lg:h-64 flex items-center justify-center">
-                <img class="w-full h-full object-contain drop-shadow-xl rounded-xl transition-transform duration-500 hover:scale-105" alt="Fresh Strawberry Celebration Cake" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&auto=format&fit=crop&q=80"/>
+            <!-- Right Visual Image -->
+            <div class="shrink-0 relative flex items-center justify-center">
+              <div class="w-28 h-28 xs:w-36 xs:h-36 sm:w-44 sm:h-44 lg:w-56 lg:h-56 flex items-center justify-center">
+                <img class="w-full h-full object-contain drop-shadow-md sm:drop-shadow-xl rounded-xl transition-transform duration-500 hover:scale-105" alt="Fresh Strawberry Celebration Cake" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&auto=format&fit=crop&q=80"/>
               </div>
-              <div class="absolute -top-1 right-1 sm:right-4 select-none pointer-events-none hidden sm:block">
-                <p class="font-cursive text-2xl sm:text-3xl lg:text-4xl text-brand-primary/85 leading-tight rotate-[-4deg] text-right">
-                  Sweet<br/>Moments<br/>Bigger<br/>Happiness ♡
+              <div class="absolute -top-1 -right-1 select-none pointer-events-none hidden lg:block">
+                <p class="font-cursive text-xl lg:text-2xl text-brand-primary/80 leading-tight rotate-[-4deg] text-right">
+                  Sweet<br/>Moments ♡
                 </p>
               </div>
             </div>
@@ -179,55 +170,46 @@
         </div>
 
         <!-- SLIDE 2: Pure Belgian Dark Chocolate & Truffle -->
-        <div class="min-w-full w-full shrink-0 bg-gradient-to-r from-[#f5eae2] via-[#f3ded2] to-[#edd0c3] py-5 px-7 sm:py-8 sm:px-10 lg:py-9 lg:px-12 relative">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center">
-            <!-- Left Content -->
-            <div class="lg:col-span-7 space-y-2.5 sm:space-y-4 z-10 text-left">
-              <span class="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest text-[#5e201d]/90 block">
-                100% PURE COUVERTURE • NO PRESERVATIVES • RICH &amp; DECADENT
+        <div class="min-w-full w-full shrink-0 bg-gradient-to-r from-[#f5eae2] via-[#f3ded2] to-[#edd0c3] py-3.5 px-5 sm:py-6 sm:px-10 lg:py-7 lg:px-12 relative flex items-center">
+          <div class="flex flex-row items-center justify-between w-full gap-3 sm:gap-6">
+            <!-- Left Text Content -->
+            <div class="flex-1 min-w-0 space-y-1.5 sm:space-y-2.5 z-10 text-left pl-2 sm:pl-0">
+              <span class="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-[#5e201d]/90 block truncate">
+                100% PURE COUVERTURE • NO PRESERVATIVES
               </span>
-              <h2 class="font-serif text-xl sm:text-3xl lg:text-4xl text-[#3d1411] font-bold leading-snug sm:leading-tight">
+              <h2 class="font-serif text-base sm:text-2xl lg:text-3xl text-[#3d1411] font-bold leading-tight line-clamp-2">
                 Pure Belgian Chocolate Bliss 🍫
               </h2>
-              <p class="text-xs sm:text-sm text-[#3d1411]/75 max-w-md leading-relaxed font-normal line-clamp-2 sm:line-clamp-none">
-                Silky Valrhona dark chocolate ganache layered with crunchy hazelnut praline &amp; glossy cocoa mirror glaze.
+              <p class="text-[11px] sm:text-xs text-[#3d1411]/75 line-clamp-1 sm:line-clamp-2 hidden xs:block font-normal">
+                Silky Valrhona dark chocolate ganache layered with crunchy praline.
               </p>
-              <div class="pt-0.5 sm:pt-1">
-                <a href="#popular-cakes" class="inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 bg-[#421613] hover:bg-[#5e201d] text-white rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md active:scale-95">
+              <div class="pt-0.5">
+                <a href="#popular-cakes" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-5 sm:py-2 bg-[#421613] hover:bg-[#5e201d] text-white rounded-full text-[11px] sm:text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
                   <span>Taste The Luxury</span>
-                  <span class="material-symbols-outlined text-[15px] sm:text-[16px]">arrow_forward</span>
+                  <span class="material-symbols-outlined text-[13px] sm:text-[15px]">arrow_forward</span>
                 </a>
               </div>
-              <!-- Badges: Sleek mobile micro-pills, full desktop icons -->
-              <div class="pt-1.5 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-6 text-xs text-[#3d1411]/80">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-[#5e201d] shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">cookie</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">72% Dark Cocoa</span>
-                </div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-[#5e201d] shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">verified</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">Eggless Available</span>
-                </div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-[#5e201d] shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">ac_unit</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">Chilled Delivery</span>
-                </div>
+              <!-- Desktop Micro Badges -->
+              <div class="pt-1 hidden md:flex items-center gap-4 text-xs text-[#3d1411]/80">
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-[#5e201d]">cookie</span> 72% Dark Cocoa
+                </span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-[#5e201d]">verified</span> Eggless Available
+                </span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-[#5e201d]">ac_unit</span> Chilled Delivery
+                </span>
               </div>
             </div>
-            <!-- Right Visual -->
-            <div class="lg:col-span-5 relative flex items-center justify-center mt-1 sm:mt-0">
-              <div class="relative w-full max-w-[220px] sm:max-w-sm h-36 sm:h-52 lg:h-64 flex items-center justify-center">
-                <img class="w-full h-full object-contain drop-shadow-xl rounded-xl transition-transform duration-500 hover:scale-105" alt="Pure Chocolate Truffle Cake" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80"/>
+            <!-- Right Visual Image -->
+            <div class="shrink-0 relative flex items-center justify-center">
+              <div class="w-28 h-28 xs:w-36 xs:h-36 sm:w-44 sm:h-44 lg:w-56 lg:h-56 flex items-center justify-center">
+                <img class="w-full h-full object-contain drop-shadow-md sm:drop-shadow-xl rounded-xl transition-transform duration-500 hover:scale-105" alt="Pure Chocolate Truffle Cake" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80"/>
               </div>
-              <div class="absolute -top-1 right-1 sm:right-4 select-none pointer-events-none hidden sm:block">
-                <p class="font-cursive text-2xl sm:text-3xl lg:text-4xl text-[#5e201d]/90 leading-tight rotate-[-4deg] text-right">
-                  Rich<br/>Cocoa<br/>Pure<br/>Decadence ♡
+              <div class="absolute -top-1 -right-1 select-none pointer-events-none hidden lg:block">
+                <p class="font-cursive text-xl lg:text-2xl text-[#5e201d]/85 leading-tight rotate-[-4deg] text-right">
+                  Rich<br/>Decadence ♡
                 </p>
               </div>
             </div>
@@ -235,55 +217,46 @@
         </div>
 
         <!-- SLIDE 3: Signature Red Velvet & Berry Delights -->
-        <div class="min-w-full w-full shrink-0 bg-gradient-to-r from-[#fbf0f4] via-[#f9e5ec] to-[#f3d7e2] py-5 px-7 sm:py-8 sm:px-10 lg:py-9 lg:px-12 relative">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center">
-            <!-- Left Content -->
-            <div class="lg:col-span-7 space-y-2.5 sm:space-y-4 z-10 text-left">
-              <span class="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest text-brand-primary/80 block">
-                SIGNATURE ATELIER • RED VELVET • FRESH BERRY CREAMS
+        <div class="min-w-full w-full shrink-0 bg-gradient-to-r from-[#fbf0f4] via-[#f9e5ec] to-[#f3d7e2] py-3.5 px-5 sm:py-6 sm:px-10 lg:py-7 lg:px-12 relative flex items-center">
+          <div class="flex flex-row items-center justify-between w-full gap-3 sm:gap-6">
+            <!-- Left Text Content -->
+            <div class="flex-1 min-w-0 space-y-1.5 sm:space-y-2.5 z-10 text-left pl-2 sm:pl-0">
+              <span class="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-brand-primary/80 block truncate">
+                SIGNATURE ATELIER • RED VELVET • FRESH BERRIES
               </span>
-              <h2 class="font-serif text-xl sm:text-3xl lg:text-4xl text-brand-dark font-bold leading-snug sm:leading-tight">
+              <h2 class="font-serif text-base sm:text-2xl lg:text-3xl text-brand-dark font-bold leading-tight line-clamp-2">
                 Artisan Red Velvet &amp; Berry Bliss 🍓
               </h2>
-              <p class="text-xs sm:text-sm text-brand-dark/75 max-w-md leading-relaxed font-normal line-clamp-2 sm:line-clamp-none">
-                Velvety cocoa sponge layered with whipped cream cheese, infused Madagascar vanilla &amp; garden-fresh wild berries.
+              <p class="text-[11px] sm:text-xs text-brand-dark/75 line-clamp-1 sm:line-clamp-2 hidden xs:block font-normal">
+                Velvety cocoa sponge layered with whipped cream cheese &amp; wild berries.
               </p>
-              <div class="pt-0.5 sm:pt-1">
-                <a href="#popular-cakes" class="inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md active:scale-95">
+              <div class="pt-0.5">
+                <a href="#popular-cakes" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-5 sm:py-2 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-[11px] sm:text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
                   <span>Explore Collection</span>
-                  <span class="material-symbols-outlined text-[15px] sm:text-[16px]">arrow_forward</span>
+                  <span class="material-symbols-outlined text-[13px] sm:text-[15px]">arrow_forward</span>
                 </a>
               </div>
-              <!-- Badges: Sleek mobile micro-pills, full desktop icons -->
-              <div class="pt-1.5 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-6 text-xs text-brand-dark/80">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-brand-primary shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">eco</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">100% Wild Berries</span>
-                </div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-brand-primary shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">restaurant</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">Cream Cheese Frosting</span>
-                </div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 sm:p-0 rounded-full bg-white/70 sm:bg-transparent border border-brand-border/60 sm:border-0 shadow-xs sm:shadow-none">
-                  <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full sm:bg-white/80 sm:border sm:border-brand-border flex items-center justify-center text-brand-primary shrink-0">
-                    <span class="material-symbols-outlined text-[13px] sm:text-[16px]">local_shipping</span>
-                  </div>
-                  <span class="font-semibold text-[10px] sm:text-[11px]">Chilled Delivery</span>
-                </div>
+              <!-- Desktop Micro Badges -->
+              <div class="pt-1 hidden md:flex items-center gap-4 text-xs text-brand-dark/80">
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-brand-primary">eco</span> 100% Wild Berries
+                </span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-brand-primary">restaurant</span> Cream Cheese
+                </span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium">
+                  <span class="material-symbols-outlined text-[14px] text-brand-primary">local_shipping</span> Chilled Delivery
+                </span>
               </div>
             </div>
-            <!-- Right Visual -->
-            <div class="lg:col-span-5 relative flex items-center justify-center mt-1 sm:mt-0">
-              <div class="relative w-full max-w-[220px] sm:max-w-sm h-36 sm:h-52 lg:h-64 flex items-center justify-center">
-                <img class="w-full h-full object-contain drop-shadow-xl rounded-xl transition-transform duration-500 hover:scale-105" alt="Artisan Red Velvet Berry Cake" src="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&auto=format&fit=crop&q=80"/>
+            <!-- Right Visual Image -->
+            <div class="shrink-0 relative flex items-center justify-center">
+              <div class="w-28 h-28 xs:w-36 xs:h-36 sm:w-44 sm:h-44 lg:w-56 lg:h-56 flex items-center justify-center">
+                <img class="w-full h-full object-contain drop-shadow-md sm:drop-shadow-xl rounded-xl transition-transform duration-500 hover:scale-105" alt="Artisan Red Velvet Berry Cake" src="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&auto=format&fit=crop&q=80"/>
               </div>
-              <div class="absolute -top-1 right-1 sm:right-4 select-none pointer-events-none hidden sm:block">
-                <p class="font-cursive text-2xl sm:text-3xl lg:text-4xl text-brand-primary/85 leading-tight rotate-[-4deg] text-right">
-                  Velvet<br/>Elegance<br/>Pure<br/>Romance ♡
+              <div class="absolute -top-1 -right-1 select-none pointer-events-none hidden lg:block">
+                <p class="font-cursive text-xl lg:text-2xl text-brand-primary/80 leading-tight rotate-[-4deg] text-right">
+                  Velvet<br/>Romance ♡
                 </p>
               </div>
             </div>
@@ -293,10 +266,10 @@
       </div>
 
       <!-- Pagination Indicators (Bottom Middle Minimal Floating Dots & Loader) -->
-      <div id="heroPagination" class="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 flex items-center justify-center gap-1.5 z-20">
-        <button type="button" onclick="goToHeroSlide(0)" class="hero-indicator relative h-1.5 transition-all duration-300 cursor-pointer rounded-full overflow-hidden p-0" aria-label="Slide 1"></button>
-        <button type="button" onclick="goToHeroSlide(1)" class="hero-indicator relative h-1.5 transition-all duration-300 cursor-pointer rounded-full overflow-hidden p-0" aria-label="Slide 2"></button>
-        <button type="button" onclick="goToHeroSlide(2)" class="hero-indicator relative h-1.5 transition-all duration-300 cursor-pointer rounded-full overflow-hidden p-0" aria-label="Slide 3"></button>
+      <div id="heroPagination" class="absolute bottom-1.5 sm:bottom-2 left-1/2 -translate-x-1/2 flex items-center justify-center gap-1.5 z-20">
+        <button type="button" onclick="goToHeroSlide(0)" class="hero-indicator relative h-1 transition-all duration-300 cursor-pointer rounded-full overflow-hidden p-0" aria-label="Slide 1"></button>
+        <button type="button" onclick="goToHeroSlide(1)" class="hero-indicator relative h-1 transition-all duration-300 cursor-pointer rounded-full overflow-hidden p-0" aria-label="Slide 2"></button>
+        <button type="button" onclick="goToHeroSlide(2)" class="hero-indicator relative h-1 transition-all duration-300 cursor-pointer rounded-full overflow-hidden p-0" aria-label="Slide 3"></button>
       </div>
     </section>
 
