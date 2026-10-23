@@ -82,30 +82,26 @@
         <a href="dashboard.html" class="hover:text-brand-pink transition-colors">About</a>
       </nav>
 
-      <!-- Right Action Cluster -->
-      <div class="flex items-center gap-3 sm:gap-4">
+      <!-- Right Action Cluster: Track, Login, Cart -->
+      <div class="flex items-center gap-2.5 sm:gap-4">
         
-        <!-- Search Pill -->
-        <div class="relative hidden sm:block w-48 md:w-64">
-          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-dark/40 text-[18px]">search</span>
-          <input type="text" id="cakeSearchInput" placeholder="Search cakes, flavors, occasions..." class="w-full pl-9 pr-4 py-2 bg-white/80 border border-brand-border/80 rounded-full text-xs text-brand-dark placeholder:text-brand-dark/40 focus:border-brand-pink focus:ring-1 focus:ring-brand-pink/20 transition-all outline-none"/>
-        </div>
-
-        <!-- Wishlist Icon -->
-        <button onclick="showToast('Wishlist', 'You have 0 saved items.')" aria-label="Wishlist" class="p-2 text-brand-dark/80 hover:text-brand-pink transition-colors flex items-center">
-          <span class="material-symbols-outlined text-[22px]">favorite</span>
+        <!-- 1. Track Order Button -->
+        <button type="button" onclick="openTrackOrderModal()" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full border border-brand-border/80 bg-white/80 hover:bg-white text-xs font-semibold text-brand-dark hover:text-brand-primary shadow-sm hover:border-brand-pink transition-all active:scale-95 cursor-pointer">
+          <span class="material-symbols-outlined text-[17px] text-brand-primary">local_shipping</span>
+          <span>Track Order</span>
         </button>
 
-        <!-- Cart Bag with Badge -->
-        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2 text-brand-dark/80 hover:text-brand-pink transition-colors flex items-center">
-          <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
-          <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-brand-pink text-white text-[10px] font-bold flex items-center justify-center cart-bag-text">2</span>
-        </a>
-
-        <!-- Login / Owner Portal Button -->
+        <!-- 2. Login Button -->
         <a href="dashboard.html" class="px-5 py-2 bg-brand-dark hover:bg-brand-primary text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
           Login
         </a>
+
+        <!-- 3. Cart Button with Badge -->
+        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2.5 rounded-full bg-white/80 hover:bg-white border border-brand-border/70 text-brand-dark hover:text-brand-pink shadow-sm transition-all flex items-center justify-center active:scale-95">
+          <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+          <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-brand-pink text-white text-[10px] font-bold flex items-center justify-center cart-bag-text">2</span>
+        </a>
+
       </div>
     </div>
   </header>
@@ -674,6 +670,44 @@
       <p>&copy; 2026 SweetNest. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- TRACK ORDER MODAL -->
+  <div id="trackOrderModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-dark/40 backdrop-blur-sm transition-opacity">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-brand-border/80 shadow-2xl relative space-y-5 animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Close button -->
+      <button onclick="closeTrackOrderModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-brand-pill hover:bg-brand-peach flex items-center justify-center text-brand-dark transition-colors cursor-pointer" aria-label="Close Modal">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary shrink-0">
+          <span class="material-symbols-outlined text-[22px]">local_shipping</span>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl font-bold text-brand-dark">Track Your Cake Order</h3>
+          <p class="text-xs text-brand-dark/60 mt-0.5">Real-time baking &amp; cold-chain courier tracking</p>
+        </div>
+      </div>
+
+      <!-- Search Input for Order -->
+      <div class="flex gap-2">
+        <div class="relative flex-1">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-brand-dark/40 text-[18px]">search</span>
+          <input type="text" id="trackOrderInput" placeholder="Enter Order ID (e.g. CC-2026-109)..." class="w-full pl-9 pr-3 py-2.5 bg-brand-light border border-brand-border rounded-xl text-xs text-brand-dark outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink/20 transition-all"/>
+        </div>
+        <button onclick="executeTrackOrder()" class="px-5 py-2.5 bg-brand-dark hover:bg-brand-primary text-white text-xs font-semibold rounded-xl transition-all shadow-sm active:scale-95 cursor-pointer">
+          Track
+        </button>
+      </div>
+
+      <!-- Live Order Status Result Container -->
+      <div id="trackOrderResult" class="space-y-4 pt-1">
+        <!-- Will be populated dynamically by JS -->
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification Floating Widget -->
   <div id="quickToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-white border border-brand-pink/40 shadow-2xl p-4 rounded-2xl max-w-sm flex items-center gap-3">

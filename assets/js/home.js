@@ -231,3 +231,87 @@ function checkEmptyState() {
     emptyState.classList.add('hidden');
   }
 }
+
+// --- Track Order Modal Handlers ---
+function openTrackOrderModal() {
+  const modal = document.getElementById('trackOrderModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    const orders = window.CC_CORE ? CC_CORE.getOrders() : [];
+    const latestOrder = orders.length > 0 ? orders[0] : null;
+    const input = document.getElementById('trackOrderInput');
+    if (input && latestOrder && !input.value) {
+      input.value = latestOrder.id;
+    }
+    executeTrackOrder();
+  }
+}
+
+function closeTrackOrderModal() {
+  const modal = document.getElementById('trackOrderModal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+function executeTrackOrder() {
+  const input = document.getElementById('trackOrderInput');
+  const query = input ? input.value.trim().toUpperCase() : '';
+  const resultContainer = document.getElementById('trackOrderResult');
+  if (!resultContainer) return;
+
+  const orders = window.CC_CORE ? CC_CORE.getOrders() : [];
+  let found = null;
+  if (query) {
+    found = orders.find(o => o.id.toUpperCase().includes(query) || (o.phone && o.phone.includes(query)));
+  }
+  if (!found && orders.length > 0) {
+    found = orders[0];
+  }
+
+  if (!found) {
+    resultContainer.innerHTML = `
+      <div class="text-center py-6 text-brand-dark/60 text-xs">
+        <span class="material-symbols-outlined text-3xl text-brand-dark/30 mb-2 block">receipt_long</span>
+        No orders found for reference "${query}". Please verify your order ID.
+      </div>
+    `;
+    return;
+  }
+
+  resultContainer.innerHTML = `
+    <div class="p-3.5 bg-brand-peach/50 rounded-2xl border border-brand-border/60 text-xs space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="font-bold text-brand-dark">Order ${found.id}</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold text-[11px]">${found.status || 'Baking in Oven'}</span>
+      </div>
+      <p class="text-brand-dark/70 text-[11px]">Patron: <strong>${found.customerName}</strong> • ${found.items && found.items.length ? found.items[0].name : 'Artisan Cake'}</p>
+      <p class="text-brand-dark/60 text-[10px]">Estimated Delivery: <strong>${found.requestedDate || 'Today'}, ${found.timeSlot || '2:00 PM - 5:00 PM'}</strong></p>
+    </div>
+
+    <!-- Stepper Tracker -->
+    <div class="relative pl-6 space-y-4 border-l-2 border-brand-pink/40 ml-3 py-1">
+      <div class="relative flex items-center gap-3">
+        <span class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand-pink flex items-center justify-center text-white text-[10px]">✓</span>
+        <div>
+          <h4 class="font-bold text-xs text-brand-dark">Order Confirmed &amp; Queued</h4>
+          <p class="text-[10px] text-brand-dark/60">Ingredients selected &amp; baker assigned</p>
+        </div>
+      </div>
+      <div class="relative flex items-center gap-3">
+        <span class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand-pink flex items-center justify-center text-white text-[10px]">✓</span>
+        <div>
+          <h4 class="font-bold text-xs text-brand-dark">Freshly Baking in Oven</h4>
+          <p class="text-[10px] text-brand-dark/60">180°C slow sponge baking in progress</p>
+        </div>
+      </div>
+      <div class="relative flex items-center gap-3">
+        <span class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand-primary animate-pulse flex items-center justify-center text-white text-[10px]">●</span>
+        <div>
+          <h4 class="font-bold text-xs text-brand-primary">Frosting &amp; Chilled Courier Dispatch</h4>
+          <p class="text-[10px] text-brand-dark/60">Hand-piped decorations &amp; packed in insulated box</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
