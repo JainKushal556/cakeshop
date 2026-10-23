@@ -146,6 +146,9 @@ function initProductPage() {
   // Initialize Flavour Dropdown
   initFlavors();
 
+  // Populate Related Products
+  initRelatedProducts();
+
   // Set initial character count
   const msgInput = document.getElementById('customMessageInput');
   if (msgInput) updateCharCount(msgInput);
@@ -436,4 +439,157 @@ function showToast(htmlContent) {
       toast.classList.add('hidden');
     }, 3500);
   }
+}
+
+// Populate Related / You May Also Like Cakes
+function initRelatedProducts() {
+  const container = document.getElementById('relatedProductsContainer');
+  if (!container || !window.CC_CORE) return;
+
+  const otherCakes = CC_CORE.catalogue
+    .filter(c => !currentCake || c.id !== currentCake.id)
+    .slice(0, 4);
+
+  container.innerHTML = otherCakes.map(cake => `
+    <div class="p-2.5 rounded-2xl bg-[#fdfbf9] border border-brand-border/70 hover:border-brand-primary/40 transition-all flex flex-col justify-between group shadow-2xs">
+      <div>
+        <a href="product.html?id=${cake.id}" class="block aspect-square rounded-xl overflow-hidden bg-brand-pill/40 relative">
+          <img src="${cake.image}" alt="${cake.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+          ${cake.eggless ? `
+            <span class="absolute top-1.5 left-1.5 bg-white/90 backdrop-blur-xs text-emerald-900 text-[8px] font-bold px-1.5 py-0.5 rounded-md flex items-center gap-1 shadow-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Eggless
+            </span>
+          ` : ''}
+        </a>
+        <div class="mt-2 space-y-0.5">
+          <a href="product.html?id=${cake.id}" class="font-serif text-xs xs:text-sm font-bold text-brand-dark group-hover:text-brand-primary transition-colors line-clamp-1 block">
+            ${cake.name}
+          </a>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-[#5e201b]">₹${cake.price.toLocaleString('en-IN')}</span>
+            <div class="flex items-center text-[10px] text-amber-500 font-semibold">
+              <span class="material-symbols-outlined text-[12px] material-symbols-fill">star</span>
+              <span class="text-brand-dark/70 ml-0.5">${cake.rating || '4.9'}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-2.5 pt-2 border-t border-brand-border/40 flex items-center justify-between gap-1.5">
+        <a href="product.html?id=${cake.id}" class="text-[10px] font-semibold text-[#705b56] hover:text-[#b5655a] transition-colors">
+          View
+        </a>
+        <button type="button" onclick="quickAddRelated('${cake.id}')" class="px-2.5 py-1 bg-brand-dark hover:bg-brand-primary text-white text-[10px] font-bold rounded-lg transition-all active:scale-95 flex items-center gap-0.5 cursor-pointer shadow-xs">
+          <span class="material-symbols-outlined text-[13px]">add</span>
+          <span>Add</span>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function quickAddRelated(cakeId) {
+  const item = CC_CORE.catalogue.find(c => c.id === cakeId);
+  if (!item) return;
+
+  CC_CORE.addToCart({
+    cakeId: item.id,
+    name: item.name,
+    size: '0.5 kg (Round)',
+    shape: 'Round',
+    flavor: item.flavor || 'Signature Flavour',
+    writingOnCake: 'Celebration',
+    customMessage: 'None',
+    deliveryDate: 'Tomorrow',
+    price: item.price,
+    quantity: 1,
+    image: item.image,
+    eggless: item.eggless !== false
+  });
+
+  updateFloatingCartBadge();
+  showToast(`<strong>${item.name}</strong> added to your cart!`);
+}
+
+function openTrackOrderModal() {
+  const modal = document.getElementById('trackOrderModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    const orders = window.CC_CORE ? CC_CORE.getOrders() : [];
+    const latestOrder = orders.length > 0 ? orders[0] : null;
+    const input = document.getElementById('trackOrderInput');
+    if (input && latestOrder && !input.value) {
+      input.value = latestOrder.id;
+    }
+    executeTrackOrder();
+  }
+}
+
+function closeTrackOrderModal() {
+  const modal = document.getElementById('trackOrderModal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+function executeTrackOrder() {
+  const input = document.getElementById('trackOrderInput');
+  const query = input ? input.value.trim().toUpperCase() : '';
+  const resultContainer = document.getElementById('trackOrderResult');
+  if (!resultContainer) return;
+
+  const orders = window.CC_CORE ? CC_CORE.getOrders() : [];
+  let found = null;
+  if (query) {
+    found = orders.find(o => o.id.toUpperCase().includes(query) || (o.phone && o.phone.includes(query)));
+  }
+  if (!found && orders.length > 0) {
+    found = orders[0];
+  }
+
+  if (!found) {
+    resultContainer.innerHTML = `
+      <div class="text-center py-6 text-brand-dark/60 text-xs">
+        <span class="material-symbols-outlined text-3xl text-brand-dark/30 mb-2 block">receipt_long</span>
+        No orders found for reference "${query}". Please verify your order ID.
+      </div>
+    `;
+    return;
+  }
+
+  resultContainer.innerHTML = `
+    <div class="p-3.5 bg-[#faece9]/50 rounded-2xl border border-brand-border/60 text-xs space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="font-bold text-brand-dark">Order ${found.id}</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold text-[11px]">${found.status || 'Baking in Oven'}</span>
+      </div>
+      <p class="text-brand-dark/70 text-[11px]">Patron: <strong>${found.customerName}</strong> • ${found.items && found.items.length ? found.items[0].name : 'Artisan Cake'}</p>
+      <p class="text-brand-dark/60 text-[10px]">Estimated Delivery: <strong>${found.requestedDate || 'Today'}, ${found.timeSlot || '2:00 PM - 5:00 PM'}</strong></p>
+    </div>
+
+    <!-- Stepper Tracker -->
+    <div class="relative pl-6 space-y-4 border-l-2 border-brand-primary/40 ml-3 py-1">
+      <div class="relative flex items-center gap-3">
+        <span class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand-primary flex items-center justify-center text-white text-[10px]">✓</span>
+        <div>
+          <h4 class="font-bold text-xs text-brand-dark">Order Confirmed &amp; Queued</h4>
+          <p class="text-[10px] text-brand-dark/60">Ingredients selected &amp; baker assigned</p>
+        </div>
+      </div>
+      <div class="relative flex items-center gap-3">
+        <span class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand-primary flex items-center justify-center text-white text-[10px]">✓</span>
+        <div>
+          <h4 class="font-bold text-xs text-brand-dark">Freshly Baking in Oven</h4>
+          <p class="text-[10px] text-brand-dark/60">180°C slow sponge baking in progress</p>
+        </div>
+      </div>
+      <div class="relative flex items-center gap-3">
+        <span class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand-border flex items-center justify-center text-brand-dark/40 text-[10px]">3</span>
+        <div>
+          <h4 class="font-bold text-xs text-brand-dark/60">Cold-Chain Hand-Courier</h4>
+          <p class="text-[10px] text-brand-dark/40">Thermodynamic chilled box dispatch</p>
+        </div>
+      </div>
+    </div>
+  `;
 }
