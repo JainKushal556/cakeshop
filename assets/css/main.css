@@ -54,3 +54,16 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Ensure single arrow on custom styled select dropdowns */
+select.no-native-arrow,
+#flavorSelect {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+}
+select::-ms-expand {
+  display: none;
+}
+

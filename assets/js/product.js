@@ -10,6 +10,7 @@ let selectedSize = '0.5 kg';
 let selectedMultiplier = 1.0;
 let selectedShape = 'Round';
 let selectedFlavor = 'Classic Chocolate Truffle (Recommended)';
+let isEggless = true;
 let isWishlisted = false;
 
 // Curated Gourmet Flavour Profiles per cake
@@ -115,16 +116,10 @@ function initProductPage() {
   if (cakeDesc) cakeDesc.innerText = found.desc || 'Rich and moist homemade cake crafted with premium ingredients and love.';
   if (reviewsCount) reviewsCount.innerText = `(${found.reviewsCount || 120} reviews)`;
 
-  // Eggless Indicator
-  const egglessPill = document.getElementById('egglessPill');
-  const egglessText = document.getElementById('egglessText');
-  if (egglessPill && egglessText) {
-    if (found.eggless !== false) {
-      egglessText.innerText = 'Eggless available';
-    } else {
-      egglessText.innerText = 'Contains Fresh Eggs';
-    }
-  }
+  // Dietary (Eggless / With Egg) Setup
+  const isVegAvailable = found.eggless !== false;
+  isEggless = isVegAvailable;
+  initDietaryToggle(isVegAvailable);
 
   // Setup Gallery Images
   if (cakeGalleries[found.id]) {
@@ -175,6 +170,108 @@ function initFlavors() {
 function updateSelectedFlavor(selectEl) {
   if (selectEl) {
     selectedFlavor = selectEl.value;
+  }
+}
+
+function initDietaryToggle(isVegAvailable) {
+  const toggleWrapper = document.getElementById('dietaryToggleWrapper');
+  if (!toggleWrapper) return;
+
+  if (!isVegAvailable) {
+    // Cake only contains fresh eggs (no veg available)
+    toggleWrapper.innerHTML = `
+      <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#fecaca] bg-[#fef2f2] text-[#b91c1c] text-[10px] xs:text-[11px] font-bold">
+        <span class="w-3.5 h-3.5 rounded-[3px] border border-[#b91c1c] flex items-center justify-center p-[2px] bg-white shrink-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#b91c1c]"></span>
+        </span>
+        <span>With Fresh Egg</span>
+      </div>
+    `;
+    updateDietaryUI(false);
+  } else {
+    updateDietaryUI(isEggless);
+  }
+}
+
+function toggleDietaryPreference() {
+  if (!currentCake || currentCake.eggless === false) return;
+  isEggless = !isEggless;
+  updateDietaryUI(isEggless);
+
+  if (isEggless) {
+    showToast('Switched to <strong>100% Eggless (Pure Veg)</strong> bake 🟢');
+  } else {
+    showToast('Switched to <strong>With Fresh Eggs</strong> bake 🔴');
+  }
+  updateSummary();
+}
+
+function updateDietaryUI(egglessActive) {
+  const toggleBtn = document.getElementById('dietaryToggleBtn');
+  const iconBox = document.getElementById('dietaryIconBox');
+  const dot = document.getElementById('dietaryDot');
+  const label = document.getElementById('dietaryLabel');
+  const track = document.getElementById('dietarySwitchTrack');
+  const thumb = document.getElementById('dietarySwitchThumb');
+  
+  const egglessPill = document.getElementById('egglessPill');
+  const egglessDot = document.getElementById('egglessDot');
+  const egglessText = document.getElementById('egglessText');
+
+  if (egglessActive) {
+    // 🟢 GREEN / VEG EGGLESS STATE
+    if (toggleBtn) {
+      toggleBtn.className = 'group flex items-center gap-1.5 xs:gap-2 px-2.5 py-1 rounded-full border border-[#c2e7cc] bg-[#f0f9f3] text-[#166534] transition-all duration-200 cursor-pointer select-none active:scale-95 shadow-2xs hover:shadow-xs';
+      toggleBtn.setAttribute('title', 'Currently Eggless (Pure Veg) — Click to switch to With Egg');
+    }
+    if (iconBox) {
+      iconBox.className = 'w-3.5 h-3.5 rounded-[3px] border border-[#166534] flex items-center justify-center p-[2px] bg-white shrink-0';
+    }
+    if (dot) {
+      dot.className = 'w-1.5 h-1.5 rounded-full bg-[#166534]';
+    }
+    if (label) {
+      label.innerText = 'Eggless';
+      label.className = 'text-[10px] xs:text-[11px] font-bold tracking-tight text-[#166534]';
+    }
+    if (track) {
+      track.className = 'w-7 h-4 rounded-full bg-[#16a34a] p-0.5 flex items-center transition-colors duration-200';
+    }
+    if (thumb) {
+      thumb.className = 'w-3 h-3 rounded-full bg-white shadow-xs transition-transform duration-200 translate-x-3';
+    }
+
+    // Top Pill Sync
+    if (egglessPill) egglessPill.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#edf7f0] border border-[#d2edd9] text-[#235835] text-[10px] xs:text-[11px] font-semibold transition-all';
+    if (egglessDot) egglessDot.className = 'w-2 h-2 rounded-full bg-emerald-600 transition-colors';
+    if (egglessText) egglessText.innerText = '100% Eggless';
+  } else {
+    // 🔴 RED / WITH EGG STATE
+    if (toggleBtn) {
+      toggleBtn.className = 'group flex items-center gap-1.5 xs:gap-2 px-2.5 py-1 rounded-full border border-[#fecaca] bg-[#fef2f2] text-[#b91c1c] transition-all duration-200 cursor-pointer select-none active:scale-95 shadow-2xs hover:shadow-xs';
+      toggleBtn.setAttribute('title', 'Currently With Egg — Click to switch to Eggless');
+    }
+    if (iconBox) {
+      iconBox.className = 'w-3.5 h-3.5 rounded-[3px] border border-[#b91c1c] flex items-center justify-center p-[2px] bg-white shrink-0';
+    }
+    if (dot) {
+      dot.className = 'w-1.5 h-1.5 rounded-full bg-[#b91c1c]';
+    }
+    if (label) {
+      label.innerText = 'With Egg';
+      label.className = 'text-[10px] xs:text-[11px] font-bold tracking-tight text-[#b91c1c]';
+    }
+    if (track) {
+      track.className = 'w-7 h-4 rounded-full bg-[#dc2626] p-0.5 flex items-center transition-colors duration-200';
+    }
+    if (thumb) {
+      thumb.className = 'w-3 h-3 rounded-full bg-white shadow-xs transition-transform duration-200 translate-x-0';
+    }
+
+    // Top Pill Sync
+    if (egglessPill) egglessPill.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fef2f2] border border-[#fecaca] text-[#b91c1c] text-[10px] xs:text-[11px] font-semibold transition-all';
+    if (egglessDot) egglessDot.className = 'w-2 h-2 rounded-full bg-red-600 transition-colors';
+    if (egglessText) egglessText.innerText = 'Contains Fresh Eggs';
   }
 }
 
@@ -237,7 +334,10 @@ function updateSummary() {
     setTimeout(() => dynPrice.classList.remove('scale-105'), 180);
   }
   if (bottomBarPrice) bottomBarPrice.innerText = priceFormatted;
-  if (bottomBarSummary) bottomBarSummary.innerText = `${selectedSize} • ${selectedShape}`;
+  if (bottomBarSummary) {
+    const dietTag = isEggless ? 'Veg' : 'With Egg';
+    bottomBarSummary.innerText = `${selectedSize} • ${selectedShape} • ${dietTag}`;
+  }
 }
 
 function initGallery() {
@@ -418,7 +518,8 @@ function handleAddToCart() {
     price: finalPrice,
     quantity: 1,
     image: currentGallery[0] || currentCake.image,
-    eggless: currentCake.eggless !== false
+    eggless: isEggless,
+    dietary: isEggless ? '100% Eggless (Pure Veg)' : 'With Fresh Eggs'
   };
 
   CC_CORE.addToCart(cartItem);
@@ -426,7 +527,8 @@ function handleAddToCart() {
 
   // Show Toast
   const shortFlavor = (selectedFlavor || '').replace(/\(Recommended\)/i, '').trim();
-  showToast(`<strong>${currentCake.name}</strong> (${selectedSize} • ${shortFlavor || selectedShape}) added!`);
+  const dietBadge = isEggless ? 'Eggless 🟢' : 'With Egg 🔴';
+  showToast(`<strong>${currentCake.name}</strong> (${selectedSize} • ${dietBadge}) added!`);
 }
 
 function showToast(htmlContent) {
