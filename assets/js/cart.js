@@ -25,13 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (p.name && document.getElementById('custName')) document.getElementById('custName').value = p.name;
       if (p.phone && document.getElementById('custPhone')) document.getElementById('custPhone').value = p.phone;
       if (p.email && document.getElementById('custEmail')) document.getElementById('custEmail').value = p.email;
-      if (p.address && document.getElementById('custAddress')) document.getElementById('custAddress').value = p.address;
-      if (p.fulfillment && document.getElementById('custFulfilment')) {
-        document.getElementById('custFulfilment').value = p.fulfillment;
-        toggleCartAddressField(p.fulfillment);
-      }
-      if (p.requestedDate && document.getElementById('custDate')) document.getElementById('custDate').value = p.requestedDate;
-      if (p.timeSlot && document.getElementById('custTimeSlot')) document.getElementById('custTimeSlot').value = p.timeSlot;
       if (p.notes && document.getElementById('custNotes')) document.getElementById('custNotes').value = p.notes;
     } catch(e) {}
   }
@@ -46,11 +39,9 @@ function toggleCartAddressField(val) {
   if (val === 'Pickup') {
     block.classList.add('opacity-40');
     input.required = false;
-    input.placeholder = 'Atelier Kitchen Collection (Indiranagar) - Address not required';
   } else {
     block.classList.remove('opacity-40');
     input.required = true;
-    input.placeholder = 'Flat / Villa number, Apartment name, Street, Pincode';
   }
   recalculateCartTotals();
 }
@@ -242,27 +233,23 @@ function handleOrderSubmission(e) {
     return;
   }
 
-  const name = document.getElementById('custName').value.trim();
-  const phone = document.getElementById('custPhone').value.trim();
-  const email = document.getElementById('custEmail').value.trim();
-  const fulfilment = document.getElementById('custFulfilment').value;
-  const address = document.getElementById('custAddress').value.trim();
-  const date = document.getElementById('custDate').value;
-  const slot = document.getElementById('custTimeSlot').value;
-  const notes = document.getElementById('custNotes').value.trim();
+  const name = document.getElementById('custName') ? document.getElementById('custName').value.trim() : 'Customer';
+  const phone = document.getElementById('custPhone') ? document.getElementById('custPhone').value.trim() : '';
+  const email = document.getElementById('custEmail') ? document.getElementById('custEmail').value.trim() : '';
+  const notes = document.getElementById('custNotes') ? document.getElementById('custNotes').value.trim() : '';
 
   const subtotal = CC_CORE.getCartSubtotal();
-  const deliveryFee = (fulfilment === 'Pickup' || subtotal >= 5000) ? 0 : 150;
+  const deliveryFee = 0; // Free direct delivery with phone verification
   const total = subtotal + deliveryFee;
 
   const orderPayload = {
     customerName: name,
     phone: phone,
     email: email,
-    fulfillment: fulfilment,
-    address: fulfilment === 'Pickup' ? 'Atelier Kitchen Collection (Indiranagar)' : address,
-    requestedDate: date,
-    timeSlot: slot,
+    fulfillment: 'Home Delivery (Phone Verification)',
+    address: 'Baker will note during confirmation call',
+    requestedDate: 'Scheduled on call',
+    timeSlot: 'Slot confirmed on call',
     notes: notes,
     subtotal: subtotal,
     deliveryFee: deliveryFee,
@@ -301,10 +288,10 @@ function populateSuccessModal(order) {
   if (badgeEl) badgeEl.innerText = `#${order.id}`;
   if (headEl) headEl.innerText = `Merci, ${order.customerName}. Your order request is in our oven queue.`;
   if (subEl) subEl.innerText = `We have acknowledged your request for ${order.items.length} artisan cake${order.items.length > 1 ? 's' : ''}. Our Head Chef will review and call you shortly.`;
-  if (phoneDesc) phoneDesc.innerHTML = `Chef Clara calling <strong class="text-primary">${order.phone}</strong> within 1 hour to verify cold-chain arrival and flavor balance.`;
+  if (phoneDesc) phoneDesc.innerHTML = `Head Chef calling <strong class="text-primary">${order.phone}</strong> within 1 hour to note your delivery address, timing, and custom piping notes.`;
   if (emailDesc) emailDesc.innerHTML = `Detailed commission summary dispatched to <strong class="text-primary">${order.email}</strong>.`;
-  if (dateSlot) dateSlot.innerText = `${order.requestedDate} • ${order.timeSlot}`;
-  if (addrDesc) addrDesc.innerText = order.fulfillment === 'Pickup' ? 'Self pickup at Atelier Kitchen (Indiranagar)' : `Chilled courier dispatch to ${order.address}`;
+  if (dateSlot) dateSlot.innerText = `Scheduled via Baker Phone Call`;
+  if (addrDesc) addrDesc.innerText = `Our Head Chef will note your delivery address during the phone verification call.`;
   if (summTitle) summTitle.innerText = `Summary: ${order.items.length} Artisan Cake${order.items.length > 1 ? 's' : ''}`;
   if (summItems) summItems.innerText = order.items.map(i => `${i.name} (${i.size})`).join(' + ');
   if (summTot) summTot.innerText = CC_CORE.formatINR(order.totalValue);
