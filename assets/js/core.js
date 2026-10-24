@@ -519,3 +519,46 @@ window.executeTrackOrder = function() {
     </div>
   `;
 };
+
+// ==========================================
+// RESPONSIVE MOBILE NAVIGATION CONTROLLER
+// ==========================================
+window.toggleMobileNav = function(forceClose) {
+  const menu = document.getElementById('mobileNavMenu');
+  const icon = document.getElementById('mobileMenuIcon');
+  if (!menu) return;
+
+  const willOpen = (typeof forceClose === 'boolean') ? !forceClose : menu.classList.contains('hidden');
+
+  if (willOpen) {
+    menu.classList.remove('hidden');
+    if (icon) icon.textContent = 'close';
+  } else {
+    menu.classList.add('hidden');
+    if (icon) icon.textContent = 'menu';
+  }
+};
+
+// Global click-outside and escape listener for mobile nav
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileNavMenu');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (!menu || menu.classList.contains('hidden')) return;
+
+  if (btn && (btn === e.target || btn.contains(e.target))) return;
+  if (menu !== e.target && !menu.contains(e.target)) {
+    window.toggleMobileNav(false);
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    window.toggleMobileNav(false);
+  }
+});
+
+window.addEventListener('resize', function() {
+  if (window.innerWidth >= 1024) {
+    window.toggleMobileNav(false);
+  }
+});

@@ -65,26 +65,29 @@
       <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/25 pointer-events-none"></div>
 
       <!-- Floating Top Header Bar -->
-      <div class="absolute top-0 left-0 right-0 p-4 xs:p-5 flex items-center justify-between z-20 pointer-events-auto">
-        <!-- Floating Back Button (<) -->
-        <button type="button" onclick="navigateBack()" aria-label="Go Back" class="text-white hover:text-white/80 transition-all duration-200 active:scale-90 cursor-pointer drop-shadow-md flex items-center justify-center">
-          <span class="material-symbols-outlined text-[26px] xs:text-[28px] leading-none select-none">chevron_left</span>
-        </button>
+      <div class="absolute top-0 left-0 right-0 p-3.5 xs:p-4 flex items-center justify-between z-20 pointer-events-auto">
+        <!-- Floating Left Cluster: Back (<) & Home buttons -->
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="navigateBack()" aria-label="Go Back" class="w-9 h-9 xs:w-10 xs:h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:bg-black/60 transition-all duration-200 active:scale-90 cursor-pointer shadow-md flex items-center justify-center">
+            <span class="material-symbols-outlined text-[24px] xs:text-[26px] leading-none select-none">chevron_left</span>
+          </button>
+          <a href="index.html" aria-label="Go to Home" class="w-9 h-9 xs:w-10 xs:h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:bg-black/60 transition-all duration-200 active:scale-90 cursor-pointer shadow-md flex items-center justify-center">
+            <span class="material-symbols-outlined text-[19px] xs:text-[21px] leading-none select-none">home</span>
+          </a>
+        </div>
 
         <!-- Floating Right Cluster: Heart (Wishlist) & Cart with Count Badge -->
-        <div class="flex items-center gap-3.5 xs:gap-4">
-          
+        <div class="flex items-center gap-2 xs:gap-2.5">
           <!-- Heart / Wishlist Button -->
-          <button type="button" id="wishlistBtn" onclick="toggleWishlist()" aria-label="Add to Wishlist" class="text-white hover:text-rose-400 transition-all duration-200 active:scale-90 cursor-pointer drop-shadow-md group flex items-center justify-center">
-            <span id="wishlistIcon" class="material-symbols-outlined text-[24px] xs:text-[26px] transition-transform duration-200 group-hover:scale-110">favorite_border</span>
+          <button type="button" id="wishlistBtn" onclick="toggleWishlist()" aria-label="Add to Wishlist" class="w-9 h-9 xs:w-10 xs:h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:text-rose-400 hover:bg-black/60 transition-all duration-200 active:scale-90 cursor-pointer shadow-md group flex items-center justify-center">
+            <span id="wishlistIcon" class="material-symbols-outlined text-[20px] xs:text-[22px] transition-transform duration-200 group-hover:scale-110">favorite_border</span>
           </button>
 
           <!-- Cart Button with Red Notification Badge -->
-          <a href="cart.html" aria-label="Shopping Cart" class="relative text-white hover:text-white/80 transition-all duration-200 active:scale-90 cursor-pointer drop-shadow-md flex items-center justify-center">
-            <span class="material-symbols-outlined text-[24px] xs:text-[26px]">shopping_cart</span>
-            <span id="floatingCartBadge" class="cart-badge-count absolute -top-1.5 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-[#e05445] text-white text-[10px] font-bold flex items-center justify-center shadow-md">2</span>
+          <a href="cart.html" aria-label="Shopping Cart" class="relative w-9 h-9 xs:w-10 xs:h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:bg-black/60 transition-all duration-200 active:scale-90 cursor-pointer shadow-md flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px] xs:text-[22px]">shopping_cart</span>
+            <span id="floatingCartBadge" class="cart-badge-count absolute -top-1 -right-1 min-w-[17px] h-[17px] px-1 rounded-full bg-[#e05445] text-white text-[9px] font-bold flex items-center justify-center shadow-md">0</span>
           </a>
-
         </div>
       </div>
 
