@@ -99,55 +99,77 @@ function renderCart() {
   if (countEl) countEl.innerText = `${cart.length} Creation${cart.length > 1 ? 's' : ''}`;
   if (summaryPill) summaryPill.innerText = `${cart.length} Creation${cart.length > 1 ? 's' : ''}`;
 
+  // Manage mobile sticky checkout bar visibility
+  const mobileCheckoutBar = document.getElementById('mobileCheckoutBar');
+  if (mobileCheckoutBar) {
+    if (cart.length === 0) {
+      mobileCheckoutBar.classList.add('hidden');
+    } else {
+      mobileCheckoutBar.classList.remove('hidden');
+    }
+  }
+
   if (container) {
     container.innerHTML = cart.map(item => {
       const itemTotal = item.price * (item.quantity || 1);
       return `
-        <article class="py-5 first:pt-2 flex flex-col sm:flex-row gap-5 items-start">
-          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-lg overflow-hidden shrink-0 border border-outline-variant bg-surface-container">
+        <article class="py-4 first:pt-1 flex flex-row gap-3 xs:gap-4 sm:gap-5 items-start">
+          <!-- Cake Thumbnail -->
+          <div class="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 border border-outline-variant bg-surface-container shadow-2xs">
             <img class="w-full h-full object-cover" src="${item.image}" alt="${item.name}"/>
           </div>
+
+          <!-- Cake Details -->
           <div class="flex-1 min-w-0">
-            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
-              <div>
-                <h3 class="font-headline-sm text-lg text-primary font-medium">${item.name}</h3>
-                <p class="text-xs text-on-surface-variant">Flavour: <span class="text-primary font-medium">${item.flavor || 'Signature'}</span></p>
-                ${item.creamColor ? `<p class="text-xs text-on-surface-variant">Cream Finish: <span class="text-secondary font-semibold">${item.creamColor}</span></p>` : ''}
-                ${item.writingOnCake ? `<p class="text-xs text-secondary mt-0.5 italic">Piping: "${item.writingOnCake}"</p>` : ''}
+            <div class="flex items-start justify-between gap-1.5">
+              <div class="min-w-0 pr-1">
+                <h3 class="font-headline-sm text-base sm:text-lg text-primary font-medium truncate">${item.name}</h3>
+                <p class="text-xs text-on-surface-variant truncate">Flavour: <span class="text-primary font-medium">${item.flavor || 'Signature'}</span></p>
+                ${item.creamColor ? `<p class="text-[11px] xs:text-xs text-on-surface-variant truncate">Cream: <span class="text-secondary font-semibold">${item.creamColor}</span></p>` : ''}
+                ${item.writingOnCake ? `<p class="text-[11px] text-secondary mt-0.5 italic truncate">Piping: "${item.writingOnCake}"</p>` : ''}
               </div>
-              <div class="text-left sm:text-right mt-1 sm:mt-0">
-                <span class="font-headline-sm text-lg text-primary font-semibold">${CC_CORE.formatINR(itemTotal)}</span>
-                <p class="text-[11px] text-secondary">Taxes Included</p>
+              <div class="text-right shrink-0">
+                <span class="font-headline-sm text-base sm:text-lg text-primary font-bold whitespace-nowrap">${CC_CORE.formatINR(itemTotal)}</span>
+                <p class="text-[10px] text-secondary">Taxes incl.</p>
               </div>
             </div>
-            <div class="mt-2.5 flex flex-wrap items-center gap-2">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-surface-container border border-outline-variant text-[11px] font-semibold text-primary">
-                Size: ${item.size || 'Standard'}
+
+            <!-- Tags / Pills -->
+            <div class="mt-1.5 xs:mt-2 flex flex-wrap items-center gap-1 xs:gap-1.5">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-surface-container border border-outline-variant text-[10px] xs:text-[11px] font-semibold text-primary">
+                ${item.size || '0.5 kg'}
               </span>
-              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-secondary-fixed/40 text-[11px] font-semibold text-on-secondary-fixed-variant">
-                <span class="material-symbols-outlined text-[13px]">ac_unit</span> Chilled Box
+              <span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-md bg-secondary-fixed/40 text-[10px] xs:text-[11px] font-semibold text-on-secondary-fixed-variant">
+                <span class="material-symbols-outlined text-[12px]">ac_unit</span> Chilled
               </span>
               ${item.eggless ? `
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 text-[11px] font-semibold">
-                  <span class="material-symbols-outlined text-[13px]">eco</span> Eggless
+                <span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 text-[10px] xs:text-[11px] font-semibold">
+                  <span class="material-symbols-outlined text-[12px]">eco</span> Eggless
                 </span>
-              ` : ''}
+              ` : `
+                <span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-md bg-rose-100 text-rose-900 text-[10px] xs:text-[11px] font-semibold">
+                  <span class="material-symbols-outlined text-[12px]">egg</span> With Egg
+                </span>
+              `}
             </div>
-            <div class="mt-4 flex items-center justify-between border-t border-dashed border-outline-variant/60 pt-3">
+
+            <!-- Actions Row: Quantity & Remove -->
+            <div class="mt-2.5 xs:mt-3 flex items-center justify-between border-t border-dashed border-outline-variant/60 pt-2 xs:pt-2.5">
               <!-- Quantity Controls -->
               <div class="inline-flex items-center border border-outline-variant rounded-lg bg-surface-container-low">
-                <button type="button" class="px-2.5 py-1 text-on-surface hover:bg-surface-container transition-colors" onclick="changeItemQty('${item.id}', -1)">
-                  <span class="material-symbols-outlined text-[14px]">remove</span>
+                <button type="button" class="w-7 h-7 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95 cursor-pointer" onclick="changeItemQty('${item.id}', -1)" aria-label="Decrease quantity">
+                  <span class="material-symbols-outlined text-[13px]">remove</span>
                 </button>
-                <span class="px-3 py-1 text-xs font-semibold text-primary">${item.quantity || 1}</span>
-                <button type="button" class="px-2.5 py-1 text-on-surface hover:bg-surface-container transition-colors" onclick="changeItemQty('${item.id}', 1)">
-                  <span class="material-symbols-outlined text-[14px]">add</span>
+                <span class="px-2 text-xs font-bold text-primary min-w-[20px] text-center">${item.quantity || 1}</span>
+                <button type="button" class="w-7 h-7 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95 cursor-pointer" onclick="changeItemQty('${item.id}', 1)" aria-label="Increase quantity">
+                  <span class="material-symbols-outlined text-[13px]">add</span>
                 </button>
               </div>
+
               <!-- Remove Action -->
-              <button type="button" class="text-xs text-error hover:opacity-80 transition-opacity flex items-center gap-1" onclick="removeItem('${item.id}')">
-                <span class="material-symbols-outlined text-[16px]">delete_outline</span>
-                <span>Remove</span>
+              <button type="button" class="text-xs text-error hover:opacity-80 transition-opacity flex items-center gap-0.5 xs:gap-1 cursor-pointer py-1 px-1.5 active:scale-95" onclick="removeItem('${item.id}')">
+                <span class="material-symbols-outlined text-[15px]">delete_outline</span>
+                <span class="text-[11px] xs:text-xs">Remove</span>
               </button>
             </div>
           </div>
@@ -188,10 +210,12 @@ function recalculateCartTotals() {
   const subVal = document.getElementById('cartSubtotalVal');
   const delVal = document.getElementById('deliveryFeeVal');
   const totVal = document.getElementById('cartTotalVal');
+  const mobTotVal = document.getElementById('mobileBottomTotal');
 
   if (subVal) subVal.innerText = CC_CORE.formatINR(subtotal);
   if (delVal) delVal.innerText = deliveryFee === 0 ? 'Free' : CC_CORE.formatINR(deliveryFee);
   if (totVal) totVal.innerText = CC_CORE.formatINR(total);
+  if (mobTotVal) mobTotVal.innerText = CC_CORE.formatINR(total);
   
   const submitBtn = document.getElementById('submitOrderBtn');
   if (submitBtn) {

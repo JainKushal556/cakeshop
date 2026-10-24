@@ -97,20 +97,20 @@
 
   <!-- TOP NAVIGATION BAR -->
   <header class="sticky top-0 z-40 bg-[#fcf6f5]/95 backdrop-blur-md border-b border-[#f0d5ce]/60">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-20">
+    <div class="w-full max-w-[1720px] mx-auto px-3 xs:px-4 sm:px-8 lg:px-16 flex items-center justify-between h-16 sm:h-20">
       
       <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary group-hover:scale-105 transition-transform">
-          <span class="material-symbols-outlined text-[24px]">cake</span>
+      <a href="index.html" class="flex items-center gap-2 xs:gap-3 group shrink-0">
+        <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-pill border border-brand-border flex items-center justify-center text-brand-primary group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[20px] sm:text-[24px]">cake</span>
         </div>
         <div class="flex flex-col">
-          <span class="font-serif text-2xl font-bold tracking-tight text-brand-dark">SweetNest</span>
-          <span class="text-[10px] tracking-wider text-brand-primary/70 -mt-1 font-medium">Homemade Cakes with Love</span>
+          <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-brand-dark leading-tight">SweetNest</span>
+          <span class="text-[9px] sm:text-[10px] tracking-wider text-brand-primary/70 -mt-0.5 font-medium">Homemade Cakes</span>
         </div>
       </a>
 
-      <!-- Center Links -->
+      <!-- Center Links (Desktop only) -->
       <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-dark/80">
         <a href="index.html" class="hover:text-brand-pink transition-colors">Home</a>
         <a href="index.html#popular-cakes" class="hover:text-brand-pink transition-colors">Cakes</a>
@@ -120,51 +120,51 @@
       </nav>
 
       <!-- Right Action Cluster: Track, Login, Cart -->
-      <div class="flex items-center gap-2.5 sm:gap-4">
+      <div class="flex items-center gap-1.5 xs:gap-2.5 sm:gap-4 shrink-0">
         <!-- 1. Track Order Button -->
-        <button type="button" onclick="openTrackOrderModal()" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full border border-brand-border/80 bg-white/80 hover:bg-white text-xs font-semibold text-brand-dark hover:text-brand-primary shadow-sm hover:border-brand-pink transition-all active:scale-95 cursor-pointer">
-          <span class="material-symbols-outlined text-[17px] text-brand-primary">local_shipping</span>
-          <span>Track Order</span>
+        <button type="button" onclick="openTrackOrderModal()" class="inline-flex items-center gap-1 px-2.5 xs:px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-brand-border/80 bg-white/80 hover:bg-white text-[11px] sm:text-xs font-semibold text-brand-dark hover:text-brand-primary shadow-2xs hover:border-brand-pink transition-all active:scale-95 cursor-pointer">
+          <span class="material-symbols-outlined text-[15px] sm:text-[17px] text-brand-primary">local_shipping</span>
+          <span>Track <span class="hidden xs:inline">Order</span></span>
         </button>
 
         <!-- 2. Login Button -->
-        <a href="dashboard.html" class="px-5 py-2 bg-brand-dark hover:bg-brand-primary text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
+        <a href="dashboard.html" class="px-3 xs:px-4 sm:px-5 py-1.5 sm:py-2 bg-brand-dark hover:bg-brand-primary text-white rounded-full text-[11px] sm:text-xs font-semibold tracking-wide transition-all shadow-2xs active:scale-95">
           Login
         </a>
 
         <!-- 3. Cart Button with Badge -->
-        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2.5 rounded-full bg-white/80 hover:bg-white border border-brand-border/70 text-brand-dark hover:text-brand-pink shadow-sm transition-all flex items-center justify-center active:scale-95">
-          <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
-          <span id="cartBadge" class="cart-badge-count absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand-pink text-white text-[10px] font-bold flex items-center justify-center shadow-sm transition-transform duration-200">0</span>
+        <a href="cart.html" aria-label="Shopping Cart" class="relative p-2 sm:p-2.5 rounded-full bg-white/80 hover:bg-white border border-brand-border/70 text-brand-dark hover:text-brand-pink shadow-2xs transition-all flex items-center justify-center active:scale-95">
+          <span class="material-symbols-outlined text-[18px] sm:text-[20px]">shopping_cart</span>
+          <span id="cartBadge" class="cart-badge-count absolute -top-1 -right-1 min-w-[17px] h-[17px] px-1 rounded-full bg-brand-pink text-white text-[9px] font-bold flex items-center justify-center shadow-sm transition-transform duration-200">0</span>
         </a>
       </div>
     </div>
   </header>
 
   <!-- MAIN CANVAS CONTAINER -->
-  <main class="flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-8 lg:py-10">
+  <main class="flex-1 w-full max-w-[1720px] mx-auto px-3 xs:px-4 sm:px-8 lg:px-16 py-4 sm:py-8 lg:py-10">
     
     <!-- View Switcher & Page Header -->
-    <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-outline-variant">
+    <div class="mb-5 sm:mb-8 flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-outline-variant">
       <div>
-        <div class="flex items-center gap-2 text-xs font-semibold text-secondary mb-1 uppercase tracking-wider">
-          <span class="material-symbols-outlined text-[16px]">local_mall</span>
-          <span id="cartHeaderBadge">Artisan Batch Reservation • Direct Baker Verification</span>
+        <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold text-secondary mb-1 uppercase tracking-wider">
+          <span class="material-symbols-outlined text-[15px] sm:text-[16px]">local_mall</span>
+          <span id="cartHeaderBadge" class="truncate">Artisan Batch Reservation • Direct Baker Verification</span>
         </div>
-        <h1 class="font-headline-lg text-3xl sm:text-4xl text-primary font-medium" id="cartPageTitle">Cart Review &amp; Checkout</h1>
-        <p class="text-xs text-on-surface-variant mt-1" id="cartPageSubtext">
+        <h1 class="font-headline-lg text-2xl xs:text-3xl sm:text-4xl text-primary font-medium tracking-tight" id="cartPageTitle">Cart Review &amp; Checkout</h1>
+        <p class="text-[11px] sm:text-xs text-on-surface-variant mt-1" id="cartPageSubtext">
           Handcrafted daily with cold-pressed French butter &amp; single-origin Valrhona chocolate. No payment collected online.
         </p>
       </div>
 
       <!-- Quick Dual-State Inspector Toggle for Demo / Testing (Hidden on empty cart) -->
-      <div class="flex items-center bg-surface-container-low border border-outline-variant p-1 rounded-lg" id="cartHeaderActions">
-        <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 bg-primary text-on-primary" id="viewBtnReview" onclick="switchMainView('review')">
+      <div class="flex items-center bg-surface-container-low border border-outline-variant p-1 rounded-xl w-full sm:w-auto text-center overflow-x-auto" id="cartHeaderActions">
+        <button class="flex-1 sm:flex-none px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 bg-primary text-on-primary whitespace-nowrap cursor-pointer" id="viewBtnReview" onclick="switchMainView('review')">
           1. Review &amp; Checkout
         </button>
-        <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 text-on-surface-variant hover:text-primary flex items-center gap-1.5" id="viewBtnSuccess" onclick="switchMainView('success')">
-          <span>2. Order Received State</span>
-          <span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.2 rounded-full font-semibold" id="toggleRefBadge">#CC-2026-109</span>
+        <button class="flex-1 sm:flex-none px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 text-on-surface-variant hover:text-primary flex items-center justify-center gap-1.5 whitespace-nowrap cursor-pointer" id="viewBtnSuccess" onclick="switchMainView('success')">
+          <span>2. Order Received</span>
+          <span class="text-[9px] xs:text-[10px] bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.2 rounded-full font-semibold" id="toggleRefBadge">#CC-2026-109</span>
         </button>
       </div>
     </div>
@@ -243,50 +243,56 @@
     </div>
 
     <!-- VIEW 1: CART REVIEW & CHECKOUT (Split 65% / 35%) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="checkoutMainLayout">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-start pb-24 lg:pb-0" id="checkoutMainLayout">
       
       <!-- LEFT SIDE (65% -> 8 columns on 12-col grid) -->
-      <section class="lg:col-span-8 space-y-6">
+      <section class="lg:col-span-8 space-y-4 xs:space-y-6">
         
-        <!-- Stepper -->
-        <nav aria-label="Checkout Progress" class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 sm:p-5">
-          <div class="grid grid-cols-3 gap-2">
+        <!-- Stepper (Responsive Mobile Flow & Desktop Grid) -->
+        <nav aria-label="Checkout Progress" class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-3.5 sm:p-5 shadow-2xs">
+          <div class="flex items-center justify-between sm:grid sm:grid-cols-3 gap-2">
             <!-- Step 1 -->
-            <div class="flex items-center gap-3">
-              <span class="w-7 h-7 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center shrink-0">1</span>
-              <div>
-                <p class="text-xs font-semibold text-primary leading-tight">Cart Items</p>
-                <p class="text-[11px] text-secondary font-medium" id="stepperItemCount">2 Creations</p>
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+              <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-on-primary text-[11px] sm:text-xs font-bold flex items-center justify-center shrink-0 shadow-xs">1</span>
+              <div class="min-w-0">
+                <p class="text-[11px] sm:text-xs font-bold text-primary leading-tight truncate">Cart Items</p>
+                <p class="text-[10px] sm:text-[11px] text-secondary font-medium truncate" id="stepperItemCount">2 Creations</p>
               </div>
             </div>
+            <!-- Arrow on mobile -->
+            <span class="material-symbols-outlined text-[16px] text-outline-variant/80 sm:hidden shrink-0">chevron_right</span>
+
             <!-- Step 2 -->
-            <div class="flex items-center gap-3 border-l border-outline-variant pl-4">
-              <span class="w-7 h-7 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center shrink-0">2</span>
-              <div>
-                <p class="text-xs font-semibold text-primary leading-tight">Delivery &amp; Contact</p>
-                <p class="text-[11px] text-on-surface-variant">Scheduled Slot</p>
+            <div class="flex items-center gap-2 sm:gap-3 sm:border-l sm:border-outline-variant sm:pl-4 min-w-0">
+              <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-on-primary text-[11px] sm:text-xs font-bold flex items-center justify-center shrink-0 shadow-xs">2</span>
+              <div class="min-w-0">
+                <p class="text-[11px] sm:text-xs font-bold text-primary leading-tight truncate">Delivery</p>
+                <p class="text-[10px] sm:text-[11px] text-on-surface-variant truncate">Scheduled Slot</p>
               </div>
             </div>
+            <!-- Arrow on mobile -->
+            <span class="material-symbols-outlined text-[16px] text-outline-variant/80 sm:hidden shrink-0">chevron_right</span>
+
             <!-- Step 3 -->
-            <div class="flex items-center gap-3 border-l border-outline-variant pl-4">
-              <span class="w-7 h-7 rounded-full bg-surface-container-high text-primary text-xs font-semibold flex items-center justify-center shrink-0 border border-outline-variant">3</span>
-              <div>
-                <p class="text-xs font-semibold text-primary leading-tight">Order Review</p>
-                <p class="text-[11px] text-on-surface-variant">Chef Call In ~1h</p>
+            <div class="flex items-center gap-2 sm:gap-3 sm:border-l sm:border-outline-variant sm:pl-4 min-w-0">
+              <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-surface-container-high text-primary text-[11px] sm:text-xs font-bold flex items-center justify-center shrink-0 border border-outline-variant">3</span>
+              <div class="min-w-0">
+                <p class="text-[11px] sm:text-xs font-bold text-primary leading-tight truncate">Review</p>
+                <p class="text-[10px] sm:text-[11px] text-on-surface-variant truncate">Chef Call In ~1h</p>
               </div>
             </div>
           </div>
         </nav>
 
         <!-- Segment 1: Cart Items List (Dynamically Rendered) -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 sm:p-6 space-y-5">
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5 shadow-2xs">
           <div class="flex items-center justify-between border-b border-outline-variant pb-3">
-            <h2 class="font-headline-sm text-lg text-primary flex items-center gap-2 font-medium">
-              <span class="material-symbols-outlined text-secondary text-[22px]">cake</span>
+            <h2 class="font-headline-sm text-base sm:text-lg text-primary flex items-center gap-2 font-medium">
+              <span class="material-symbols-outlined text-secondary text-[20px] sm:text-[22px]">cake</span>
               <span>1. Commissioned Cart Items</span>
             </h2>
-            <button onclick="clearAllCart()" class="text-xs text-error hover:underline flex items-center gap-1">
-              <span class="material-symbols-outlined text-[14px]">delete_sweep</span>
+            <button onclick="clearAllCart()" class="text-xs text-error hover:underline flex items-center gap-1 cursor-pointer py-1 px-1.5 active:scale-95">
+              <span class="material-symbols-outlined text-[15px]">delete_sweep</span>
               <span>Clear Cart</span>
             </button>
           </div>
@@ -298,43 +304,43 @@
         </div>
 
         <!-- Segment 2: Customer Information & Delivery Details (SRS Section 4 Requirements) -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 sm:p-6 space-y-6">
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 sm:p-6 space-y-5 sm:space-y-6 shadow-2xs">
           <div class="flex items-center justify-between border-b border-outline-variant pb-3">
-            <h2 class="font-headline-sm text-lg text-primary flex items-center gap-2 font-medium">
-              <span class="material-symbols-outlined text-secondary text-[22px]">person_pin</span>
+            <h2 class="font-headline-sm text-base sm:text-lg text-primary flex items-center gap-2 font-medium">
+              <span class="material-symbols-outlined text-secondary text-[20px] sm:text-[22px]">person_pin</span>
               <span>2. Patron &amp; Delivery Logistics</span>
             </h2>
-            <span class="text-xs text-secondary font-medium">Chef Call Follow-up</span>
+            <span class="text-[11px] sm:text-xs text-secondary font-medium">Chef Call Follow-up</span>
           </div>
 
-          <form id="checkoutForm" onsubmit="handleOrderSubmission(event)" class="space-y-5">
+          <form id="checkoutForm" onsubmit="handleOrderSubmission(event)" class="space-y-4 sm:space-y-5">
             
             <!-- Patron Contact Fields -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4">
               <div>
                 <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
                   Patron Name <span class="text-secondary">*</span>
                 </label>
-                <input type="text" id="custName" required placeholder="Full Name" value="Aanya Sen" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+                <input type="text" id="custName" required placeholder="Full Name" value="Aanya Sen" class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20 outline-none transition-all"/>
               </div>
               <div>
                 <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
                   Mobile Number <span class="text-secondary">*</span>
                 </label>
-                <input type="tel" id="custPhone" required placeholder="+91 98201 44521" value="+91 98201 44521" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+                <input type="tel" id="custPhone" required placeholder="+91 98201 44521" value="+91 98201 44521" class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20 outline-none transition-all"/>
                 <span class="text-[10px] text-outline mt-0.5 block">Used by Head Chef to confirm order details</span>
               </div>
               <div>
                 <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
                   Email Address <span class="text-secondary">*</span>
                 </label>
-                <input type="email" id="custEmail" required placeholder="aanya.sen@example.com" value="aanya.sen@example.com" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+                <input type="email" id="custEmail" required placeholder="aanya.sen@example.com" value="aanya.sen@example.com" class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20 outline-none transition-all"/>
                 <span class="text-[10px] text-outline mt-0.5 block">Receives order received &amp; approval emails</span>
               </div>
             </div>
 
             <!-- Fulfilment Type & Schedule -->
-            <div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant space-y-4">
+            <div class="p-3.5 sm:p-4 bg-surface-container-low rounded-2xl border border-outline-variant space-y-3.5 sm:space-y-4">
               <span class="text-xs font-semibold uppercase tracking-wider text-secondary block">
                 Fulfilment Method &amp; Drop Timing
               </span>
@@ -342,18 +348,18 @@
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <label class="block text-xs font-medium text-primary mb-1">Fulfilment Type <span class="text-secondary">*</span></label>
-                  <select id="custFulfilment" onchange="toggleCartAddressField(this.value)" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-xs font-medium">
+                  <select id="custFulfilment" onchange="toggleCartAddressField(this.value)" class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-3 py-2.5 sm:py-2 text-xs font-medium outline-none focus:border-secondary">
                     <option value="Delivery" selected>Chilled Courier Delivery (Metro)</option>
                     <option value="Pickup">Atelier Kitchen Pickup (Indiranagar)</option>
                   </select>
                 </div>
                 <div>
                   <label class="block text-xs font-medium text-primary mb-1">Dispatch / Pickup Date <span class="text-secondary">*</span></label>
-                  <input type="date" id="custDate" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-xs font-medium"/>
+                  <input type="date" id="custDate" required class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-3 py-2.5 sm:py-2 text-xs font-medium outline-none focus:border-secondary"/>
                 </div>
                 <div>
                   <label class="block text-xs font-medium text-primary mb-1">Preferred Time Window <span class="text-secondary">*</span></label>
-                  <select id="custTimeSlot" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-xs font-medium">
+                  <select id="custTimeSlot" class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-3 py-2.5 sm:py-2 text-xs font-medium outline-none focus:border-secondary">
                     <option value="Morning 10:00 AM - 1:00 PM">Morning 10:00 AM - 1:00 PM</option>
                     <option value="Afternoon 2:00 PM - 5:00 PM" selected>Afternoon 2:00 PM - 5:00 PM</option>
                     <option value="Evening 5:00 PM - 8:00 PM">Evening 5:00 PM - 8:00 PM</option>
@@ -364,7 +370,7 @@
               <!-- Conditional Address Container -->
               <div id="cartAddressBlock">
                 <label class="block text-xs font-medium text-primary mb-1">Delivery Destination Address (Bengaluru Metro) <span class="text-secondary">*</span></label>
-                <input type="text" id="custAddress" required placeholder="Flat 402, Magnolia Enclave, 12th Main Road, Indiranagar, Bengaluru - 560038" value="Flat 402, Magnolia Enclave, 12th Main Road, Indiranagar, Bengaluru - 560038" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3.5 py-2 text-xs focus:border-secondary focus:ring-1 focus:ring-secondary/20"/>
+                <input type="text" id="custAddress" required placeholder="Flat 402, Magnolia Enclave, 12th Main Road, Indiranagar, Bengaluru - 560038" value="Flat 402, Magnolia Enclave, 12th Main Road, Indiranagar, Bengaluru - 560038" class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-3.5 py-2.5 text-xs focus:border-secondary focus:ring-1 focus:ring-secondary/20 outline-none transition-all"/>
               </div>
             </div>
 
@@ -373,7 +379,7 @@
               <label class="block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
                 Additional Notes / Gate Pass / Dietary Instructions (Optional)
               </label>
-              <textarea id="custNotes" rows="2" placeholder="e.g. Please ring bell twice, temperature-sensitive package. Gate pass code #402. All eggless." class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2 text-xs focus:border-secondary focus:ring-1 focus:ring-secondary/20">Please ring bell twice, temperature-sensitive package.</textarea>
+              <textarea id="custNotes" rows="2" placeholder="e.g. Please ring bell twice, temperature-sensitive package. Gate pass code #402. All eggless." class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-3.5 py-2.5 text-xs focus:border-secondary focus:ring-1 focus:ring-secondary/20 outline-none transition-all">Please ring bell twice, temperature-sensitive package.</textarea>
             </div>
 
           </form>
@@ -382,13 +388,13 @@
       </section>
 
       <!-- RIGHT SIDE (35% -> 4 columns on 12-col grid) -->
-      <aside class="lg:col-span-4 space-y-6 sticky top-24">
+      <aside class="lg:col-span-4 space-y-4 xs:space-y-6 lg:sticky lg:top-24">
         
         <!-- Order Summary Card -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 sm:p-6 shadow-sm">
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 sm:p-6 shadow-2xs">
           <div class="flex items-center justify-between border-b border-outline-variant pb-3 mb-4">
-            <h2 class="font-headline-sm text-lg text-primary font-medium">Price Breakdown</h2>
-            <span class="text-xs text-secondary bg-surface-container-low px-2 py-0.5 rounded font-medium" id="summaryPill">2 Creations</span>
+            <h2 class="font-headline-sm text-base sm:text-lg text-primary font-medium">Price Breakdown</h2>
+            <span class="text-xs text-secondary bg-surface-container-low px-2 py-0.5 rounded-full font-medium" id="summaryPill">2 Creations</span>
           </div>
 
           <div class="space-y-3 text-xs">
@@ -413,23 +419,23 @@
                 <p class="text-xs uppercase tracking-wider font-semibold text-primary">Estimated Total</p>
                 <p class="text-[10px] text-on-surface-variant">Pay upon delivery / Baker phone verification</p>
               </div>
-              <p class="font-headline-md text-3xl text-primary font-bold" id="cartTotalVal">₹8,200</p>
+              <p class="font-headline-md text-2xl sm:text-3xl text-primary font-bold" id="cartTotalVal">₹8,200</p>
             </div>
           </div>
 
           <!-- Explicit Business Rule Notice (Mandatory SRS Prompt Requirement) -->
-          <div class="mt-5 p-4 rounded-lg bg-surface-container-low border border-secondary/40 space-y-2">
+          <div class="mt-4 sm:mt-5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-secondary/40 space-y-1.5 sm:space-y-2">
             <div class="flex items-center gap-2 text-secondary text-xs font-semibold uppercase tracking-wider">
               <span class="material-symbols-outlined text-[18px]">lock_clock</span>
               <span>No Payment Collected Online</span>
             </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
+            <p class="text-[11px] sm:text-xs text-on-surface-variant leading-relaxed">
               No online payment gateway or card needed. This order request is <strong class="text-primary font-semibold">not automatically confirmed</strong>. The head chef will call you in ~1 hr to verify your delivery slot and final price before baking.
             </p>
           </div>
 
           <!-- Primary Submit Action Button -->
-          <button type="button" onclick="submitOrderBtnClick()" class="mt-6 w-full py-3.5 px-4 bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] text-xs font-semibold uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 transition-all duration-150 shadow-sm" id="submitOrderBtn">
+          <button type="button" onclick="submitOrderBtnClick()" class="mt-5 sm:mt-6 w-full py-3.5 px-4 bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] text-xs font-semibold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-150 shadow-sm cursor-pointer" id="submitOrderBtn">
             <span>Submit Order Request</span>
             <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
           </button>
@@ -439,7 +445,7 @@
         </div>
 
         <!-- Baker Atelier Assurance Card -->
-        <div class="bg-surface-container-high/60 border border-outline-variant rounded-lg p-5 flex items-start gap-3.5">
+        <div class="bg-surface-container-high/60 border border-outline-variant rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
           <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
             <span class="material-symbols-outlined text-[20px]">cooking</span>
           </div>
@@ -454,96 +460,111 @@
       </aside>
     </div>
 
+    <!-- MOBILE STICKY CHECKOUT BOTTOM BAR (Visible only on mobile phone viewports) -->
+    <div id="mobileCheckoutBar" class="fixed bottom-0 left-0 right-0 z-40 bg-[#fffaf8]/95 backdrop-blur-md border-t border-outline-variant/80 px-4 py-3 flex items-center justify-between shadow-2xl lg:hidden transition-transform duration-200">
+      <div class="min-w-0 pr-2">
+        <div class="flex items-center gap-1.5">
+          <span class="text-[10px] uppercase font-bold text-secondary tracking-wider">Estimated Total</span>
+          <span class="text-[10px] text-on-surface-variant font-medium">• No prepay</span>
+        </div>
+        <p class="font-headline-md text-xl font-bold text-primary leading-tight" id="mobileBottomTotal">₹8,200</p>
+      </div>
+      <button type="button" onclick="submitOrderBtnClick()" class="px-5 py-2.5 bg-primary text-on-primary hover:bg-primary-container active:scale-95 text-xs font-bold uppercase tracking-wider rounded-xl flex items-center gap-1.5 shadow-md transition-all shrink-0 cursor-pointer">
+        <span>Submit Order</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </button>
+    </div>
+
     <!-- VIEW 2: ORDER SUCCESS PREVIEW CONTAINER / OVERLAY MODAL (SRS Section 3.1 & Section 6) -->
-    <div class="hidden fixed inset-0 z-50 overflow-y-auto bg-primary/60 backdrop-blur-sm p-4 sm:p-6 lg:p-10 flex items-center justify-center transition-opacity duration-200" id="orderSuccessModal">
-      <div class="bg-surface-container-lowest max-w-2xl w-full border border-outline-variant rounded-xl shadow-2xl overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200">
+    <div class="hidden fixed inset-0 z-50 overflow-y-auto bg-primary/60 backdrop-blur-sm p-3 xs:p-4 sm:p-6 lg:p-10 flex items-center justify-center transition-opacity duration-200" id="orderSuccessModal">
+      <div class="bg-surface-container-lowest max-w-2xl w-full max-h-[92vh] overflow-y-auto border border-outline-variant rounded-2xl shadow-2xl my-auto animate-in fade-in zoom-in-95 duration-200">
         
         <!-- Modal Top Bar -->
-        <div class="bg-surface-container-low border-b border-outline-variant p-4 sm:p-6 flex items-center justify-between">
-          <div class="flex items-center gap-2.5">
-            <span class="material-symbols-outlined text-secondary text-[24px]">mark_email_read</span>
-            <div>
-              <span class="text-xs font-semibold text-secondary uppercase tracking-wider">Transmission Successful</span>
-              <p class="text-base font-semibold text-primary" id="successModalRefId">Order Request Reference: #CC-2026-109</p>
+        <div class="bg-surface-container-low border-b border-outline-variant p-3.5 xs:p-4 sm:p-6 flex items-center justify-between sticky top-0 z-10 backdrop-blur-md">
+          <div class="flex items-center gap-2 xs:gap-2.5 min-w-0 pr-2">
+            <span class="material-symbols-outlined text-secondary text-[22px] sm:text-[24px] shrink-0">mark_email_read</span>
+            <div class="min-w-0">
+              <span class="text-[10px] xs:text-xs font-semibold text-secondary uppercase tracking-wider block">Transmission Successful</span>
+              <p class="text-sm xs:text-base font-semibold text-primary truncate" id="successModalRefId">Order Request Reference: #CC-2026-109</p>
             </div>
           </div>
-          <button aria-label="Close modal" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" onclick="toggleSuccessModal(false)">
+          <button aria-label="Close modal" class="text-on-surface-variant hover:text-primary p-1.5 rounded-lg hover:bg-surface-container transition-colors cursor-pointer shrink-0" onclick="toggleSuccessModal(false)">
             <span class="material-symbols-outlined text-[20px]">close</span>
           </button>
         </div>
 
-        <div class="p-6 sm:p-8 space-y-6">
+        <div class="p-4 xs:p-6 sm:p-8 space-y-4 xs:space-y-6">
           
           <!-- Explicit Status Badge (Mandatory SRS Rule: Order Received, NOT Confirmed) -->
-          <div class="bg-secondary-fixed/50 border border-secondary/30 p-3.5 rounded-lg flex items-center justify-between flex-wrap gap-2">
+          <div class="bg-secondary-fixed/50 border border-secondary/30 p-3 sm:p-3.5 rounded-xl flex items-center justify-between flex-wrap gap-2">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse shrink-0"></span>
               <span class="text-xs text-primary font-semibold">
                 Order Request Received — Awaiting Baker Confirmation
               </span>
             </div>
-            <span class="text-xs bg-surface-container-lowest text-secondary px-2.5 py-1 rounded border border-outline-variant font-medium">
+            <span class="text-[11px] xs:text-xs bg-surface-container-lowest text-secondary px-2.5 py-0.5 rounded-md border border-outline-variant font-medium">
               Not Confirmed Yet
             </span>
           </div>
 
           <div class="text-center sm:text-left">
-            <h2 class="font-headline-lg text-2xl sm:text-3xl text-primary font-medium" id="successHeading">Merci, Aanya. Your order request is in our oven queue.</h2>
-            <p class="text-sm text-on-surface-variant mt-1.5" id="successSubtext">
+            <h2 class="font-headline-lg text-xl xs:text-2xl sm:text-3xl text-primary font-medium" id="successHeading">Merci, Aanya. Your order request is in our oven queue.</h2>
+            <p class="text-xs xs:text-sm text-on-surface-variant mt-1.5" id="successSubtext">
               We have acknowledged your request for your celebration cakes. Our Head Chef will review and call you.
             </p>
           </div>
 
           <!-- Expected Next Steps Timeline -->
-          <div class="bg-surface-container-low p-5 rounded-lg border border-outline-variant">
-            <h3 class="text-xs font-semibold text-primary mb-4 flex items-center gap-2 uppercase tracking-wider">
+          <div class="bg-surface-container-low p-4 sm:p-5 rounded-xl border border-outline-variant">
+            <h3 class="text-xs font-semibold text-primary mb-3.5 sm:mb-4 flex items-center gap-2 uppercase tracking-wider">
               <span class="material-symbols-outlined text-secondary text-[18px]">schedule</span>
               <span>Expected Next Steps Timeline</span>
             </h3>
-            <ol class="relative border-l border-outline-variant ml-3 space-y-5">
+            <ol class="relative border-l border-outline-variant ml-2 sm:ml-3 space-y-4 sm:space-y-5">
               <!-- Step 1 -->
-              <li class="pl-6 relative">
+              <li class="pl-5 sm:pl-6 relative">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary text-on-primary flex items-center justify-center">
                   <span class="material-symbols-outlined text-[10px]">check</span>
                 </span>
-                <div class="flex items-baseline justify-between">
+                <div class="flex items-baseline justify-between gap-1">
                   <p class="text-xs font-semibold text-primary">1. Order Request Received</p>
-                  <span class="text-[11px] text-secondary font-medium">Logged Now</span>
+                  <span class="text-[10px] xs:text-[11px] text-secondary font-medium whitespace-nowrap">Logged Now</span>
                 </div>
-                <p class="text-xs text-on-surface-variant">Order specifications securely registered into Crumb &amp; Cocoa central production matrix.</p>
+                <p class="text-[11px] xs:text-xs text-on-surface-variant mt-0.5">Order specifications securely registered into SweetNest production queue.</p>
               </li>
               <!-- Step 2 -->
-              <li class="pl-6 relative">
+              <li class="pl-5 sm:pl-6 relative">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-secondary-fixed border-2 border-secondary flex items-center justify-center">
                   <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
                 </span>
-                <div class="flex items-baseline justify-between">
+                <div class="flex items-baseline justify-between gap-1">
                   <p class="text-xs font-semibold text-primary">2. Head Chef Clara Phone Consultation</p>
-                  <span class="text-[11px] bg-secondary-fixed text-on-secondary-fixed-variant px-1.5 py-0.5 rounded font-medium">Pending • Next 60 mins</span>
+                  <span class="text-[10px] xs:text-[11px] bg-secondary-fixed text-on-secondary-fixed-variant px-1.5 py-0.5 rounded font-medium whitespace-nowrap">Next 60 mins</span>
                 </div>
-                <p class="text-xs text-on-surface-variant" id="successPhoneDesc">
+                <p class="text-[11px] xs:text-xs text-on-surface-variant mt-0.5" id="successPhoneDesc">
                   Baker calling your phone number to verify cold chain timing, cream colour balance, and personalized piping notes.
                 </p>
               </li>
               <!-- Step 3 -->
-              <li class="pl-6 relative">
+              <li class="pl-5 sm:pl-6 relative">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-surface-container border border-outline-variant"></span>
-                <div class="flex items-baseline justify-between">
+                <div class="flex items-baseline justify-between gap-1">
                   <p class="text-xs font-semibold text-on-surface-variant">3. Email Acknowledgement Sent</p>
-                  <span class="text-[11px] text-outline">Queue</span>
+                  <span class="text-[10px] xs:text-[11px] text-outline">Queue</span>
                 </div>
-                <p class="text-xs text-on-surface-variant" id="successEmailDesc">
+                <p class="text-[11px] xs:text-xs text-on-surface-variant mt-0.5" id="successEmailDesc">
                   Detailed commission summary dispatched to your email address.
                 </p>
               </li>
               <!-- Step 4 -->
-              <li class="pl-6 relative">
+              <li class="pl-5 sm:pl-6 relative">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-surface-container border border-outline-variant"></span>
-                <div class="flex items-baseline justify-between">
-                  <p class="text-xs font-semibold text-on-surface-variant">4. Fresh Dawn Bake &amp; Chilled Courier Handover</p>
-                  <span class="text-[11px] text-outline" id="successDateSlot">Tomorrow Afternoon</span>
+                <div class="flex items-baseline justify-between gap-1">
+                  <p class="text-xs font-semibold text-on-surface-variant">4. Fresh Dawn Bake &amp; Courier Handover</p>
+                  <span class="text-[10px] xs:text-[11px] text-outline" id="successDateSlot">Tomorrow Afternoon</span>
                 </div>
-                <p class="text-xs text-on-surface-variant" id="successAddressDesc">
+                <p class="text-[11px] xs:text-xs text-on-surface-variant mt-0.5" id="successAddressDesc">
                   Dispatched via temperature-regulated van to your specified Indiranagar address.
                 </p>
               </li>
@@ -551,28 +572,28 @@
           </div>
 
           <!-- Quick Recap Slip -->
-          <div class="border border-dashed border-outline-variant rounded-lg p-4 bg-surface-container-lowest flex justify-between items-center text-xs">
+          <div class="border border-dashed border-outline-variant rounded-xl p-3.5 sm:p-4 bg-surface-container-lowest flex flex-col xs:flex-row justify-between items-start xs:items-center gap-2 text-xs">
             <div>
-              <p class="font-semibold text-primary text-sm" id="successSummaryTitle">Summary: Commission Items</p>
-              <p class="text-xs text-on-surface-variant" id="successSummaryItems">Artisan cake selections</p>
+              <p class="font-semibold text-primary text-xs xs:text-sm" id="successSummaryTitle">Summary: Commission Items</p>
+              <p class="text-[11px] xs:text-xs text-on-surface-variant" id="successSummaryItems">Artisan cake selections</p>
             </div>
-            <div class="text-right">
-              <span class="font-headline-sm text-2xl font-bold text-primary" id="successSummaryTotal">₹8,200</span>
+            <div class="text-left xs:text-right">
+              <span class="font-headline-sm text-xl xs:text-2xl font-bold text-primary" id="successSummaryTotal">₹8,200</span>
               <p class="text-[10px] text-secondary font-medium">Pay upon Delivery (Offline)</p>
             </div>
           </div>
 
           <!-- Actions -->
-          <div class="flex flex-col sm:flex-row gap-3 pt-2">
-            <a href="index.html#all-cakes" class="flex-1 py-3 px-4 bg-primary text-on-primary hover:bg-primary-container text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2">
+          <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-2">
+            <a href="index.html#popular-cakes" class="flex-1 py-3 px-4 bg-primary text-on-primary hover:bg-primary-container text-xs font-semibold uppercase tracking-wider rounded-xl transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2">
               <span class="material-symbols-outlined text-[16px]">restaurant_menu</span>
               <span>Return to Collection</span>
             </a>
-            <a href="dashboard.html" class="flex-1 py-3 px-4 bg-secondary text-on-secondary hover:bg-secondary/90 text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2">
+            <a href="dashboard.html" class="flex-1 py-3 px-4 bg-secondary text-on-secondary hover:bg-secondary/90 text-xs font-semibold uppercase tracking-wider rounded-xl transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2">
               <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
-              <span>View in Owner Dashboard →</span>
+              <span>Owner Dashboard →</span>
             </a>
-            <button class="px-5 py-3 border border-outline-variant text-primary hover:bg-surface-container-high text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-1.5" onclick="window.print()">
+            <button class="px-5 py-3 border border-outline-variant text-primary hover:bg-surface-container-high text-xs font-semibold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95" onclick="window.print()">
               <span class="material-symbols-outlined text-[16px]">print</span>
               <span>Print Slip</span>
             </button>
@@ -585,14 +606,14 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="w-full mt-auto bg-surface-container-high border-t border-outline-variant">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-12 flex flex-col space-y-8">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+  <footer class="w-full mt-auto bg-surface-container-high border-t border-outline-variant pb-20 lg:pb-0">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-16 py-8 sm:py-12 flex flex-col space-y-6 sm:space-y-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:gap-6">
         <div>
-          <a class="font-serif text-2xl font-bold tracking-tight text-brand-dark" href="index.html">SweetNest</a>
+          <a class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-brand-dark" href="index.html">SweetNest</a>
           <p class="text-xs text-on-surface-variant mt-1">Homemade Cakes with Love • Bengaluru, India</p>
         </div>
-        <div class="flex flex-wrap gap-6 text-xs font-medium">
+        <div class="flex flex-wrap gap-4 sm:gap-6 text-xs font-medium">
           <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
           <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#popular-cakes">Cakes</a>
           <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#categories">Categories</a>
@@ -603,9 +624,9 @@
           </a>
         </div>
       </div>
-      <div class="pt-6 border-t border-outline-variant/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
+      <div class="pt-5 sm:pt-6 border-t border-outline-variant/60 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-xs text-on-surface-variant text-center sm:text-left">
         <p>© 2026 SweetNest Bakery Atelier. Handcrafted daily with fresh cream, fruits and premium chocolate.</p>
-        <div class="flex items-center gap-3 text-secondary text-xs font-medium">
+        <div class="flex items-center gap-2 sm:gap-3 text-secondary text-xs font-medium">
           <span class="material-symbols-outlined text-[16px]">support_agent</span>
           <span>Chef Concierge: +91 98201 44521</span>
         </div>
@@ -614,9 +635,9 @@
   </footer>
 
   <!-- Track Order Modal (Popup for real-time tracking) -->
-  <div id="trackOrderModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-brand-border/80 space-y-5 animate-in fade-in zoom-in-95 duration-200 relative">
-      <button onclick="closeTrackOrderModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/70 hover:text-brand-dark hover:bg-brand-border/50 transition-all cursor-pointer">
+  <div id="trackOrderModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 xs:p-4">
+    <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-md w-full shadow-2xl border border-brand-border/80 space-y-4 sm:space-y-5 animate-in fade-in zoom-in-95 duration-200 relative">
+      <button onclick="closeTrackOrderModal()" class="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/70 hover:text-brand-dark hover:bg-brand-border/50 transition-all cursor-pointer">
         <span class="material-symbols-outlined text-[18px]">close</span>
       </button>
 
